@@ -1,0 +1,351 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Rubik:wght@400;500;700&display=swap');
+@import url('https://css.gg/trash.css');
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+}
+
+.error {
+  color: red;
+}
+/*header*/
+
+header {
+    height: 120px;
+    background-color: #4520ab;
+    margin-bottom: 40px;
+    padding: 30px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    margin-top: 0px;
+}
+
+header a {
+  text-decoration: none;
+  color: #00EDFF;
+}
+
+.logo {
+    cursor: pointer;
+    color: #00EDFF;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    color: #5DB8E6;
+}
+
+nav ul li {
+  margin-right: 20px;
+}
+
+nav a {
+    color: #5DB8E6;
+    text-decoration: none;
+    font-size: 1.2em; 
+}
+
+nav a:hover {
+    color: #e29f0e;
+    border-bottom: 3px solid #e29f0e;
+    padding-bottom: 48px;
+}
+
+nav img {
+    width: 22px;
+    padding-top: 2px;
+}
+
+#magnifying-glass {
+  font-size: 1.3em;
+  display: inline-block;
+  width: 0.4em;
+  box-sizing: content-box;
+  height: 0.4em;
+  border: 0.1em solid #5DB8E6;
+  position: relative;
+  border-radius: 0.35em;
+  margin-top: 4px;
+}
+#magnifying-glass:before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  right: -0.34em;
+  bottom: -0.2em;
+  border-width: 0;
+  background: #5DB8E6;
+  width: 0.4em;
+  height: 0.08em;
+  transform: rotate(45deg);
+}
+
+.personal-page {
+    cursor: pointer;
+    color: #1ce0ee;
+    font-size: 1.8em; 
+}
+
+.personal-page p {
+    margin-top: 23px;
+}
+
+.center-block {
+  display: flex;
+  justify-content: center;
+}
+/*main*/
+h3 {
+  color: #4520ab;
+}
+
+main {
+    width: 1280px;
+    margin: 0 auto;
+    color: #4520ab;
+}
+
+main.form {
+  width: 800px;
+}
+
+main button.btn-block {
+  color: #fff;
+  background-color: #4520ab;
+  width: 100%;
+}
+main button.btn-block:hover {
+  color: #fff; 
+}
+main img {
+    width: 196px;
+    height: 288px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease-out;
+}
+
+/* main .film:hover{
+    transform: scale(1.1);
+    transition: 0.3s ease-out;
+} */
+
+section h3 {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+}
+
+.movies {
+    display: flex;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+
+.film {
+    position: relative;
+    margin-right: 58px;
+}
+/* .film-card button:active {
+    transform: scale(0.97);
+    transition: 0.2s ease-out;
+} */
+.film-card button {
+  border-radius: 5px;
+}
+
+.rating {
+    width: 30px;
+    height: 20px;
+    color: white;
+    position: absolute;
+    top: 3px;
+    left: -5px;
+    text-align: center;
+    border-radius: 3px;
+    font-size: 11px;
+}
+.rating p {
+    margin: 0;
+    padding-top: 3px;
+}
+
+.high-rating {
+    background-color: #12c350;
+}
+
+.low-rating {
+    background-color: gray;
+}
+
+p.film-name {
+    font-weight: bold;
+    margin-bottom: 0;
+    margin-top: 8px;
+    position: relative;
+}
+
+p.film-name span:hover::after{
+  content: attr(data-title);
+  position: absolute;
+  font-size: .9em;
+  top: 18px;
+  left: -100px;
+  color: gray;
+}
+
+div.film-description {
+  margin-top: 7px;
+}
+
+.film-info-description {
+  width: 55%;
+}
+
+.film-info {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.film-info .film img {
+  width: 350px;
+  height: 500px;
+  border-radius: 8px;
+}
+
+#add-to-favourite span.heart {
+  color:rgb(230, 129, 129);
+  cursor: pointer;
+}
+#add-to-favourite span.heart:hover {
+  color:rgb(199, 45, 45);
+}
+.buttons #add-to-favourite span.heart {
+  font-size: 30px;
+  display: inline-block;
+  padding-top: 11px;
+  padding-right: 14px;
+}
+.gg-trash {
+  color:gray;
+  cursor: pointer;
+}
+
+#delete-comment {
+  margin-left: 20px;
+}
+
+.comment-autor {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.comment {
+  font-size: 20px;
+}
+
+/*media*/
+@media (min-width: 768px) and (max-width: 1400px) {
+  header {
+    padding: 30px 10px;
+  }
+
+  .logo h1 {
+    font-size: 1.7em;
+  }
+  main {
+    width: 100%;
+    padding: 0;
+  }
+
+  .personal-page {
+    font-size: 1.5em;
+  }
+
+  ul li a{
+    font-size: 1em;
+  }
+
+  nav a:hover {
+    padding-bottom: 38px;
+  }
+  
+  .movies {
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .film{
+    margin: 0 25px;
+  }
+
+  section h3 {
+    text-align: center;
+  }
+}
+
+
+@media (max-width: 767px) {
+  
+  .personal-page {
+    display: none;
+  }
+
+  header {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 30px 0;
+    margin-bottom: 20px;
+  }
+
+  .logo {
+    margin-top: -20px;
+    margin-bottom: -25px;
+  }
+
+  ul li a{
+    font-size: 1em;
+  }
+
+  nav a:hover {
+    border-bottom: 2px solid #e29f0e;
+    padding-bottom: 18px;
+  }
+
+  main {
+    width: 100%;
+    padding: 0;
+  }
+
+  section h3 {
+    text-align: center;
+    font-size: 1.3em;
+  }
+  .movies {
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  main img {
+    width: 190px;
+    height: 280;
+  }
+
+  .film{
+    margin: 0 12px;
+  }
+
+}
+
+
+
