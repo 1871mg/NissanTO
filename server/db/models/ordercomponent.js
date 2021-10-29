@@ -4,23 +4,27 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class OrderComponent extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate({Order, Component}) {
-      OrderComponent.belongsTo(Order), OrderComponent.belongsTo(Component)
-      // define association here
-    }
-  };
-  OrderComponent.init({
-    OrderId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'Order',
-        key: 'id',
+    static associate() {}
+  }
+  OrderComponent.init(
+    {
+      OrderId: {
+        primaryKey: true,
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Order',
+          key: 'id',
+        },
+      },
+      ComponentId: {
+        primaryKey: true,
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Component',
+          key: 'id',
+        },
       },
     },
     ComponentId: {

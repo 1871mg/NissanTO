@@ -2,13 +2,8 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('FullServiceServices', {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER,
-      },
       FullServiceId: {
+        primaryKey: true,
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -17,6 +12,7 @@ module.exports = {
         },
       },
       ServiceId: {
+        primaryKey: true,
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {

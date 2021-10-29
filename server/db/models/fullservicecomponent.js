@@ -4,19 +4,27 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class FullServiceComponent extends Model {
-   
-    static associate({Component, FullService}) {
-      FullServiceComponent.belongsTo(FullService),
-      FullServiceComponent.belongsTo(Component)
-    }
-  };
-  FullServiceComponent.init({
-    FullServiceId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'FullService',
-        key: 'id',
+    static associate() {}
+  }
+  FullServiceComponent.init(
+    {
+      FullServiceId: {
+        primaryKey: true,
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'FullService',
+          key: 'id',
+        },
+      },
+      ComponentId: {
+        primaryKey: true,
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Component',
+          key: 'id',
+        },
       },
     },
     ComponentId: {

@@ -4,10 +4,14 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Component extends Model {
-    
-    static associate({FullServiceComponent, OrderComponent}) {
-      Component.hasMany(FullServiceComponent),
-      Component.hasMany(OrderComponent)
+    static associate({
+      FullServiceComponent,
+      OrderComponent,
+      FullService,
+      Order,
+    }) {
+      Component.belongsToMany(FullService, { through: FullServiceComponent })
+      Component.belongsToMany(Order, { through: OrderComponent })
     }
   };
   Component.init({

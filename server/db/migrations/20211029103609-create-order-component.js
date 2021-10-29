@@ -2,13 +2,8 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('OrderComponents', {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER,
-      },
       OrderId: {
+        primaryKey: true,
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -17,6 +12,7 @@ module.exports = {
         },
       },
       ComponentId: {
+        primaryKey: true,
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
