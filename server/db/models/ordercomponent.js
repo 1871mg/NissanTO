@@ -2,14 +2,12 @@
 const { Model } = require('sequelize')
 module.exports = (sequelize, DataTypes) => {
   class OrderComponent extends Model {
-    static associate({ Order, Component }) {
-      OrderComponent.belongsTo(Order)
-      OrderComponent.belongsTo(Component)
-    }
+    static associate() {}
   }
   OrderComponent.init(
     {
       OrderId: {
+        primaryKey: true,
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
@@ -18,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
       ComponentId: {
+        primaryKey: true,
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
