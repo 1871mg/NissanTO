@@ -2,7 +2,7 @@
 const { Model } = require('sequelize')
 module.exports = (sequelize, DataTypes) => {
   class Service extends Model {
-    static associate({ FullService }) {
+    static associate({ FullService, OrderService, FullService }) {
       Service.belongsTo(FullService)
     }
   }

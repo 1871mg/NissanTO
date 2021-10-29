@@ -5,8 +5,9 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Component extends Model {
     
-    static associate({FullServiceComponent}) {
-      Component.hasMany(FullServiceComponent)
+    static associate({FullServiceComponent, OrderComponent}) {
+      Component.hasMany(FullServiceComponent),
+      Component.hasMany(OrderComponent)
     }
   };
   Component.init({
