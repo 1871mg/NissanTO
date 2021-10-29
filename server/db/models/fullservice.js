@@ -8,12 +8,14 @@ module.exports = (sequelize, DataTypes) => {
       Order,
       Service,
       FullServiceComponent,
+      FullServiceService,
+      Component,
     }) {
-      FullService.belongsTo(Milege)
+      FullService.belongsToMany(Service, { through: FullServiceService })
+      FullService.hasOne(Milege)
       FullService.belongsTo(CarModel)
       FullService.hasMany(Order)
-      FullService.hasMany(Service)
-      FullService.hasMany(FullServiceComponent)
+      FullService.belongsToMany(Component, { through: FullServiceComponent })
     }
   }
   FullService.init(
@@ -28,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
           key: 'id',
         },
       },
-      CarModelId: {
+      ModelId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {

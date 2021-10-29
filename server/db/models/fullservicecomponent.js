@@ -1,15 +1,15 @@
-'use strict'
-const { Model } = require('sequelize')
+const {
+  Model,
+} = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class FullServiceComponent extends Model {
-    static associate({ Component, FullService }) {
-      FullServiceComponent.belongsTo(FullService)
-      FullServiceComponent.belongsTo(Component)
-    }
+    static associate() {}
   }
   FullServiceComponent.init(
     {
       FullServiceId: {
+        primaryKey: true,
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
@@ -18,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
       ComponentId: {
+        primaryKey: true,
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
@@ -29,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: 'FullServiceComponent',
-    }
-  )
-  return FullServiceComponent
-}
+    },
+  );
+  return FullServiceComponent;
+};
