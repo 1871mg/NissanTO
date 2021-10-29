@@ -2,8 +2,11 @@
 const { Model } = require('sequelize')
 module.exports = (sequelize, DataTypes) => {
   class Car extends Model {
-    static associate({ Owner, Model, Milege, Order }) {
-      Car.belongsTo(Owner), Car.belongsTo(Model), Car.belongsTo(Milege), Car.hasMany(Order)
+    static associate({ Owner, CarModel, Milege, Order }) {
+      Car.belongsTo(Owner)
+      Car.belongsTo(CarModel)
+      Car.belongsTo(Milege)
+      Car.hasMany(Order)
     }
   }
   Car.init(
@@ -16,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
           key: 'id',
         },
       },
-      ModelId: {
+      CarModelId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
