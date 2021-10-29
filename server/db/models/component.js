@@ -1,7 +1,7 @@
-'use strict';
 const {
-  Model
+  Model,
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Component extends Model {
     static associate({
@@ -10,14 +10,14 @@ module.exports = (sequelize, DataTypes) => {
       FullService,
       Order,
     }) {
-      Component.belongsToMany(FullService, { through: FullServiceComponent })
-      Component.belongsToMany(Order, { through: OrderComponent })
+      Component.belongsToMany(FullService, { through: FullServiceComponent });
+      Component.belongsToMany(Order, { through: OrderComponent });
     }
-  };
+  }
   Component.init({
     title: { type: DataTypes.TEXT, allowNull: false },
     price: { type: DataTypes.INTEGER, allowNull: false },
-    counterType: { type: DataTypes.TEXT, allowNull: false }
+    counterType: { type: DataTypes.TEXT, allowNull: false },
   }, {
     sequelize,
     modelName: 'Component',

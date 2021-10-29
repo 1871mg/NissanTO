@@ -44,7 +44,6 @@ app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
 app.use('/isauth', isAuthRouter);
 
-
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
