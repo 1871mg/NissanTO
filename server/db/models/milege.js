@@ -1,7 +1,6 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+'use strict'
+const { Model } = require('sequelize')
+
 module.exports = (sequelize, DataTypes) => {
   class Milege extends Model {
     static associate({ Car, FullService, Order }) {
@@ -9,13 +8,16 @@ module.exports = (sequelize, DataTypes) => {
       Milege.hasOne(FullService)
       Milege.hasMany(Order)
     }
-  };
-  Milege.init({
-    distanse: { type: DataTypes.INTEGER, allowNull: false },
-    years: { type: DataTypes.INTEGER, allowNull: false }
-  }, {
-    sequelize,
-    modelName: 'Milege',
-  });
-  return Milege;
-};
+  }
+  Milege.init(
+    {
+      distanse: { type: DataTypes.INTEGER, allowNull: false },
+      years: { type: DataTypes.INTEGER, allowNull: false },
+    },
+    {
+      sequelize,
+      modelName: 'Milege',
+    }
+  )
+  return Milege
+}

@@ -1,5 +1,6 @@
-'use strict'
-const { Model } = require('sequelize')
+'use strict';
+const { Model } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Order extends Model {
     static associate({
@@ -11,15 +12,15 @@ module.exports = (sequelize, DataTypes) => {
       OrderService,
       OrderComponent,
       Component,
-      Service
+      Service,
     }) {
-      Order.belongsTo(Car)
-      Order.belongsTo(Worker)
-      Order.belongsTo(Box)
-      Order.belongsTo(FullService)
-      Order.belongsTo(Milege)
-      Order.belongsToMany(Component, { through: OrderComponent })
-      Order.belongsToMany(Service, { through: OrderService })
+      Order.belongsTo(Car);
+      Order.belongsTo(Worker);
+      Order.belongsTo(Box);
+      Order.belongsTo(FullService);
+      Order.belongsTo(Milege);
+      Order.belongsToMany(Component, { through: OrderComponent });
+      Order.belongsToMany(Service, { through: OrderService });
     }
   }
   Order.init(
@@ -70,7 +71,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: 'Order',
-    }
-  )
-  return Order
-}
+    },
+  );
+  return Order;
+};

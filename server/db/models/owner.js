@@ -1,8 +1,9 @@
 'use strict'
 const { Model } = require('sequelize')
+
 module.exports = (sequelize, DataTypes) => {
   class Owner extends Model {
-    static associate({Car}) {
+    static associate({ Car }) {
       Owner.hasMany(Car)
     }
   }
@@ -12,8 +13,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.TEXT,
         allowNull: false,
       },
-      parentname:
-      {
+      parentname: {
         type: DataTypes.TEXT,
         allowNull: false,
       },
@@ -24,12 +24,12 @@ module.exports = (sequelize, DataTypes) => {
       email: {
         type: DataTypes.TEXT,
         allowNull: false,
-        unique: true
+        unique: true,
       },
       phone: {
         type: DataTypes.TEXT,
         allowNull: false,
-        unique: true
+        unique: true,
       },
       password: DataTypes.TEXT,
     },

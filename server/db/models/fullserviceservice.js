@@ -1,7 +1,6 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+'use strict'
+const { Model } = require('sequelize')
+
 module.exports = (sequelize, DataTypes) => {
   class FullServiceService extends Model {
     static associate() {}
@@ -27,17 +26,10 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
     },
-    ServiceId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'Service',
-        key: 'id',
-      },
+    {
+      sequelize,
+      modelName: 'FullServiceService',
     }
-  }, {
-    sequelize,
-    modelName: 'FullServiceService',
-  });
-  return FullServiceService;
-};
+  )
+  return FullServiceService
+}
