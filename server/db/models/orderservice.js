@@ -3,7 +3,8 @@ const { Model } = require('sequelize')
 module.exports = (sequelize, DataTypes) => {
   class OrderService extends Model {
     static associate({ Service, Order }) {
-      OrderService.belongsTo(Service), OrderService.belongsTo(Order)
+      OrderService.belongsTo(Service)
+      OrderService.belongsTo(Order)
     }
   }
   OrderService.init(

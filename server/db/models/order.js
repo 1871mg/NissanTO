@@ -2,14 +2,22 @@
 const { Model } = require('sequelize')
 module.exports = (sequelize, DataTypes) => {
   class Order extends Model {
-    static associate({ Car, Worker, Box, FullService, Milege, OrderService, OrderComponent }) {
-      Order.belongsTo(Car),
-        Order.belongsTo(Worker),
-        Order.belongsTo(Box),
-        Order.belongsTo(FullService),
-        Order.belongsTo(Milege),
-        Order.hasMany(OrderService),
-        Order.hasMany(OrderComponent)
+    static associate({
+      Car,
+      Worker,
+      Box,
+      FullService,
+      Milege,
+      OrderService,
+      OrderComponent,
+    }) {
+      Order.belongsTo(Car)
+      Order.belongsTo(Worker)
+      Order.belongsTo(Box)
+      Order.belongsTo(FullService)
+      Order.belongsTo(Milege)
+      Order.hasMany(OrderService)
+      Order.hasMany(OrderComponent)
     }
   }
   Order.init(

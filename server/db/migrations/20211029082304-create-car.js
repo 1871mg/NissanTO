@@ -16,11 +16,11 @@ module.exports = {
           key: 'id',
         },
       },
-      ModelId: {
+      CarModelId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'Models',
+          model: 'CarModels',
           key: 'id',
         },
       },
