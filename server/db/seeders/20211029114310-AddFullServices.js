@@ -1,24 +1,24 @@
 const fullServices = [
   {
-    title: 'ТО-1', duration: '1', MilageId: '1', ModellId: '',
+    title: 'ТО-1', duration: '1', MilegeId: '1', CarModelId: '3',
   }, {
-    title: 'ТО-2', duration: '2', MilageId: '2', ModellId: '',
+    title: 'ТО-2', duration: '2', MilegeId: '2', CarModelId: '6',
   }, {
-    title: 'ТО-3', duration: '1', MilageId: '3', ModellId: '',
+    title: 'ТО-3', duration: '1', MilegeId: '3', CarModelId: '4',
   }, {
-    title: 'ТО-4', duration: '2', MilageId: '4', ModellId: '',
+    title: 'ТО-4', duration: '2', MilegeId: '4', CarModelId: '5',
   }, {
-    title: 'ТО-5', duration: '1', MilageId: '5', ModellId: '',
+    title: 'ТО-5', duration: '1', MilegeId: '5', CarModelId: '3',
   }, {
-    title: 'ТО-6', duration: '4', MilageId: '6', ModellId: '',
+    title: 'ТО-6', duration: '4', MilegeId: '6', CarModelId: '2',
   }, {
-    title: 'ТО-7', duration: '1', MilageId: '7', ModellId: '',
+    title: 'ТО-7', duration: '1', MilegeId: '7', CarModelId: '1',
   }, {
-    title: 'ТО-8', duration: '2', MilageId: '8', ModellId: '',
+    title: 'ТО-8', duration: '2', MilegeId: '8', CarModelId: '5',
   }, {
-    title: 'ТО-9', duration: '1', MilageId: '9', ModellId: '',
+    title: 'ТО-9', duration: '1', MilegeId: '9', CarModelId: '3',
   }, {
-    title: 'ТО-10', duration: '4', MilageId: '10', ModellId: '',
+    title: 'ТО-10', duration: '4', MilegeId: '10', CarModelId: '2',
   },
 ];
 
@@ -29,8 +29,8 @@ module.exports = {
       await queryInterface.bulkInsert('FullServices', [{
         title: fullServices[i].title,
         duration: fullServices[i].duration,
-        MilageId: fullServices[i].MilageId,
-        ModellId: fullServices[i].ModellId,
+        MilegeId: fullServices[i].MilegeId,
+        CarModelId: fullServices[i].CarModelId,
         createdAt: new Date(),
         updatedAt: new Date(),
       }], {});

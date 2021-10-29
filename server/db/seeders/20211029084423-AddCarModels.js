@@ -4,7 +4,7 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     for (let i = 0; i < models.length; i += 1) {
       // eslint-disable-next-line no-await-in-loop
-      await queryInterface.bulkInsert('Models', [{
+      await queryInterface.bulkInsert('CarModels', [{
         title: models[i],
 
         createdAt: new Date(),
@@ -14,6 +14,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete('Models', null, {});
+    await queryInterface.bulkDelete('CarModels', null, {});
   },
 };
