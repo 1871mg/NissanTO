@@ -2,9 +2,9 @@
 const { Model } = require('sequelize')
 module.exports = (sequelize, DataTypes) => {
   class FullService extends Model {
-    static associate({ Milege, Model, Order, Service, FullServiceComponent }) {
+    static associate({ Milege, CarModel, Order, Service, FullServiceComponent }) {
       FullService.belongsTo(Milege),
-        FullService.belongsTo(Model),
+        FullService.belongsTo(CarModel),
         FullService.hasMany(Order),
         FullService.hasMany(Service),
         FullService.hasMany(FullServiceComponent)
@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-          model: 'Model',
+          model: 'CarModel',
           key: 'id',
         },
       },
