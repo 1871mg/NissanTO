@@ -11,6 +11,8 @@ const registerRouter = require('./routes/register.router');
 const loginRouter = require('./routes/login.router');
 const logoutRouter = require('./routes/logout.router');
 const isAuthRouter = require('./routes/isAuth.router');
+const mainRouter = require('./routes/main.router');
+const servicesRouter = require('./routes/services.router');
 
 const app = express();
 
@@ -35,6 +37,8 @@ app.use(cors({
 }));
 
 app.use('/', indexRouter);
+app.use('/main', mainRouter);
+app.use('/services', servicesRouter);
 app.use('/register', registerRouter);
 app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
