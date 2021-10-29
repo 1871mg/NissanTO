@@ -1,8 +1,8 @@
 {
   "development": {
-    "username": "roman",
-    "password": "32213221",
-    "database": "nissan_too",
+    "username": "postgres",
+    "password": "postgres",
+    "database": "nissan_to",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
