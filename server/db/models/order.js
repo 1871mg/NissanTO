@@ -10,14 +10,16 @@ module.exports = (sequelize, DataTypes) => {
       Milege,
       OrderService,
       OrderComponent,
+      Component,
+      Service
     }) {
       Order.belongsTo(Car)
       Order.belongsTo(Worker)
       Order.belongsTo(Box)
       Order.belongsTo(FullService)
       Order.belongsTo(Milege)
-      Order.hasMany(OrderService)
-      Order.hasMany(OrderComponent)
+      Order.belongsToMany(Component, { through: OrderComponent })
+      Order.belongsToMany(Service, { through: OrderService })
     }
   }
   Order.init(
