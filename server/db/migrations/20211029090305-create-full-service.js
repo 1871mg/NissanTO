@@ -1,18 +1,20 @@
-'use strict'
+'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Cars', {
+    await queryInterface.createTable('FullServices', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER
       },
-      OwnerId: {
+      title: { type: Sequelize.TEXT, allowNull: false },
+      duration: { type: Sequelize.TEXT, allowNull: false },
+      MilegeId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'Owners',
+          model: 'Mileges',
           key: 'id',
         },
       },
@@ -24,27 +26,17 @@ module.exports = {
           key: 'id',
         },
       },
-      stateNumber: { type: Sequelize.INTEGER, allowNull: false, unique: true },
-      yearIssue: { type: Sequelize.INTEGER, allowNull: false },
-      MileageId: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: 'Mileges',
-          key: 'id',
-        },
-      },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE,
+        type: Sequelize.DATE
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE,
-      },
-    })
+        type: Sequelize.DATE
+      }
+    });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Cars')
-  },
-}
+    await queryInterface.dropTable('FullServices');
+  }
+};
