@@ -1,5 +1,5 @@
-'use strict'
-const { Model } = require('sequelize')
+const { Model } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class FullService extends Model {
     static associate({
@@ -11,11 +11,11 @@ module.exports = (sequelize, DataTypes) => {
       FullServiceService,
       Component,
     }) {
-      FullService.belongsToMany(Service, { through: FullServiceService })
-      FullService.hasOne(Milege)
-      FullService.belongsTo(CarModel)
-      FullService.hasMany(Order)
-      FullService.belongsToMany(Component, { through: FullServiceComponent })
+      FullService.belongsToMany(Service, { through: FullServiceService });
+      FullService.hasOne(Milege);
+      FullService.belongsTo(CarModel);
+      FullService.hasMany(Order);
+      FullService.belongsToMany(Component, { through: FullServiceComponent });
     }
   }
   FullService.init(
@@ -42,7 +42,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: 'FullService',
-    }
-  )
-  return FullService
-}
+    },
+  );
+  return FullService;
+};
