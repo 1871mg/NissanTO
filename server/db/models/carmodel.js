@@ -2,11 +2,12 @@
 const { Model } = require('sequelize')
 module.exports = (sequelize, DataTypes) => {
   class CarModel extends Model {
-    static associate({Car, FullService}) {
-      CarModel.hasMany(Car), CarModel.hasMany(FullService)
+    static associate({ Car, FullService }) {
+      CarModel.hasMany(Car)
+      CarModel.hasMany(FullService)
     }
   }
-  Model.init(
+  CarModel.init(
     {
       title: { type: DataTypes.TEXT, allowNull: false },
     },
@@ -15,5 +16,5 @@ module.exports = (sequelize, DataTypes) => {
       modelName: 'CarModel',
     }
   )
-  return Model
+  return CarModel
 }

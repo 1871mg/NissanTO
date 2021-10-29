@@ -2,12 +2,18 @@
 const { Model } = require('sequelize')
 module.exports = (sequelize, DataTypes) => {
   class FullService extends Model {
-    static associate({ Milege, CarModel, Order, Service, FullServiceComponent }) {
-      FullService.belongsTo(Milege),
-        FullService.belongsTo(CarModel),
-        FullService.hasMany(Order),
-        FullService.hasMany(Service),
-        FullService.hasMany(FullServiceComponent)
+    static associate({
+      Milege,
+      CarModel,
+      Order,
+      Service,
+      FullServiceComponent,
+    }) {
+      FullService.belongsTo(Milege)
+      FullService.belongsTo(CarModel)
+      FullService.hasMany(Order)
+      FullService.hasMany(Service)
+      FullService.hasMany(FullServiceComponent)
     }
   }
   FullService.init(
@@ -22,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
           key: 'id',
         },
       },
-      ModelId: {
+      CarModelId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
