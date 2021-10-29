@@ -1,32 +1,47 @@
 'use strict'
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Cars', {
+    await queryInterface.createTable('Orders', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      OwnerId: {
+      CarId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'Owners',
+          model: 'Cars',
           key: 'id',
         },
       },
-      ModelId: {
+      WorkerId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'Models',
+          model: 'Workers',
           key: 'id',
         },
       },
-      stateNumber: { type: Sequelize.INTEGER, allowNull: false, unique: true },
-      yearIssue: { type: Sequelize.INTEGER, allowNull: false },
-      MileageId: {
+      BoxId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Boxes',
+          key: 'id',
+        },
+      },
+      FullServiceId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'FullServices',
+          key: 'id',
+        },
+      },
+      timeStart: Sequelize.DATE,
+      MilegeId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -34,6 +49,7 @@ module.exports = {
           key: 'id',
         },
       },
+      isComplite: { type: Sequelize.BOOLEAN, allowNull: false, default: false },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
@@ -45,6 +61,6 @@ module.exports = {
     })
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Cars')
+    await queryInterface.dropTable('Orders')
   },
 }

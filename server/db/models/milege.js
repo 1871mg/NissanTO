@@ -5,8 +5,8 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Milege extends Model {
     
-    static associate({Car}) {
-    Milege.hasMany(Car)
+    static associate({Car, FullService, Order}) {
+    Milege.hasMany(Car), Milege.belongsTo(FullService), Milege.hasMany(Order)
     }
   };
   Milege.init({
