@@ -1,9 +1,9 @@
-'use strict'
-const { Model } = require('sequelize')
+const { Model } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Owner extends Model {
-    static associate({Car}) {
-      Owner.hasMany(Car)
+    static associate({ Car }) {
+      Owner.hasMany(Car);
     }
   }
   Owner.init(
@@ -24,19 +24,19 @@ module.exports = (sequelize, DataTypes) => {
       email: {
         type: DataTypes.TEXT,
         allowNull: false,
-        unique: true
+        unique: true,
       },
       phone: {
         type: DataTypes.TEXT,
         allowNull: false,
-        unique: true
+        unique: true,
       },
       password: DataTypes.TEXT,
     },
     {
       sequelize,
       modelName: 'Owner',
-    }
-  )
-  return Owner
-}
+    },
+  );
+  return Owner;
+};

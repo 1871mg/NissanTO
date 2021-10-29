@@ -1,4 +1,3 @@
-'use strict'
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Cars', {
@@ -26,7 +25,7 @@ module.exports = {
       },
       stateNumber: { type: Sequelize.INTEGER, allowNull: false, unique: true },
       yearIssue: { type: Sequelize.INTEGER, allowNull: false },
-      MileageId: {
+      MilegeId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -42,9 +41,9 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
-    })
+    });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Cars')
+    await queryInterface.dropTable('Cars');
   },
-}
+};
