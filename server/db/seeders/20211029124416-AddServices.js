@@ -1,14 +1,14 @@
 const services = [
   {
-    title: 'Моторное масло и фильтр', price: '500',
+    title: 'Замена Моторное масло и фильтр', price: '500',
   }, {
-    title: 'Воздушный фильтр двигателя', price: '500',
+    title: 'Установка Воздушный фильтр двигателя', price: '500',
   }, {
-    title: 'Свечи зажигания (комплект)', price: '1000',
+    title: 'Установка Свечи зажигания (комплект)', price: '1000',
   }, {
-    title: 'Фильтр саллонный', price: '250',
+    title: 'Замена Фильтр саллонный', price: '250',
   }, {
-    title: 'Масло в дифференциале', price: '750',
+    title: 'Замена Масло в дифференциале', price: '750',
   }, {
     title: 'Жидкость в тормозной системе', price: '2000',
   }, {
@@ -29,7 +29,6 @@ module.exports = {
       await queryInterface.bulkInsert('Services', [{
         title: services[i].title,
         price: services[i].price,
-
         createdAt: new Date(),
         updatedAt: new Date(),
       }], {});
