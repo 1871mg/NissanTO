@@ -6,7 +6,6 @@ import styles from './Main.module.css';
 import SelectMileageButton from '../UI/SelectMileageButton/SelectMileageButton';
 
 const Main = () => {
-  console.log('Main');
   return (
     <div className={styles.main}>
       <SelectButton />

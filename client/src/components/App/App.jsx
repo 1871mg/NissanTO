@@ -7,24 +7,15 @@ import Login from '../Login/Login';
 import Registration from '../Registration/Registration';
 import Logout from '../Logout/Logout';
 import Profile from '../Profile/Profile';
-import { checkSessionAC } from '../../redux/actionCreators/userAC';
+import { sagaCheckSessionAC } from '../../redux/actionCreators/asyncAC/asyncUserAC';
 import styles from './App.module.css';
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch('http://localhost:5000/isauth', {
-      method: 'GET',
-      credentials: 'include',
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.user) {
-          dispatch(checkSessionAC(data.user));
-        }
-      });
-  }, []);
+      dispatch(sagaCheckSessionAC());
+  }, [dispatch]);
 
   return (
     <div className={styles.app}>

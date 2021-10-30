@@ -1,0 +1,1 @@
+export const SAGA_CHECK_SESSION = 'SAGA_CHECK_SESSION';

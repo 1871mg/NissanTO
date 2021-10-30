@@ -1,4 +1,3 @@
-const carModelId = [1,2,3,4,5,6]
 const fullServices = [
   {
     title: 'ТО-1', duration: 1, MilegeId: '1', CarModelId: '3',
