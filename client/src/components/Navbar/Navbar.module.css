@@ -1,0 +1,29 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 12%;
+    background: rgba(255,255,255,0.3);
+}
+
+ul {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 7vh 0 0 0;
+}
+
+li {
+    list-style: none;
+    display: inline;
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin: 0 1.5rem 0 1.5rem;
+    color: whitesmoke;
+}
+
+a {
+    color: whitesmoke;
+}
+
