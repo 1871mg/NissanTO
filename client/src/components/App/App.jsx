@@ -6,7 +6,9 @@ import Main from '../Main/Main';
 import Login from '../Login/Login';
 import Registration from '../Registration/Registration';
 import Logout from '../Logout/Logout';
+import Profile from '../Profile/Profile';
 import { checkSessionAC } from '../../redux/actionCreators/userAC';
+import styles from './App.module.css';
 
 function App() {
   const dispatch = useDispatch();
@@ -25,7 +27,7 @@ function App() {
   }, []);
 
   return (
-    <>
+    <div className={styles.app}>
       <BrowserRouter>
         <Navbar />
 
@@ -33,10 +35,6 @@ function App() {
 
           <Route exact path="/">
             <Main />
-          </Route>
-
-          <Route exact path="/login">
-            <Login />
           </Route>
 
           <Route exact path="/login">
@@ -51,10 +49,14 @@ function App() {
             <Registration />
           </Route>
 
+          <Route exact path="/profile">
+            <Profile />
+          </Route>
+
         </Switch>
 
       </BrowserRouter>
-    </>
+    </div>
   );
 }
 

@@ -1,29 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import styles from './Navbar.module.css';
 
 const Navbar = () => {
   const user = useSelector((state) => state.userReducer.user);
   return (
-    <header>
-      <div className="logo">
-        <h1><a href="/">ElbrusКино</a></h1>
-      </div>
+    <header className={styles.navbar}>
       <nav>
         <ul>
-          <li><Link to="search">Поиск</Link></li>
           {user
           && (
           <>
-            <li><Link to="/favourites">Любимые фильмы</Link></li>
-            <li><Link to="/logout">Выйти</Link></li>
+            <li><Link to="/profile">профиль</Link></li>
+            <li><Link to="/logout">выйти</Link></li>
           </>
           )}
           {!user
           && (
           <>
-            <li><Link to="/registration">Зарегистрироваться</Link></li>
-            <li><Link to="/login">Войти</Link></li>
+            <li><Link to="/registration">регистрация</Link></li>
+            <li><Link to="/login">войти</Link></li>
           </>
           )}
         </ul>

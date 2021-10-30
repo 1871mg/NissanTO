@@ -1,10 +1,18 @@
 import React from 'react';
+import SelectButton from '../UI/SelectButton/SelectButton';
+import Offer from '../Offer/Offer';
+import Button from '../UI/Button/Button';
+import styles from './Main.module.css';
+import SelectMileageButton from '../UI/SelectMileageButton/SelectMileageButton';
 
 const Main = () => {
-  console.log('main');
+  console.log('Main');
   return (
-    <div>
-      Main
+    <div className={styles.main}>
+      <SelectButton />
+      <SelectMileageButton />
+      <Offer />
+      <Button />
     </div>
   );
 };
