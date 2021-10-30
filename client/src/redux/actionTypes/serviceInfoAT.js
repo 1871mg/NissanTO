@@ -1,0 +1,1 @@
+export const GET_SERVICE_INFO = 'GET_SERVICE_INFO'

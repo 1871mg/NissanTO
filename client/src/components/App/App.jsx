@@ -1,21 +1,23 @@
-import React, { useEffect } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import Navbar from '../Navbar/Navbar';
-import Main from '../Main/Main';
-import Login from '../Login/Login';
-import Registration from '../Registration/Registration';
-import Logout from '../Logout/Logout';
-import Profile from '../Profile/Profile';
-import { sagaCheckSessionAC } from '../../redux/actionCreators/asyncAC/asyncUserAC';
-import styles from './App.module.css';
+import React, { useEffect } from 'react'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import Navbar from '../Navbar/Navbar'
+import Main from '../Main/Main'
+import Login from '../Login/Login'
+import Registration from '../Registration/Registration'
+import Logout from '../Logout/Logout'
+import Profile from '../Profile/Profile'
+import { sagaCheckSessionAC } from '../../redux/actionCreators/asyncAC/asyncUserAC'
+import { sagaGetServiceInfoAC } from '../../redux/actionCreators/asyncAC/asyncServiseInfoAC'
+import styles from './App.module.css'
 
 function App() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   useEffect(() => {
-      dispatch(sagaCheckSessionAC());
-  }, [dispatch]);
+    // dispatch(sagaCheckSessionAC()), 
+    dispatch(sagaGetServiceInfoAC())
+  }, [dispatch])
 
   return (
     <div className={styles.app}>
@@ -23,7 +25,6 @@ function App() {
         <Navbar />
 
         <Switch>
-
           <Route exact path="/">
             <Main />
           </Route>
@@ -43,12 +44,10 @@ function App() {
           <Route exact path="/profile">
             <Profile />
           </Route>
-
         </Switch>
-
       </BrowserRouter>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
