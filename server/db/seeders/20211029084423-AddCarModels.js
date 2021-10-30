@@ -1,4 +1,4 @@
-const models = ['Versa (2008-2010)', 'Murano (2012-2016)', 'Qashqai (2019-2021)', 'Leaf (2013-2017)', 'Almera (2008-2012)', 'GT-R (2016-2020)'];
+const models = ['Almera (G15)', 'Tiida (C13)', 'Juke (F15)', 'Qashqai (J11)', 'Pathfinder (R52)'];
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
