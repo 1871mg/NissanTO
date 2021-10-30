@@ -1,4 +1,3 @@
-'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('FullServices', {
@@ -6,10 +5,10 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       title: { type: Sequelize.TEXT, allowNull: false },
-      duration: { type: Sequelize.TEXT, allowNull: false },
+      duration: { type: Sequelize.INTEGER, allowNull: false },
       MilegeId: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -28,15 +27,15 @@ module.exports = {
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   down: async (queryInterface, Sequelize) => {
     await queryInterface.dropTable('FullServices');
-  }
+  },
 };

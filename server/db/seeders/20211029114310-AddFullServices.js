@@ -1,11 +1,11 @@
 const carModelId = [1,2,3,4,5,6]
 const fullServices = [
   {
-    title: 'ТО-1', duration: '1', MilegeId: '1', CarModelId: '3',
+    title: 'ТО-1', duration: 1, MilegeId: '1', CarModelId: '3',
   }, {
-    title: 'ТО-2', duration: '2', MilegeId: '2', CarModelId: '6',
+    title: 'ТО-2', duration: 2, MilegeId: '2', CarModelId: '6',
   }, {
-    title: 'ТО-3', duration: '1', MilegeId: '3', CarModelId: '4',
+    title: 'ТО-3', duration: 1, MilegeId: '3', CarModelId: '4',
   }, {
     title: 'ТО-4', duration: '2', MilegeId: '4', CarModelId: '5',
   }, {

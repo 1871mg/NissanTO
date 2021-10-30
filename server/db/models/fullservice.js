@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
   FullService.init(
     {
       title: { type: DataTypes.TEXT, allowNull: false },
-      duration: { type: DataTypes.TEXT, allowNull: false },
+      duration: { type: DataTypes.INTEGER, allowNull: false },
       MilegeId: {
         type: DataTypes.INTEGER,
         allowNull: false,
