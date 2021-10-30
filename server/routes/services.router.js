@@ -26,7 +26,10 @@ router.get('/', async (req, res) => {
       }],
     });
 
-    res.json({ fullService });
+    const components = await Component.findAll();
+    const services = await Service.findAll();
+
+    res.json({ fullService, components, services });
   } catch (error) {
     console.log(error.message)
     res.status(500).end()

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="198db94e-91e9-4dbb-ba35-ab30f25097f8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/client/src/components/App/App.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/Main/Main.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/Navbar/Navbar.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/Offer/Offer.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/Profile/Profile.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/UI/SelectButton/SelectButton.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/UI/SelectButton/SelectButton.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/UI/SelectMileageButton/SelectMileageButton.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/UI/SelectMileageButton/SelectMileageButton.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/App/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/App/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Main/Main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Main/Main.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Navbar/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Navbar/Navbar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/UI/Loader/Loader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UI/Loader/Loader.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/redux/actionCreators/userAC.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/actionCreators/userAC.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/redux/actionTypes/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/actionTypes/userAT.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/redux/reducers/userReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/redux/reducers/userReducer.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="20AfB9LhMiVpr0MKMUHS9XrcAwf" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/client/src/components/Offer" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/src/components/Offer" />
+      <recent name="$PROJECT_DIR$/client/src/components/UI/SelectMileageButton" />
+      <recent name="$PROJECT_DIR$/client/src/components/Main" />
+      <recent name="$PROJECT_DIR$/client/src/components/Navbar" />
+      <recent name="$PROJECT_DIR$/client/src/components/UI/Title" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="198db94e-91e9-4dbb-ba35-ab30f25097f8" name="Changes" comment="" />
+      <created>1635492178666</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1635492178666</updated>
+      <workItem from="1635492182203" duration="10000" />
+      <workItem from="1635492201890" duration="21588000" />
+      <workItem from="1635578978738" duration="3936000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+</project>
