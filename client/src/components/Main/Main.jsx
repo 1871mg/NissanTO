@@ -7,8 +7,8 @@ import styles from './Main.module.css'
 import SelectMileageButton from '../UI/SelectMileageButton/SelectMileageButton'
 
 const Main = () => {
-  const  {allModels}  = useSelector(
-    (state) => state.serviceInfoReducer)
+  const  {allModels}  = useSelector((state) => state.serviceInfoReducer)
+  
   return (
     <div className={styles.main}>
       <SelectButton options={allModels}/>
