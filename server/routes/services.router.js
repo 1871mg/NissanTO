@@ -1,7 +1,12 @@
-const express = require('express');
-const { FullService, Service, Component } = require('../db/models');
+const express = require('express')
+const {
+  FullService,
+  Service,
+  Component,
+  FullServiseService,
+} = require('../db/models')
 
-const router = express.Router();
+const router = express.Router()
 
 router.get('/', async (req, res) => {
   try {
@@ -26,9 +31,9 @@ router.get('/', async (req, res) => {
 
     res.json({ fullService, components, services });
   } catch (error) {
-    console.log(error.message);
-    res.status(500).end();
+    console.log(error.message)
+    res.status(500).end()
   }
-});
+})
 
-module.exports = router;
+module.exports = router
