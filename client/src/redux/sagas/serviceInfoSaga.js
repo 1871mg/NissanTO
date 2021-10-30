@@ -9,7 +9,6 @@ const fetchGetServiceInfo = async () => {
     credentials: 'include',
   })
   const data = await response.json()
-  console.log('htllllmmmmmm')
   return data
 }
 

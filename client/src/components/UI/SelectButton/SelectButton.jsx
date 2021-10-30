@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import Select from 'react-select';
 // import { valueTernary } from 'react-select/dist/declarations/src/utils';
 
@@ -10,15 +11,18 @@ import Select from 'react-select';
 
 function SelectButton({options}) {
   const [selectedOption, setSelectedOption] = useState('');
-  let optionsSelect  = options.map((option) => option = {value: option.id, label: option.title})
-  
+  const  allModels  = useSelector((state) => state.serviceInfoReducer.allModels);  
+
   return (
     <div>
-      <Select
-        defaultValue={selectedOption}
-        onChange={setSelectedOption}
-        options={optionsSelect}
-      />
+      {allModels &&
+        <Select
+          defaultValue={selectedOption}
+          onChange={setSelectedOption}
+          options={allModels.map((option) => option = {value: option.id, label: option.title})}
+        />
+      }
+      
     </div>
   );
 }
