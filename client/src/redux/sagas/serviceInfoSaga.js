@@ -1,6 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects'
 import { SAGA_GET_SERVICE_INFO, SAGA_GET_SERVICE_TYPE} from '../actionTypes/asyncAT/asyncServiseInfoAT'
-import {getServiceInfo, getServiceType} from '../actionCreators/serviceInfoAC'
+import {getServiceInfo, getServiceType, showTextMain} from '../actionCreators/serviceInfoAC'
+import { useLayoutEffect } from 'react'
 
 
 const fetchGetServiceInfo = async () => {
@@ -34,6 +35,9 @@ function* getServiceTypeWorcker(action) {
 
   const serviceType = yield call(fetchGetServiceType, action)
   yield put(getServiceType(serviceType))
+  console.log('ffff');
+  // yield put(showTextMain())
+  
  }
 
 

@@ -1,16 +1,23 @@
-import React from 'react';
-import {useSelector} from 'react-redux';
+import React from 'react'
+import { useSelector } from 'react-redux'
 
-function Offer() {
-
-const serviceType = useSelector((state) => state.serviceInfoReducer.fullService)
-
+function Offer({ text }) {
+  const state = useSelector((state) => state.serviceInfoReducer)
+  const { fullService } = useSelector((state) => state.serviceInfoReducer)
+  const {mainRecommendation} = useSelector((state) => state.serviceInfoReducer)
+  const sumTotal = state.servicesAllPrice
 
   return (
     <>
-      {serviceType && (<div>{serviceType.title}</div>)}
+      {mainRecommendation ? (
+        <div>
+          {fullService.title} {sumTotal.sumTotalServicePrice} ₽
+        </div>
+      ) : (
+        <div></div>
+      )}
     </>
-  );
+  )
 }
 
-export default Offer;
+export default Offer
