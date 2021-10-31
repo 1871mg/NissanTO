@@ -116,7 +116,7 @@ const styles = ({ spacing, palette }) => ({
 });
 
 const AppointmentContent = withStyles(styles, { name: 'AppointmentContent' })(({
-  classes, data, formatDate, ...restProps
+  classes, data, locale, formatDate, ...restProps
 }) => {
 
   return (
@@ -176,6 +176,7 @@ const SchedulerContainer = ({
     <Scheduler
       data={orders}
       height={1177}
+      locale='ru-Ru'
     >
       <ViewState
         currentDate={currentDate}
