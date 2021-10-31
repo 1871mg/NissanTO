@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { checkSessionAC } from '../../redux/actionCreators/userAC';
-import Title from '../UI/Title/Title';
+import styles from './Login.module.css';
+import Button from '../UI/Button/Button';
 
 const Login = () => {
   const history = useHistory();
@@ -42,29 +43,22 @@ const Login = () => {
     }
   };
   return (
-    <main className="form">
-      <Title title="Войти" />
-      <form id="registerForm" onSubmit={onSubmit} action="/signin" method="POST">
-        {
+    <div className={styles.login}>
+      <main className="form">
+        <form id="registerForm" onSubmit={onSubmit} action="/signin" method="POST">
+          {
           isError
           && <div className="error">{errorMessage}</div>
         }
-        <div className="mb-3">
-          <label htmlFor="inputEmail" className="form-label">
-            Email
-            <input name="email" type="email" className="form-control" id="inputEmail" />
-          </label>
-        </div>
-        <div className="mb-3">
-          <label htmlFor="inputPassword" className="form-label">
-            Пароль
-            <input name="password" type="password" minLength="8" className="form-control" id="inputPassword" />
-          </label>
-        </div>
-
-        <button type="submit" className="btn btn-block">Войти</button>
-      </form>
-    </main>
+          <div>
+            <input name="phone" type="phone" className="form-control" id="inputPhone" placeholder="телефон" />
+            <input name="password" type="password" minLength="6" className="form-control" id="inputPassword" placeholder="пароль" />
+          </div>
+          <Button />
+        </form>
+        <li><Link to="/registration">регистрация</Link></li>
+      </main>
+    </div>
   );
 };
 export default Login;

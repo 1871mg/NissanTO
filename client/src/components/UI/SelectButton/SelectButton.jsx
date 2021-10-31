@@ -11,13 +11,14 @@ function SelectButton() {
   const [selectedOption, setSelectedOption] = useState(null);
 
   return (
-    <div>
+    <>
       <Select
         defaultValue={selectedOption}
         onChange={setSelectedOption}
         options={options}
+        placeholder={<div className="select-placeholder-text">выберите автомобиль</div>}
       />
-    </div>
+    </>
   );
 }
 

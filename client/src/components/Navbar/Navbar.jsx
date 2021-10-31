@@ -12,6 +12,7 @@ const Navbar = () => {
           {user
           && (
           <>
+            <li><Link to="/">главная</Link></li>
             <li><Link to="/profile">профиль</Link></li>
             <li><Link to="/logout">выйти</Link></li>
           </>
@@ -19,7 +20,7 @@ const Navbar = () => {
           {!user
           && (
           <>
-            <li><Link to="/registration">регистрация</Link></li>
+            <li><Link to="/">главная</Link></li>
             <li><Link to="/login">войти</Link></li>
           </>
           )}

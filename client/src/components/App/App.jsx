@@ -7,6 +7,8 @@ import Login from '../Login/Login';
 import Registration from '../Registration/Registration';
 import Logout from '../Logout/Logout';
 import Profile from '../Profile/Profile';
+import AddCar from '../AddCar/AddCar';
+import ServiceList from '../ServiceList/ServiceList';
 import { checkSessionAC } from '../../redux/actionCreators/userAC';
 import styles from './App.module.css';
 
@@ -51,6 +53,14 @@ function App() {
 
           <Route exact path="/profile">
             <Profile />
+          </Route>
+
+          <Route exact path="/servicelist">
+            <ServiceList />
+          </Route>
+
+          <Route exact path="/addcar">
+            <AddCar />
           </Route>
 
         </Switch>
