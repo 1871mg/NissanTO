@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
           key: 'id',
         },
       },
-      stateNumber: { type: DataTypes.INTEGER, allowNull: false, unique: true },
+      stateNumber: { type: DataTypes.TEXT, allowNull: false, unique: true },
       yearIssue: { type: DataTypes.INTEGER, allowNull: false },
       MilegeId: {
         type: DataTypes.INTEGER,
