@@ -239,11 +239,7 @@ const DayScaleCell = withStyles(styles, { name: 'DayScaleCell' })(({ classes, ..
 
 const SCHEDULER_STATE_CHANGE_ACTION = 'SCHEDULER_STATE_CHANGE';
 
-
-
-
 const SchedulerContainer = ({
-  data, onAddOrders,
   currentDate, onCurrentDateChange,
   currentViewName, onCurrentViewNameChange,
 }) => {
@@ -342,15 +338,6 @@ const mapStateToProps = (state) => {
 
 
 const mapDispatchToProps = dispatch => ({
-  onAddOrders: async () => {
-    const response = await fetch('http://localhost:5000/schedule', {
-    method: 'GET',
-    credentials: 'include',
-  })
-  const orders = await response.json()
-  console.log(orders);
-  dispatch(createSchedulerAction('data', orders))
-  },
   onCurrentDateChange: currentDate => dispatch(createSchedulerAction('currentDate', currentDate)),
   onCurrentViewNameChange: currentViewName => dispatch(createSchedulerAction('currentViewName', currentViewName)),
   onCurrentFilterChange: currentFilter => dispatch(createSchedulerAction('currentFilter', currentFilter)),
