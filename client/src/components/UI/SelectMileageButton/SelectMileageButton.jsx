@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import Select from 'react-select'
 import { setMilegeSelect } from '../../../redux/actionCreators/serviceInfoAC'
-import { sagaGetServiceTypeAC } from '../../../redux/actionCreators/asyncAC/asyncServiseInfoAC'
+//import { sagaGetServiceTypeAC } from '../../../redux/actionCreators/asyncAC/asyncServiseInfoAC'
 
 function SelectMileageButton() {
   const dispatch = useDispatch()
