@@ -18,12 +18,12 @@ export const serviceInfoReducer = (state = initialState, action) => {
       console.log('SET_MODEL_SELECT');
       const newsetModelState = {...state}
       newsetModelState.mainSelectValue.carModelId = action.payload
-      return { newsetModelState }
+      return { ...newsetModelState }
     case SET_MILEGE_SELECT:
       console.log('SET_MILEGE_SELECT');
       const newsetMilegeState = {...state}
       newsetMilegeState.mainSelectValue.milegeId = action.payload
-      return { newsetMilegeState }
+      return { ...newsetMilegeState }
     default:
       return state
   }

@@ -2,19 +2,18 @@ import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import Select from 'react-select'
 import { setModelSelect } from '../../../redux/actionCreators/serviceInfoAC'
+import { sagaGetServiceTypeAC } from '../../../redux/actionCreators/asyncAC/asyncServiseInfoAC'
 
 function SelectModelButton() {
   const dispatch = useDispatch()
   const allModels = useSelector((state) => state.serviceInfoReducer.allModels)
-  const [selectedOption, setSelectedOption] = useState()
-  
+  const [selectedOption, setSelectedOption] = useState(null)
+
   const setSelectedModelOption = (event) => {
     const selectModelOption = event.value
-    console.log('eventModel', event.label)
     setSelectedOption(event.label)
     dispatch(setModelSelect(selectModelOption))
   }
-  console.log('endmodel',selectedOption);
 
   return (
     <div>
