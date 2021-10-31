@@ -12,7 +12,6 @@ router.get('/', async (req, res) => {
     const orders = await Order.findAll({
       include: [FullService, Box, Worker],
     });
-    // console.log(orders);
     const activeOrders = orders.filter((order) => !order.isComplite);
 
     const scheduleData = activeOrders.map((order) => {
@@ -20,6 +19,7 @@ router.get('/', async (req, res) => {
       const endDate = new Date(timeEndMs);
 
       return {
+        location: order.Box.title,
         id: order.id,
         title: order.FullService.title,
         startDate: order.timeStart,
