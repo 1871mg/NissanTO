@@ -1,7 +1,10 @@
 import {
   GET_SERVICE_INFO,
+  GET_SERVICE_TYPE,
   SET_MODEL_SELECT,
   SET_MILEGE_SELECT,
+  HIDE_TEXT_MAIN,
+  SHOW_TEXT_MAIN
 } from '../actionTypes/serviceInfoAT'
 
 const initialState = { mainSelectValue: { carModelId: null, milegeId: null } }
@@ -15,17 +18,48 @@ export const serviceInfoReducer = (state = initialState, action) => {
         allMilege: action.payload.allMilege,
       }
     case SET_MODEL_SELECT:
-      console.log('SET_MODEL_SELECT');
-      const newsetModelState = {...state}
+      const newsetModelState = { ...state }
       newsetModelState.mainSelectValue.carModelId = action.payload
       return { ...newsetModelState }
     case SET_MILEGE_SELECT:
-      console.log('SET_MILEGE_SELECT');
-      const newsetMilegeState = {...state}
+      const newsetMilegeState = { ...state }
       newsetMilegeState.mainSelectValue.milegeId = action.payload
       return { ...newsetMilegeState }
+    case GET_SERVICE_TYPE:
+      console.log('GET_SERVICE_TYPE:')
+      const newServiceTypeState = { ...state }
+      newServiceTypeState.fullService = action.payload.fullService[0]
+      newServiceTypeState.components = action.payload.components
+      newServiceTypeState.services = action.payload.services
+      newServiceTypeState.servicesAllPrice = {}
+      newServiceTypeState.servicesAllPrice.sumServicesPrice = 0
+      newServiceTypeState.servicesAllPrice.sumComponentsPrice = 0
+      newServiceTypeState.fullService.Services.forEach(
+        (servicePrice) =>
+          (newServiceTypeState.servicesAllPrice.sumServicesPrice +=
+            servicePrice.price)
+      )
+      newServiceTypeState.fullService.Components.forEach(
+        (componentPrice) =>
+          (newServiceTypeState.servicesAllPrice.sumComponentsPrice +=
+            componentPrice.price)
+      )
+      newServiceTypeState.servicesAllPrice.sumTotalServicePrice =
+        newServiceTypeState.servicesAllPrice.sumServicesPrice +
+        newServiceTypeState.servicesAllPrice.sumComponentsPrice
+      newServiceTypeState.mainRecommendation = true
+      return { ...newServiceTypeState }
+    case HIDE_TEXT_MAIN:
+      let newHideTextMainState = { ...state }
+      newHideTextMainState.mainRecommendation = false
+      newHideTextMainState.mainSelectValue.carModelId = null
+      newHideTextMainState.mainSelectValue.milegeId  = null
+      return { ...newHideTextMainState }
+    case SHOW_TEXT_MAIN:
+      const newShowTextMainState = { ...state }
+      newShowTextMainState.mainRecommendation = true
+      return { ...newShowTextMainState }
     default:
       return state
-
   }
 }
