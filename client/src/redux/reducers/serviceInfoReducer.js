@@ -26,5 +26,6 @@ export const serviceInfoReducer = (state = initialState, action) => {
       return { ...newsetMilegeState }
     default:
       return state
+
   }
 }
