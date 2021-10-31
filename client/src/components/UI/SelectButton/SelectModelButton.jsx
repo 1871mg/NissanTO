@@ -24,6 +24,7 @@ function SelectModelButton() {
           options={allModels.map(
             (option) => (option = { value: option.id, label: option.title })
           )}
+          placeholder = 'выберите автомобиль'
         />
       )}
     </div>

@@ -25,6 +25,7 @@ function SelectMileageButton() {
             (option) =>
               (option = { value: option.id, label: `${option.distanse} км` })
           )}
+          placeholder = 'выберите пробег или год'
         />
       )}
     </div>

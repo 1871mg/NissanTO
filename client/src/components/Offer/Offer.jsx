@@ -1,10 +1,15 @@
 import React from 'react';
+import {useSelector} from 'react-redux';
 
 function Offer() {
+
+const serviceType = useSelector((state) => state.serviceInfoReducer.fullService)
+
+
   return (
-    <div>
-      TO-4
-    </div>
+    <>
+      {serviceType && (<div>{serviceType.title}</div>)}
+    </>
   );
 }
 

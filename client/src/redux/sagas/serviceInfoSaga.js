@@ -1,6 +1,6 @@
 import { call, put, takeEvery } from 'redux-saga/effects'
 import { SAGA_GET_SERVICE_INFO, SAGA_GET_SERVICE_TYPE} from '../actionTypes/asyncAT/asyncServiseInfoAT'
-import {getServiceInfo} from '../actionCreators/serviceInfoAC'
+import {getServiceInfo, getServiceType} from '../actionCreators/serviceInfoAC'
 
 
 const fetchGetServiceInfo = async () => {
@@ -18,17 +18,22 @@ function* getServiceInfoWorcker() {
 }
 
 
+const fetchGetServiceType = async (action) => {
+  const carModelId = action.payload.carModelId
+  const milegeId = action.payload.milegeId
+  const response = await fetch(`http://localhost:5000/services?carModelId=${carModelId}&milegeId=${milegeId}`, {
+    method: 'GET',
+    credentials: 'include',
+  })
+  const data = await response.json()
+  return data
+}
+
 
 function* getServiceTypeWorcker(action) {
-  let initialbody = {carModelId: null, milegeId: null}
-  let body = {}
-  yield action.payload.carModelId ? initialbody.carModelId = action.payload.carModelId : initialbody
-  console.log('carModelId', body);
-  yield action.payload.milegeId ? initialbody.milegeId = action.payload.milegeId : initialbody
-  yield console.log('milegeId',initialbody);
 
-  // const serviceInfo = yield call(fetchGetServiceInfo)
-  // yield put(getServiceInfo(serviceInfo))
+  const serviceType = yield call(fetchGetServiceType, action)
+  yield put(getServiceType(serviceType))
  }
 
 
