@@ -1,24 +1,34 @@
-import React, { useState } from 'react';
-import Select from 'react-select';
-
-const options = [
-  { value: 'mileage1', label: '15000 км или 1 год' },
-  { value: 'mileage2', label: '30000 км или 2 года' },
-  { value: 'mileage3', label: '45000 км или 3 года' },
-];
+import React, { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import Select from 'react-select'
+import { setMilegeSelect } from '../../../redux/actionCreators/serviceInfoAC'
+import { sagaGetServiceTypeAC } from '../../../redux/actionCreators/asyncAC/asyncServiseInfoAC'
 
 function SelectMileageButton() {
-  const [selectedOption, setSelectedOption] = useState(null);
+  const dispatch = useDispatch()
+  const allMilege = useSelector((state) => state.serviceInfoReducer.allMilege)
+  const [selectedOption, setSelectedOption] = useState(null)
+
+  const setSelectedMilegeOption = (event) => {
+    const selectMilegeOption = event.value
+    setSelectedOption(event)
+    dispatch(setMilegeSelect(selectMilegeOption))
+  }
 
   return (
     <div>
-      <Select
-        defaultValue={selectedOption}
-        onChange={setSelectedOption}
-        options={options}
-      />
+      {allMilege && (
+        <Select
+          defaultValue={selectedOption}
+          onChange={setSelectedMilegeOption}
+          options={allMilege.map(
+            (option) =>
+              (option = { value: option.id, label: `${option.distanse} км` })
+          )}
+        />
+      )}
     </div>
-  );
+  )
 }
 
-export default SelectMileageButton;
+export default SelectMileageButton

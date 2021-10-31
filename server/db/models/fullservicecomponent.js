@@ -1,6 +1,5 @@
-const {
-  Model,
-} = require('sequelize');
+'use strict'
+const { Model } = require('sequelize')
 
 module.exports = (sequelize, DataTypes) => {
   class FullServiceComponent extends Model {
@@ -27,10 +26,11 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
     },
+
     {
       sequelize,
       modelName: 'FullServiceComponent',
-    },
-  );
-  return FullServiceComponent;
-};
+    }
+  )
+  return FullServiceComponent
+}
