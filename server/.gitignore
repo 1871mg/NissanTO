@@ -4,6 +4,7 @@
 # .env.test
 # .env.production
 
+/db/config
 package-lock.json
 
 # Logs

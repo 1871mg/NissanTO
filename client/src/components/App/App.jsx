@@ -1,42 +1,39 @@
-import React, { useEffect } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import Navbar from '../Navbar/Navbar';
-import Main from '../Main/Main';
-import Login from '../Login/Login';
-import Registration from '../Registration/Registration';
-import Logout from '../Logout/Logout';
-import { checkSessionAC } from '../../redux/actionCreators/userAC';
+import React, { useEffect } from 'react'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import Navbar from '../Navbar/Navbar'
+import Main from '../Main/Main'
+import Login from '../Login/Login'
+import Registration from '../Registration/Registration'
+import Logout from '../Logout/Logout'
+import Profile from '../Profile/Profile'
+import AddCar from '../AddCar/AddCar';
+import ServiceList from '../ServiceList/ServiceList';
+import { sagaCheckSessionAC } from '../../redux/actionCreators/asyncAC/asyncUserAC'
+import { sagaGetServiceInfoAC } from '../../redux/actionCreators/asyncAC/asyncServiseInfoAC'
+import { sagaGetOrdersAC } from '../../redux/actionCreators/asyncAC/asyncOrdersAC'
+import styles from './App.module.css'
+import Calendar from '../Calendar/Calendar'
+
 
 function App() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    fetch('http://localhost:5000/isauth', {
-      method: 'GET',
-      credentials: 'include',
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.user) {
-          dispatch(checkSessionAC(data.user));
-        }
-      });
-  }, []);
+    dispatch(sagaCheckSessionAC());
+    dispatch(sagaGetServiceInfoAC());
+    dispatch(sagaGetOrdersAC());
+  }, [])
+
 
   return (
-    <>
+    <div className={styles.app}>
       <BrowserRouter>
         <Navbar />
 
         <Switch>
-
           <Route exact path="/">
             <Main />
-          </Route>
-
-          <Route exact path="/login">
-            <Login />
           </Route>
 
           <Route exact path="/login">
@@ -51,11 +48,28 @@ function App() {
             <Registration />
           </Route>
 
-        </Switch>
+          <Route exact path="/profile">
+            <Profile />
+          </Route>
 
+          <Route exact path="/servicelist">
+            <ServiceList />
+          </Route>
+
+          <Route exact path="/addcar">
+            <AddCar />
+          </Route>
+
+
+          <Route exact path="/calendar">
+            <Calendar />
+          </Route>
+          
+
+        </Switch>
       </BrowserRouter>
-    </>
-  );
+    </div>
+  )
 }
 
-export default App;
+export default App
