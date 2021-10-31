@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import Title from '../UI/Title/Title';
+import styles from './Registration.module.css';
 import { checkSessionAC } from '../../redux/actionCreators/userAC';
+import Button from '../UI/Button/Button';
 
 const Registration = () => {
   const history = useHistory();
@@ -52,40 +53,26 @@ const Registration = () => {
     }
   };
   return (
-    <main className="form">
-      <Title title="Зарегистрироваться" />
-      <form id="registerForm" onSubmit={onSubmit} action="/signup" method="POST">
-        {
+    <div className={styles.registration}>
+      <main className="form">
+        <form id="registerForm" onSubmit={onSubmit} action="/signup" method="POST">
+          {
           isError
           && <div className="error">{errorMessage}</div>
         }
-        <div className="mb-3">
-          <label htmlFor="inputUsername" className="form-label">
-            Ваше имя
-            <input name="username" type="text" className="form-control" id="inputUsername" />
-          </label>
-        </div>
-        <div className="mb-3">
-          <label htmlFor="inputEmail" className="form-label">
-            Email
-            <input name="email" type="email" className="form-control" id="inputEmail" />
-          </label>
-        </div>
-        <div className="mb-3">
-          <label htmlFor="inputPassword" className="form-label">
-            Пароль
-            <input name="password" onChange={(e) => setPassword(e.target.value)} type="password" minLength="8" className="form-control" id="inputPassword" />
-          </label>
-        </div>
-        <div className="mb-3">
-          <label htmlFor="inputPasswordConfirm" className="form-label">
-            Подтвердите пароль
-            <input name="confirmPassword" onChange={(e) => setConfirmPassword(e.target.value)} type="password" minLength="8" className="form-control" id="inputPasswordConfirm" />
-          </label>
-        </div>
-        <button type="submit" className="btn btn-block">Зарегистрироваться</button>
-      </form>
-    </main>
+          <div className="loginInputs">
+            <input name="firstname" type="name" className="form-control" id="inputFirstName" placeholder="имя" />
+            <input name="parentname" type="name" className="form-control" id="inputParentName" placeholder="отчество" />
+            <input name="lastname" type="name" className="form-control" id="inputLastnameName" placeholder="фамилия" />
+            <input name="email" type="email" className="form-control" id="inputEmail" placeholder="почта" />
+            <input name="phone" type="phone" className="form-control" id="inputPhone" placeholder="телефон" />
+            <input name="password" onChange={(e) => setPassword(e.target.value)} type="password" minLength="6" className="form-control" id="inputPassword" placeholder="пароль" />
+            <input name="password" onChange={(e) => setConfirmPassword(e.target.value)} type="password" minLength="6" className="form-control" id="inputPassword" placeholder="проверка пароля" />
+          </div>
+          <Button />
+        </form>
+      </main>
+    </div>
   );
 };
 export default Registration;

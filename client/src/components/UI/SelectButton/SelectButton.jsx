@@ -20,6 +20,8 @@ function SelectButton({options}) {
           defaultValue={selectedOption}
           onChange={setSelectedOption}
           options={allModels.map((option) => option = {value: option.id, label: option.title})}
+          placeholder={<div className="select-placeholder-text">выберите автомобиль</div>}
+
         />
       }
       
