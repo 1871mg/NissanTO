@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import Select from 'react-select'
 import { setModelSelect } from '../../../redux/actionCreators/serviceInfoAC'
 import { sagaGetServiceTypeAC } from '../../../redux/actionCreators/asyncAC/asyncServiseInfoAC'
+import styles from './SelectModelButton.module.css';
 
 function SelectModelButton() {
   const dispatch = useDispatch()
@@ -16,7 +17,7 @@ function SelectModelButton() {
   }
 
   return (
-    <div>
+    <div className={styles.selectmodelbutton}>
       {allModels && (
         <Select
           defaultValue={selectedOption}
@@ -25,9 +26,10 @@ function SelectModelButton() {
             (option) => (option = { value: option.id, label: option.title })
           )}
           placeholder = 'выберите автомобиль'
+
         />
       )}
-    </div>
+	  </div>
   )
 }
 

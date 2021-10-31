@@ -9,6 +9,8 @@ import Logout from '../Logout/Logout'
 import Profile from '../Profile/Profile'
 import AddCar from '../AddCar/AddCar';
 import ServiceList from '../ServiceList/ServiceList';
+import History from '../History/History';
+import Order from '../Order/Order';
 import { sagaCheckSessionAC } from '../../redux/actionCreators/asyncAC/asyncUserAC'
 import { sagaGetServiceInfoAC } from '../../redux/actionCreators/asyncAC/asyncServiseInfoAC'
 import { sagaGetOrdersAC } from '../../redux/actionCreators/asyncAC/asyncOrdersAC'
@@ -24,7 +26,6 @@ function App() {
     dispatch(sagaGetServiceInfoAC());
     dispatch(sagaGetOrdersAC());
   }, [])
-
 
   return (
     <div className={styles.app}>
@@ -60,11 +61,17 @@ function App() {
             <AddCar />
           </Route>
 
-
           <Route exact path="/calendar">
             <Calendar />
           </Route>
-          
+
+	        <Route exact path="/history">
+		        <History />
+	        </Route>
+
+	        <Route exact path="/order">
+		        <Order />
+	        </Route>
 
         </Switch>
       </BrowserRouter>
