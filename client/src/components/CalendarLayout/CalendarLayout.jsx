@@ -1,51 +1,31 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { createStore, applyMiddleware, compose } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension'
-import thunk from 'redux-thunk';
-import { connect, Provider, useSelector } from 'react-redux';
+import { createStore } from 'redux';
+import { connect, Provider } from 'react-redux';
 import Paper from '@material-ui/core/Paper';
-import TextField from '@material-ui/core/TextField';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
-import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
-import { teal, orange, red } from '@material-ui/core/colors';
 import { alpha } from '@material-ui/core/styles';
-import classNames from 'clsx';
 import { ViewState } from '@devexpress/dx-react-scheduler';
+import { getDayForInput } from '../../utils/getToday';
 import {
   Scheduler,
-  WeekView,
   Toolbar,
   DateNavigator,
   Appointments,
   DayView,
   ViewSwitcher,
-  Resources,
 } from '@devexpress/dx-react-scheduler-material-ui';
 
 import { appointments } from './demo-database/demo';
+
 const fetchOrders = async () => {
   const response = await fetch('http://localhost:5000/schedule', {
     method: 'GET',
     credentials: 'include',
   });
   const orders = await response.json()
-  //console.log(orders.scheduleData);
   return orders.scheduleData;
 };
-
-const LOCATIONS = ['Бокс 1', 'Бокс 2', 'Бокс 3'];
-const LOCATIONS_SHORT = [1, 2, 3];
-const resources = [{
-  fieldName: 'location',
-  title: 'Location',
-  instances: [
-    { id: LOCATIONS[0], text: LOCATIONS[0], color: teal },
-    { id: LOCATIONS[1], text: LOCATIONS[1], color: orange },
-    { id: LOCATIONS[2], text: LOCATIONS[2], color: red },
-  ],
-}];
 
 const styles = ({ spacing, palette }) => ({
   flexibleSpace: {
@@ -136,7 +116,7 @@ const styles = ({ spacing, palette }) => ({
 });
 
 const AppointmentContent = withStyles(styles, { name: 'AppointmentContent' })(({
-  classes, data, formatDate, ...restProps
+  classes, data, locale, formatDate, ...restProps
 }) => {
 
   return (
@@ -166,76 +146,12 @@ const AppointmentContent = withStyles(styles, { name: 'AppointmentContent' })(({
 }
 )
 
-// const Filter = withStyles(styles, { name: 'TextField' })(({ onCurrentFilterChange, currentFilter, classes }) => (
-//   <TextField
-//     placeholder="Filter"
-//     className={classes.textField}
-//     value={currentFilter}
-//     onChange={({ target }) => onCurrentFilterChange(target.value)}
-//     variant="outlined"
-//     hiddenLabel
-//     margin="dense"
-//   />
-// ));
-
-// кнопки выбора боксов
-const handleButtonClick = (locationName, locations) => {
-
-  if (locations.indexOf(locationName) > -1) {
-    return locations.filter(location => location !== locationName);
-  }
-  const nextLocations = [...locations];
-  nextLocations.push(locationName);
-  return nextLocations;
-};
-
-const getButtonClass = (locations, classes, location) => (
-  locations.indexOf(location) > -1 && classes.selectedButton
-);
-
-const LocationSelector = withStyles(styles, { name: 'LocationSelector' })(({ onLocationsChange, locations, classes }) => (
-  <ButtonGroup className={classes.locationSelector}>
-    {LOCATIONS.map((location, index) => (
-      <Button
-        className={classNames(classes.button, getButtonClass(locations, classes, location))}
-        onClick={() => onLocationsChange(handleButtonClick(location, locations))}
-        key={location}
-      >
-        <React.Fragment>
-          <span className={classes.shortButtonText}>{LOCATIONS_SHORT[index]}</span>
-          <span className={classes.longButtonText}>{location}</span>
-        </React.Fragment>
-      </Button>
-    ))}
-  </ButtonGroup>
-));
-
 const FlexibleSpace = withStyles(styles, { name: 'FlexibleSpace' })(
   ({ classes, ...restProps }) => (
     <Toolbar.FlexibleSpace {...restProps} className={classes.flexibleSpace}>
-      {/* <ReduxFilterContainer /> */}
-      <ReduxLocationSelector />
     </Toolbar.FlexibleSpace>
   ),
 );
-
-const isRestTime = date => (
-  date.getDay() === 0 || date.getDay() === 6 || date.getHours() < 9 || date.getHours() >= 18
-);
-
-const TimeTableCell = withStyles(styles, { name: 'TimeTableCell' })(({ classes, ...restProps }) => {
-  const { startDate } = restProps;
-  if (isRestTime(startDate)) {
-    return <WeekView.TimeTableCell {...restProps} className={classes.weekendCell} />;
-  } return <WeekView.TimeTableCell {...restProps} />;
-});
-
-const DayScaleCell = withStyles(styles, { name: 'DayScaleCell' })(({ classes, ...restProps }) => {
-  const { startDate } = restProps;
-  if (startDate.getDay() === 0 || startDate.getDay() === 6) {
-    return <WeekView.DayScaleCell {...restProps} className={classes.weekEnd} />;
-  } return <WeekView.DayScaleCell {...restProps} />;
-});
 
 const SCHEDULER_STATE_CHANGE_ACTION = 'SCHEDULER_STATE_CHANGE';
 
@@ -260,6 +176,7 @@ const SchedulerContainer = ({
     <Scheduler
       data={orders}
       height={1177}
+      locale='ru-Ru'
     >
       <ViewState
         currentDate={currentDate}
@@ -269,21 +186,12 @@ const SchedulerContainer = ({
       />
       <DayView
         startDayHour={9}
-        endDayHour={19}
-      />
-
-      <WeekView
-        startDayHour={8}
-        endDayHour={19}
-        timeTableCellComponent={TimeTableCell}
-        dayScaleCellComponent={DayScaleCell}
+        endDayHour={18}
+        name='День'
       />
 
       <Appointments
         appointmentContentComponent={AppointmentContent}
-      />
-      <Resources
-        data={resources}
       />
 
       <Toolbar flexibleSpaceComponent={FlexibleSpace} />
@@ -293,17 +201,14 @@ const SchedulerContainer = ({
   </Paper>
 }
 </>
-  
-  
   );
 }
 
 const schedulerInitialState = {
   data: appointments,
-  currentDate: '2021-10-29',
-  currentViewName: 'Week',
+  currentDate: getDayForInput(new Date()),
+  currentViewName: 'День',
   currentFilter: '',
-  locations: LOCATIONS,
 };
 
 const schedulerReducer = (state = schedulerInitialState, action) => {
@@ -325,15 +230,7 @@ export const createSchedulerAction = (partialStateName, partialStateValue) => ({
 });
 
 const mapStateToProps = (state) => {
-  let data = state.data.filter(dataItem => (
-    state.locations.indexOf(dataItem.location) > -1
-  ));
-  const lowerCaseFilter = state.currentFilter.toLowerCase();
-  data = data.filter(dataItem => (
-    dataItem.title.toLowerCase().includes(lowerCaseFilter)
-    || dataItem.location.toLowerCase().includes(lowerCaseFilter)
-  ));
-  return { ...state, data };
+  return { ...state }; 
 };
 
 
@@ -345,26 +242,12 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const ReduxSchedulerContainer = connect(mapStateToProps, mapDispatchToProps)(SchedulerContainer);
-// const ReduxFilterContainer = connect(mapStateToProps, mapDispatchToProps)(Filter);
-const ReduxLocationSelector = connect(mapStateToProps, mapDispatchToProps)(LocationSelector);
 
 const store = createStore(
   schedulerReducer,
   typeof window !== 'undefined' ? window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() : undefined,
 
-  // compose(
-  //   applyMiddleware(
-  //     thunk,
-  //   ),
-  //   //window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()  
-  //   typeof window !== 'undefined' ? window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() : undefined,
-
-  )
-  // Enabling Redux DevTools Extension (https://github.com/zalmoxisus/redux-devtools-extension)
-  // eslint-disable-next-line no-underscore-dangle
-  // eslint-enable
-
-
+)
 
 export const CalendarLayout = () => {
   return (
