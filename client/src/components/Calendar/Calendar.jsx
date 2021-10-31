@@ -32,7 +32,7 @@ const Calendar = () => {
       
       <button onClick={addEntry} className={styles.btnAddEntry}>Записаться на ТО</button>
       <div className={styles.calendar}>
-        <CalendarLayout scheduleData={scheduleData} />
+        <CalendarLayout />
       </div>
     </section>
     :
