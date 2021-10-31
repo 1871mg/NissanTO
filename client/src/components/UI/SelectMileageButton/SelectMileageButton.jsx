@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import Select from 'react-select'
 import { setMilegeSelect } from '../../../redux/actionCreators/serviceInfoAC'
-//import { sagaGetServiceTypeAC } from '../../../redux/actionCreators/asyncAC/asyncServiseInfoAC'
+import { sagaGetServiceTypeAC } from '../../../redux/actionCreators/asyncAC/asyncServiseInfoAC'
+import styles from './SelectMileageButton.module.css';
+
 
 function SelectMileageButton() {
   const dispatch = useDispatch()
@@ -16,7 +18,7 @@ function SelectMileageButton() {
   }
 
   return (
-    <div>
+	  <div className={styles.selectmileagebutton}>
       {allMilege && (
         <Select
           defaultValue={selectedOption}
@@ -25,6 +27,7 @@ function SelectMileageButton() {
             (option) =>
               (option = { value: option.id, label: `${option.distanse} км` })
           )}
+          placeholder= 'выберите пробег и год'
         />
       )}
     </div>
