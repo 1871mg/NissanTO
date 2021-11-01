@@ -1,0 +1,47 @@
+/* .calendar {
+  margin: 100px auto 0;
+} */
+
+.background {
+  background-color: gray;
+}
+
+.btnAddEntry {
+  width: 200px;
+  background-color: #fff;
+  color: gray;
+  height: 80px;
+  margin-top: 100px;
+  cursor: pointer;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, .5);
+  display: flex;
+  justify-content: center;
+  padding-top: 5rem;
+  color: black;
+  z-index: 100;
+
+}
+
+.modalBody {
+  padding: 2rem;
+  width: 800px;
+  border-radius: 5px;
+  background: #fff;
+  height: 700px;
+  margin-top: 60px;  
+  z-index: 100;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  margin-top: 200px;
+}

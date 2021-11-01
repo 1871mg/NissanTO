@@ -1,30 +1,38 @@
-const express = require('express');
-const { FullService, Service, Component } = require('../db/models');
+const express = require('express')
+const {
+  FullService,
+  Service,
+  Component,
+  FullServiseService,
+} = require('../db/models')
 
-const router = express.Router();
+const router = express.Router()
 
 router.get('/', async (req, res) => {
   try {
     const { carModelId, milegeId } = req.query;
-    console.log(req.query);
-
     const fullService = await FullService.findAll({
       where: {
-        MilegeId: +milegeId,
-        CarModelId: +carModelId,
+        MilegeId: milegeId,
+        CarModelId: carModelId,
       },
-      raw: true,
-      include: [Service],
+      include: [{
+        model: Service,
+        attributes: ['id', 'title', 'price'],
+      }, {
+        model: Component,
+        attributes: ['id', 'title', 'price', 'counterType'],
+      }],
     });
-    console.log(JSON.stringify(fullService, null, 3));
 
-    // const services = await Service.findAll({ raw: true, include: [FullService] });
+    const components = await Component.findAll();
+    const services = await Service.findAll();
 
-    res.json({ fullService });
+    res.json({ fullService, components, services });
   } catch (error) {
-    console.log(error.message);
-    res.status(500).end();
+    console.log(error.message)
+    res.status(500).end()
   }
-});
+})
 
-module.exports = router;
+module.exports = router

@@ -1,4 +1,4 @@
-import { CHECK_SESSION } from '../actionTypes/user';
+import { CHECK_SESSION } from '../actionTypes/userAT';
 
 export const userReducer = (state = { user: false }, action) => {
   switch (action.type) {

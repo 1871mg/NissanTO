@@ -1,0 +1,15 @@
+.contacts {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 20px 10px 20px 10px;
+}
+
+@media (min-width: 430pt) {
+    .contacts {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin: 10px 10px 10px 10px;
+    }
+}

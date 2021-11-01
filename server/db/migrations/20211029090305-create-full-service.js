@@ -8,7 +8,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       title: { type: Sequelize.TEXT, allowNull: false },
-      duration: { type: Sequelize.TEXT, allowNull: false },
+      duration: { type: Sequelize.INTEGER, allowNull: false },
       MilegeId: {
         type: Sequelize.INTEGER,
         allowNull: false,
