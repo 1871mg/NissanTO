@@ -1,0 +1,1 @@
+export const CHANGE_CURRENT_DAY = 'CHANGE_CURRENT_DAY';

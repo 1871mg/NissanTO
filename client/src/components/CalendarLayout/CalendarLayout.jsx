@@ -1,12 +1,11 @@
 import * as React from 'react';
-import { useEffect, useState } from 'react';
-import { createStore } from 'redux';
-import { connect, Provider } from 'react-redux';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
 import { alpha } from '@material-ui/core/styles';
 import { ViewState } from '@devexpress/dx-react-scheduler';
-import { getDayForInput } from '../../utils/getToday';
+import Loader from '../UI/Loader/Loader';
 import {
   Scheduler,
   Toolbar,
@@ -15,17 +14,8 @@ import {
   DayView,
   ViewSwitcher,
 } from '@devexpress/dx-react-scheduler-material-ui';
-
-import { appointments } from './demo-database/demo';
-
-const fetchOrders = async () => {
-  const response = await fetch('http://localhost:5000/schedule', {
-    method: 'GET',
-    credentials: 'include',
-  });
-  const orders = await response.json()
-  return orders.scheduleData;
-};
+import { changeCurrentDay } from '../../redux/actionCreators/calendarAC';
+import classes from './CalendarLayout.module.css';
 
 const styles = ({ spacing, palette }) => ({
   flexibleSpace: {
@@ -129,7 +119,7 @@ const AppointmentContent = withStyles(styles, { name: 'AppointmentContent' })(({
         {data.title}
       </div>
       <div className={classes.text}>
-        {data.location}
+        {data.worker}
       </div>
       <div className={classes.textContainer}>
         <div className={classes.time}>
@@ -155,25 +145,20 @@ const FlexibleSpace = withStyles(styles, { name: 'FlexibleSpace' })(
   ),
 );
 
-const SCHEDULER_STATE_CHANGE_ACTION = 'SCHEDULER_STATE_CHANGE';
-
-const SchedulerContainer = ({
-  currentDate, onCurrentDateChange,
-  currentViewName, onCurrentViewNameChange,
-}) => {
-  const [orders, setOrders] = useState([]);
+const CalendarLayout = () => {
+  const dispatch = useDispatch();
+  const orders = useSelector(state => state.ordersReducer.orders);
+  const currentDate = useSelector(state => state.calendarReducer.currentDate);
+  const currentViewName = useSelector(state => state.calendarReducer.currentViewName);
+  const onCurrentDateChange = (currentDate) => dispatch(changeCurrentDay(currentDate));
+  
   useEffect(() => {
-    (async () => {
-      const fetchedOrders = await fetchOrders();
-      setOrders(fetchedOrders);
-    })()
-  }, [])
-  console.log(orders);
 
+  }, [])
   return (
-<>
+<div className={classes.calendarContainer}>
 {orders 
-  &&
+  ?
 <Paper>
     <Scheduler
       data={orders}
@@ -184,13 +169,12 @@ const SchedulerContainer = ({
         currentDate={currentDate}
         onCurrentDateChange={onCurrentDateChange}
         currentViewName={currentViewName}
-        onCurrentViewNameChange={onCurrentViewNameChange}
       />
       <DayView
-        startDayHour={8}
+        startDayHour={9}
         endDayHour={22}
-        name='День'
-        cellDuration={60}
+        name=''
+        cellDuration={30}
       />
 
       <Appointments
@@ -202,59 +186,13 @@ const SchedulerContainer = ({
       <ViewSwitcher />
     </Scheduler>
   </Paper>
+  :
+  <div className={classes.loader}><Loader /></div>
+
 }
-</>
+</div>
   );
 }
 
-const schedulerInitialState = {
-  data: appointments,
-  currentDate: getDayForInput(new Date()),
-  currentViewName: 'День',
-  currentFilter: '',
-};
+export default CalendarLayout;
 
-const schedulerReducer = (state = schedulerInitialState, action) => {
-  if (action.type === SCHEDULER_STATE_CHANGE_ACTION) {
-    return {
-      ...state,
-      [action.payload.partialStateName]: action.payload.partialStateValue,
-    };
-  }
-  return state;
-};
-
-export const createSchedulerAction = (partialStateName, partialStateValue) => ({
-  type: SCHEDULER_STATE_CHANGE_ACTION,
-  payload: {
-    partialStateName,
-    partialStateValue,
-  },
-});
-
-const mapStateToProps = (state) => {
-  return { ...state }; 
-};
-
-
-const mapDispatchToProps = dispatch => ({
-  onCurrentDateChange: currentDate => dispatch(createSchedulerAction('currentDate', currentDate)),
-  onCurrentViewNameChange: currentViewName => dispatch(createSchedulerAction('currentViewName', currentViewName)),
-  onCurrentFilterChange: currentFilter => dispatch(createSchedulerAction('currentFilter', currentFilter)),
-  onLocationsChange: locations => dispatch(createSchedulerAction('locations', locations)),
-});
-
-const ReduxSchedulerContainer = connect(mapStateToProps, mapDispatchToProps)(SchedulerContainer);
-
-const store = createStore(
-  schedulerReducer,
-  typeof window !== 'undefined' ? window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() : undefined,
-
-)
-
-export const CalendarLayout = () => {
-  return (
-    <Provider store={store}>
-      <ReduxSchedulerContainer/>
-    </Provider>
-)};
