@@ -11,18 +11,17 @@ function ServiceList() {
   const servicesTotalPrice = useSelector((state) => state.serviceInfoReducer.servicesAllPrice)
 
   return (
-    <div className={styles.servicelist}>
-      <>
-      {servicesList.Services.map((service)=> <div>{service.title}: {service.price} ₽</div>)}
-      </>
-      <div>Общая стоимость {serviceType.title}: {servicesTotalPrice.sumServicesPrice} ₽</div>
-
-      <SelectServiceButton />
-      <SelectComponentsButton />
-
-      
-      <Button />
-    </div>
+    <>
+	    <ul className={styles.servicelist}>
+	      <div className={styles.whitetext}>
+		    <>{servicesList.Services.map((service)=> <div>{service.title}: {service.price} ₽</div>)}</>
+	      <div>Общая стоимость {serviceType.title}: {servicesTotalPrice.sumServicesPrice} ₽</div>
+	      </div>
+		    <SelectServiceButton />
+	      <SelectComponentsButton />
+	    </ul>
+			<div className={styles.buttonDateTime}><Button name='ВЫБРАТЬ ДАТУ И ВРЕМЯ' /></div>
+    </>
   );
 }
 

@@ -6,3 +6,7 @@
     text-decoration: none;
     font-family: Roboto;
 }
+
+html {
+    background-color: lightslategray;
+}
