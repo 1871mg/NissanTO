@@ -2,23 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="198db94e-91e9-4dbb-ba35-ab30f25097f8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/components/Contacts/Contacts.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/History/History.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Offer/Offer.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Order/Order.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Order/Order.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/AddEntryForm/AddEntryForm.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/App/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/App/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Main/Main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Main/Main.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Main/Main.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Main/Main.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Navbar/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Navbar/Navbar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Navbar/Navbar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Navbar/Navbar.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Offer/Offer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Offer/Offer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/UI/Button/Button.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UI/Button/Button.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/UI/SelectButton/SelectButton.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UI/SelectModelButton/SelectModelButton.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/UI/SelectButton/SelectModelButton.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UI/SelectModelButton/SelectModelButton.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/UI/SelectMileageButton/SelectMileageButton.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UI/SelectMileageButton/SelectMileageButton.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/UI/SelectMileageButton/SelectMileageButton.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UI/SelectMileageButton/SelectMileageButton.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/AddEntryForm/AddEntryForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/AddEntryForm/AddEntryForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Calendar/Calendar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Calendar/Calendar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Contacts/Contacts.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Contacts/Contacts.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +65,9 @@
       <workItem from="1635492182203" duration="10000" />
       <workItem from="1635492201890" duration="21588000" />
       <workItem from="1635578978738" duration="22874000" />
-      <workItem from="1635669825799" duration="12128000" />
+      <workItem from="1635669825799" duration="14644000" />
+      <workItem from="1635747422245" duration="3234000" />
+      <workItem from="1635753492285" duration="1066000" />
     </task>
     <servers />
   </component>
