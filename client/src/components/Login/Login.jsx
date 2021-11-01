@@ -57,7 +57,7 @@ const Login = () => {
               placeholder="пароль"
             />
           </div>
-          <Button name="войти" />
+          <Button name="ВОЙТИ" />
         </form>
         <li>
           <Link to="/registration">регистрация</Link>

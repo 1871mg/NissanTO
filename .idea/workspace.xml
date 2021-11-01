@@ -4,14 +4,15 @@
     <list default="true" id="198db94e-91e9-4dbb-ba35-ab30f25097f8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/App/App.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/App/App.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/ServiceList/ServiceList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/ServiceList/ServiceList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Login/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Login/Login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Main/Main.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Main/Main.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Navbar/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Navbar/Navbar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Navbar/Navbar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Navbar/Navbar.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Offer/Offer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Offer/Offer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Offer/Offer.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Offer/Offer.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Registration/Registration.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Registration/Registration.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/ServiceList/ServiceList.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/ServiceList/ServiceList.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/UI/Button/Button.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UI/Button/Button.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/UI/SelectComponentsButton/SelectComponentsButton.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UI/SelectComponentsButton/SelectComponentsButton.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/UI/SelectComponentsButton/SelectComponentsButton.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UI/SelectComponentsButton/SelectComponentsButton.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/UI/SelectServiceButton/SelectServiceButton.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UI/SelectServiceButton/SelectServiceButton.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/UI/SelectServiceButton/SelectServiceButton.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UI/SelectServiceButton/SelectServiceButton.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/db/config/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/db/config/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/UI/SelectMileageButton/SelectMileageButton.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UI/SelectMileageButton/SelectMileageButton.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +74,7 @@
       <workItem from="1635669825799" duration="14644000" />
       <workItem from="1635747422245" duration="3234000" />
       <workItem from="1635753492285" duration="1066000" />
-      <workItem from="1635755125561" duration="11827000" />
+      <workItem from="1635755125561" duration="16233000" />
     </task>
     <servers />
   </component>
