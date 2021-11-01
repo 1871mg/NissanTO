@@ -20,6 +20,7 @@ const Main = () => {
   const milegeId = useSelector(
     (state) => state.serviceInfoReducer.mainSelectValue.milegeId
   )
+  const carImg = useSelector((state) => state.serviceInfoReducer.mainSelectValue.imgCar)
   const dispatch = useDispatch()
   if (carModelId && milegeId) {
     dispatch(sagaGetServiceTypeAC({carModelId, milegeId}))
@@ -43,9 +44,12 @@ const Main = () => {
       <SelectMileageButton />
       <Offer />
 
-      <Button hideText={hidetextMain} name='ПОДРОБНО'/>
-	    <li><img src={auto} alt="" /></li>
-	    <></>
+      <Button clickFunc={hidetextMain} name='ПОДРОБНО'/>
+      <>
+      {carImg ? <><li><img src={carImg} alt="" /></li>
+	    <></></> : <><li><img src={auto} alt="" /></li>
+	    <></></>}
+	    </>
 	    <Contacts />
 
     </div>

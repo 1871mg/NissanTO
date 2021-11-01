@@ -15,11 +15,7 @@ function ServiceList() {
       <>
       {servicesList.Services.map((service)=> <div>{service.title}: {service.price} ₽</div>)}
       </>
-      <div>Итоговая стоимоть услуг: {servicesTotalPrice.sumServicesPrice} ₽</div>
-      <>
-      {servicesList.Components.map((component)=> <div>{component.title}: {component.price} ₽</div>)}
-      </>
-      <div>Общая стоимость {serviceType.title}: {servicesTotalPrice.sumTotalServicePrice} ₽</div>
+      <div>Общая стоимость {serviceType.title}: {servicesTotalPrice.sumServicesPrice} ₽</div>
 
       <SelectServiceButton />
       <SelectComponentsButton />
