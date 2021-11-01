@@ -7,11 +7,6 @@ const mileges = [
   { distanse: 90000, years: 6 },
   { distanse: 105000, years: 7 },
   { distanse: 120000, years: 8 },
-  { distanse: 135000, years: 9 },
-  { distanse: 150000, years: 10 },
-  { distanse: 165000, years: 11 },
-  { distanse: 180000, years: 12 },
-
 ];
 
 module.exports = {
