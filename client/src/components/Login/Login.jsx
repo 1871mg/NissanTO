@@ -1,64 +1,69 @@
-import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { checkSessionAC } from '../../redux/actionCreators/userAC';
-import styles from './Login.module.css';
-import Button from '../UI/Button/Button';
+import React, { useState } from 'react'
+import { Link, useHistory } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { setErrorPassConfirmAC } from '../../redux/actionCreators/userAC'
+import { sagaGetLoginAC } from '../../redux/actionCreators/asyncAC/asyncUserAC'
+import styles from './Login.module.css'
+import Button from '../UI/Button/Button'
 
 const Login = () => {
-  const history = useHistory();
+  const history = useHistory()
+  const dispatch = useDispatch()
+  const isError = useSelector((state) => state.userReducer.isError)
+  const [errorMessage, seterrorMessage] = useState('')
 
-  const dispatch = useDispatch();
+  const user  = useSelector((state) => state.userReducer.user)
 
-  const [isError, setIsError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
+  const sendLogForm = async (event) => {
+    event.preventDefault()
+    dispatch(setErrorPassConfirmAC(false))
 
-  const onSubmit = async (event) => {
-    setIsError(false);
-    event.preventDefault();
-
-    const dataInput = new FormData(event.currentTarget);
+    const dataInput = new FormData(event.currentTarget)
     const body = {
-      email: dataInput.get('email'),
+      phone: dataInput.get('phone'),
       password: dataInput.get('password'),
-    };
-
-    const response = await fetch('http://localhost:5000/login', {
-      method: 'POST',
-      credentials: 'include',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify(body),
-    });
-
-    const dataFromServer = await response.json();
-
-    if (dataFromServer.user) {
-      dispatch(checkSessionAC(dataFromServer.user));
-      history.push('/');
-    } else {
-      setIsError(true);
-      setErrorMessage(dataFromServer.message);
     }
-  };
+    dispatch(sagaGetLoginAC(body))
+  }
+
+  if (user) {
+    history.push('/profile')
+  }
+
   return (
     <div className={styles.login}>
       <main className="form">
-        <form id="registerForm" onSubmit={onSubmit} action="/signin" method="POST">
-          {
-          isError
-          && <div className="error">{errorMessage}</div>
-        }
+        <form
+          id="registerForm"
+          onSubmit={sendLogForm}
+          action="/signin"
+          method="POST"
+        >
+          {isError && <div className="error">{errorMessage}</div>}
           <div>
-            <input name="phone" type="phone" className="form-control" id="inputPhone" placeholder="телефон" />
-            <input name="password" type="password" minLength="6" className="form-control" id="inputPassword" placeholder="пароль" />
+            <input
+              name="phone"
+              type="phone"
+              className="form-control"
+              id="inputPhone"
+              placeholder="телефон"
+            />
+            <input
+              name="password"
+              type="password"
+              minLength="6"
+              className="form-control"
+              id="inputPassword"
+              placeholder="пароль"
+            />
           </div>
-          <Button />
+          <Button name="войти" />
         </form>
-        <li><Link to="/registration">регистрация</Link></li>
+        <li>
+          <Link to="/registration">регистрация</Link>
+        </li>
       </main>
     </div>
-  );
-};
-export default Login;
+  )
+}
+export default Login
