@@ -11,6 +11,8 @@ module.exports = (sequelize, DataTypes) => {
   Model.init(
     {
       title: { type: DataTypes.TEXT, allowNull: false },
+    }, {
+      photoLink: { type: DataTypes.TEXT, allowNull: false },
     },
     {
       sequelize,

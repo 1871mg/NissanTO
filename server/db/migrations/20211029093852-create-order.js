@@ -40,14 +40,6 @@ module.exports = {
         },
       },
       timeStart: Sequelize.DATE,
-      MilegeId: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: 'Mileges',
-          key: 'id',
-        },
-      },
       isComplite: { type: Sequelize.BOOLEAN, allowNull: false, default: false },
       createdAt: {
         allowNull: false,
