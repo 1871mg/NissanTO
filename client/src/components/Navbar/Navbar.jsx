@@ -1,11 +1,25 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { Link , useHistory} from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { sagaGetLogoutAC } from '../../redux/actionCreators/asyncAC/asyncUserAC'
 import styles from './Navbar.module.css';
 import logo from './img/logo.svg';
 
 const Navbar = () => {
+  const dispatch = useDispatch()
+  const history = useHistory()
   const user = useSelector((state) => state.userReducer.user);
+  const isUserLogout = useSelector((state) => state.userReducer.isUserLogout)
+  const logoutFunc = () => {
+    dispatch(sagaGetLogoutAC())
+ }
+ if (isUserLogout) {
+  history.push('/')
+}
+
+
+
+
   return (
     <header className={styles.navbar}>
       <nav>
@@ -14,9 +28,8 @@ const Navbar = () => {
           {user
           && (
           <>
-	          <li><Link to="/">главная</Link></li>
             <li><Link to="/profile">профиль</Link></li>
-            <li><Link to="/logout">выйти</Link></li>
+            <li><button onClick={logoutFunc}>выйти</button></li>
           </>
           )}
           {!user
