@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
   try {
-    const allModels = await CarModel.findAll({ attributes: ['id', 'title'] });
+    const allModels = await CarModel.findAll({ attributes: ['id', 'title', 'photoLink'] });
     const allMilege = await Milege.findAll({ attributes: ['id', 'distanse', 'years'] });
     res.json({ allModels, allMilege });
   } catch (error) {

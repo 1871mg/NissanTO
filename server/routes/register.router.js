@@ -1,14 +1,14 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
-const { User } = require('../db/models');
+const { Owner } = require('../db/models');
 
 const router = express.Router();
 
 router.post('/', async (req, res) => {
   try {
-    const { username, email, password } = req.body;
+    const { firstname, parentname, lastname,  email, password, phone } = req.body;
 
-    const userWithSameEmail = await User.findOne({
+    const userWithSameEmail = await Owner.findOne({
       where: {
         email,
       },
@@ -23,12 +23,15 @@ router.post('/', async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const user = await User.create({ username, email, password: hashedPassword });
+    const user = await Owner.create({ firstname, parentname, lastname,  email, phone, password: hashedPassword });
 
     req.session.user = {
       id: user.id,
-      username: user.username,
-      email: user.username,
+      firstname: user.firstname,
+      parentname: user.parentname,
+      lastname: user.lastname,
+      phone: user.phone,
+      email: user.email,
     };
 
     res.json({ user: req.session.user });

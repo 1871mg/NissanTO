@@ -7,7 +7,7 @@ import {
   SHOW_TEXT_MAIN
 } from '../actionTypes/serviceInfoAT'
 
-const initialState = { mainSelectValue: { carModelId: null, milegeId: null } }
+const initialState = { mainSelectValue: { carModelId: null, milegeId: null, imgCar: null } }
 
 export const serviceInfoReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -20,6 +20,7 @@ export const serviceInfoReducer = (state = initialState, action) => {
     case SET_MODEL_SELECT:
       const newsetModelState = { ...state }
       newsetModelState.mainSelectValue.carModelId = action.payload
+      newsetModelState.mainSelectValue.imgCar = newsetModelState.allModels.find((carModel) => carModel.id === action.payload).photoLink
       return { ...newsetModelState }
     case SET_MILEGE_SELECT:
       const newsetMilegeState = { ...state }
@@ -33,20 +34,11 @@ export const serviceInfoReducer = (state = initialState, action) => {
       newServiceTypeState.services = action.payload.services
       newServiceTypeState.servicesAllPrice = {}
       newServiceTypeState.servicesAllPrice.sumServicesPrice = 0
-      newServiceTypeState.servicesAllPrice.sumComponentsPrice = 0
       newServiceTypeState.fullService.Services.forEach(
         (servicePrice) =>
           (newServiceTypeState.servicesAllPrice.sumServicesPrice +=
             servicePrice.price)
       )
-      newServiceTypeState.fullService.Components.forEach(
-        (componentPrice) =>
-          (newServiceTypeState.servicesAllPrice.sumComponentsPrice +=
-            componentPrice.price)
-      )
-      newServiceTypeState.servicesAllPrice.sumTotalServicePrice =
-        newServiceTypeState.servicesAllPrice.sumServicesPrice +
-        newServiceTypeState.servicesAllPrice.sumComponentsPrice
       newServiceTypeState.mainRecommendation = true
       return { ...newServiceTypeState }
     case HIDE_TEXT_MAIN:
@@ -54,6 +46,7 @@ export const serviceInfoReducer = (state = initialState, action) => {
       newHideTextMainState.mainRecommendation = false
       newHideTextMainState.mainSelectValue.carModelId = null
       newHideTextMainState.mainSelectValue.milegeId  = null
+      newHideTextMainState.mainSelectValue.imgCar = null 
       return { ...newHideTextMainState }
     case SHOW_TEXT_MAIN:
       const newShowTextMainState = { ...state }
