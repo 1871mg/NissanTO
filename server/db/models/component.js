@@ -1,5 +1,5 @@
 const {
-  Model,
+  Model
 } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {

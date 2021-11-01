@@ -15,6 +15,7 @@ const fetchGetServiceInfo = async () => {
 
 function* getServiceInfoWorcker() {
  const serviceInfo = yield call(fetchGetServiceInfo)
+ console.log("get");
  yield put(getServiceInfo(serviceInfo))
 }
 

@@ -11,7 +11,11 @@ module.exports = {
       title: {
         type: Sequelize.TEXT,
         allowNull: false,
-        unique: true
+        unique: true,
+      },
+      photoLink: {
+        type: Sequelize.TEXT,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,

@@ -15,8 +15,9 @@ const Calendar = () => {
   }
   return (
     <>
+
       <section className={styles.background}>
-      {isOpen && 
+      {isOpen &&
         <section onClick={(event) => {
           if(event.target.tagName === 'SECTION') {
             setIsOpen(!isOpen)
@@ -24,10 +25,12 @@ const Calendar = () => {
         }} className={styles.modal}>
           <div className={styles.modalBody}>
             <AddEntryForm closeModel={closeModel}/>     
+
           </div>
-          
+
         </section>
       }
+
       
         <button onClick={addEntry} className={styles.btnAddEntry}>Записаться на ТО</button>
         <div className={styles.calendar}>

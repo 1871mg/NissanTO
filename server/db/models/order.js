@@ -58,14 +58,6 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
       timeStart: DataTypes.DATE,
-      MilegeId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-          model: 'Milege',
-          key: 'id',
-        },
-      },
       isComplite: { type: DataTypes.BOOLEAN, allowNull: false, default: false },
     },
     {

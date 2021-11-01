@@ -1,8 +1,19 @@
 .servicelist {
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-	background: lightslategray;
-	height: 100vh;
-	width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background: lightslategray;
+    padding: 120px 0 0 20px;
+    font-weight: 300;
+}
+
+.buttonDateTime {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.whitetext {
+    color:white;
 }

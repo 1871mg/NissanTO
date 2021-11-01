@@ -4,6 +4,9 @@ import { getMaxDayFromToday } from '../../utils/getMaxDay';
 import { useDispatch } from 'react-redux';
 import { addOrder } from '../../redux/actionCreators/ordersAC';
 import { changeCurrentDay } from '../../redux/actionCreators/calendarAC'
+import styles from './AddEntryForm.module.css';
+import Button from '../UI/Button/Button'
+
 
 
 const AddEntryForm = ({closeModel}) => {
@@ -13,6 +16,7 @@ const AddEntryForm = ({closeModel}) => {
   event.preventDefault();
   const { car, time, date } = event.target;
   const startDate = new Date(`${date.value} ${time.value}`)
+
   //const endDate = new Date(startDate.getTime() + (2 * 60 * 60 * 1000)) // 2 - количество часов - обработка на сервере
   
   const serviceIds = ['1', '2', '3']   // заглушка - идет из стейта
@@ -44,16 +48,16 @@ const AddEntryForm = ({closeModel}) => {
   }
 
   closeModel();
+ }
 
-}
 
-  return (    
+  return (
+  	<ul className={styles.addentryform}>
     <form onSubmit={onSubmit}>
-      <h3>Выберите машину</h3>
       <select name="car" id="">
         <option value="car 1">Car 1</option>
       </select>
-      <h3>Выберите дату</h3>
+      <li>выберите дату и время</li>
       <input required name="date" defaultValue={getDayForInput(new Date())} type="date" min={getDayForInput(new Date())} max={getMaxDayFromToday(30)} />
       <input required id="appt-time"defaultValue="09:00:00" list="times" min="09:00:00" max="18:00:00" type="time" name="time" step="1800" />
       <datalist id="times">
@@ -84,8 +88,9 @@ const AddEntryForm = ({closeModel}) => {
           <option value="21:00:00" />
           <option value="21:30:00" />
       </datalist>
-      <input type="submit" value='Записаться на ТО' />
+      <Button name='ЗАПИСАТЬСЯ' />
     </form>
+	  </ul>
   )
 }
 

@@ -1,8 +1,33 @@
+.selectservicebutton {
+    display: flex;
+    margin: 14px 0 14px 0;
+}
+
+.selectservicebuttonplus {
+    background-color: transparent;
+    color: white;
+    border: 1px solid #e7e7e7;
+    padding: 8px 16px 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 0px 20px 0px 0px;
+    transition-duration: 1s;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.selectservicebuttonplus:hover {
+    background-color: #e7e7e7;
+    border-radius: 7px;
+}
+
 /*body {*/
 /*    background: #ffffff;*/
 /*    color: #414141;*/
 /*    font: 400 17px/2em 'Roboto';*/
-/*}*/
+/*}
 
 /*.select-box {*/
 /*    cursor: pointer;*/
