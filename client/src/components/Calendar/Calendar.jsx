@@ -15,21 +15,21 @@ const Calendar = () => {
   return (
     <>
      {scheduleData ?
-    
+
       <section className={styles.background}>
-      {isOpen && 
+      {isOpen &&
         <section onClick={(event) => {
           if(event.target.tagName === 'SECTION') {
             setIsOpen(!isOpen)
           }
         }} className={styles.modal}>
           <div className={styles.modalBody}>
-            <AddEntryForm />     
+            <AddEntryForm />
           </div>
-          
+
         </section>
       }
-      
+
       <button onClick={addEntry} className={styles.btnAddEntry}>Записаться на ТО</button>
       <div className={styles.calendar}>
         <CalendarLayout />
@@ -39,9 +39,7 @@ const Calendar = () => {
     <div className={styles.loader}><Loader /></div>
     }
     </>
-   
-    
-    
+
   )
 }
 
