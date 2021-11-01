@@ -38,7 +38,7 @@ const styles = ({ spacing, palette }) => ({
     marginLeft: spacing(1),
     marginTop: 0,
     marginBottom: 0,
-    height: spacing(4.875),
+    height: spacing(2.875),
   },
   locationSelector: {
     marginLeft: spacing(1),
@@ -87,11 +87,13 @@ const styles = ({ spacing, palette }) => ({
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     width: '100%',
+    height: '5px',
   },
   time: {
     display: 'inline-block',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
+    height: '5px',
   },
   text: {
     overflow: 'hidden',
@@ -185,9 +187,10 @@ const SchedulerContainer = ({
         onCurrentViewNameChange={onCurrentViewNameChange}
       />
       <DayView
-        startDayHour={9}
-        endDayHour={18}
+        startDayHour={8}
+        endDayHour={22}
         name='День'
+        cellDuration={60}
       />
 
       <Appointments
