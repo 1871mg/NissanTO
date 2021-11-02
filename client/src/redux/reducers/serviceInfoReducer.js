@@ -3,14 +3,33 @@ import {
   GET_SERVICE_TYPE,
   SET_MODEL_SELECT,
   SET_MILEGE_SELECT,
+  SET_STATE_NUMBER,
+  SET_YEAR_SELECT,
   HIDE_TEXT_MAIN,
   SHOW_TEXT_MAIN,
   ADD_ADDITIONAL_SERVICE,
   ADD_ADDITIONAL_COMPONENT,
 } from '../actionTypes/serviceInfoAT'
 
+
+const yearsCeed = [
+  { value: 2021, label: '2021' },
+  { value: 2020, label: '2020' },
+  { value: 2019, label: '2019' },
+  { value: 2018, label: '2018' },
+  { value: 2017, label: '2017' },
+  { value: 2016, label: '2016' },
+  { value: 2015, label: '2015' },
+  { value: 2014, label: '2014' },
+  { value: 2013, label: '2013' },
+  { value: 2012, label: '2012' },
+  { value: 2011, label: '2011' },
+  { value: 2010, label: '2010' },
+]
+
 const initialState = {
   mainSelectValue: { carModelId: null, milegeId: null, imgCar: null },
+  hash: { years: yearsCeed },
   newOrder: {
     carId: null,
     fullServiceId: null,
@@ -22,7 +41,14 @@ const initialState = {
     addComponentTotalPrice: 0,
     orderAdditionsTotalPrice: 0,
   },
+  newCar: {
+    modelId: null,
+    stateNumber: null,
+    yearIssue: null,
+    milegeId: null,
+  },
 }
+
 
 export const serviceInfoReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -38,12 +64,24 @@ export const serviceInfoReducer = (state = initialState, action) => {
       newsetModelState.mainSelectValue.imgCar = newsetModelState.allModels.find(
         (carModel) => carModel.id === action.payload
       ).photoLink
+      newsetModelState.newCar.modelId = action.payload
       return { ...newsetModelState }
 
     case SET_MILEGE_SELECT:
       const newsetMilegeState = { ...state }
       newsetMilegeState.mainSelectValue.milegeId = action.payload
+      newsetMilegeState.newCar.milegeId = action.payload
       return { ...newsetMilegeState }
+
+    case SET_YEAR_SELECT:
+      const newsetYearState = { ...state}
+      newsetYearState.newCar.yearIssue = action.payload
+      return {...newsetYearState}
+
+    case SET_STATE_NUMBER:
+      const newsetStateNumber = {...state}
+      newsetStateNumber.newCar.stateNumber = action.payload
+      return {...newsetStateNumber}
 
     case GET_SERVICE_TYPE:
       const newServiceTypeState = { ...state }
@@ -96,6 +134,7 @@ export const serviceInfoReducer = (state = initialState, action) => {
           ))
       )
       newAddAdditionalService.services = filterStateServices
+      newAddAdditionalService.newOrder.addServiceTotalPrice = 0
       newAddAdditionalService.newOrder.serviceId.forEach(
         (service) =>
           (newAddAdditionalService.newOrder.addServiceTotalPrice +=
@@ -122,7 +161,7 @@ export const serviceInfoReducer = (state = initialState, action) => {
           ))
       )
       newAddAdditionalComponent.components = filterStateComponents
-
+      newAddAdditionalComponent.newOrder.addComponentTotalPrice = 0
       newAddAdditionalComponent.newOrder.componentId.forEach(
         (component) =>
           (newAddAdditionalComponent.newOrder.addComponentTotalPrice +=

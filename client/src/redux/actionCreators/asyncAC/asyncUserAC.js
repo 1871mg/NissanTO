@@ -1,4 +1,4 @@
-import { SAGA_CHECK_SESSION, SAGA_GET_REGISTRATION, SAGA_GET_LOGIN, SAGA_GET_LOGOUT } from '../../actionTypes/asyncAT/asyncUserAT'
+import { SAGA_CHECK_SESSION, SAGA_GET_REGISTRATION, SAGA_GET_LOGIN, SAGA_GET_LOGOUT, SAGA_CREATE_OWNER_CAR  } from '../../actionTypes/asyncAT/asyncUserAT'
 
 export const sagaCheckSessionAC = (payload) => {
   return {
@@ -24,5 +24,12 @@ export const sagaGetLoginAC = (payload) => {
 export const sagaGetLogoutAC = () => {
   return {
     type: SAGA_GET_LOGOUT,
+  }
+}
+
+export const sagaCreateOwnerCarAC = (payload) => {
+  return {
+    type: SAGA_CREATE_OWNER_CAR,
+    payload,
   }
 }
