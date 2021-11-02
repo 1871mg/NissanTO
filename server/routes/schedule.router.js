@@ -3,6 +3,7 @@ const getShortName = require('../utils/getShortName');
 const getEndDate = require('../utils/getEndDate');
 const setCurrentTimeZoneTimePlus = require('../utils/setCurrentTimeZoneTimePlus');
 const setCurrentTimeZoneTimeMinus = require('../utils/setCurrentTimeZoneTimeMinus');
+const sendEmail = require('../utils/sendEmail');
 
 const {
   FullService, Order, Box, Worker,
@@ -78,7 +79,7 @@ router.post('/', async (req, res) => {
         BoxId: 1,
         FullServiceId: fullServiceId,
         timeStart: startDateNewOrder,
-        //MilegeId: 2,
+        // MilegeId: 2,
         isComplite: false,
       });
       const newOrderFullService = await FullService.findOne({
@@ -101,7 +102,9 @@ router.post('/', async (req, res) => {
           newWorker.lastname,
           newWorker.parentname),
       };
-      console.log(orderToRender);
+      const emailMsg = `Ваша запись успешно создана. Начало ТО - ${orderToRender.startDate}, окончание - ${orderToRender.endDate}`;
+      sendEmail(req.session.user.email, 'Ниссан ТО', emailMsg);
+
       res.json({ isOrdered: true, orderToRender, endDateNewOrder });
     } else {
       res.json({ isOrdered: false });
