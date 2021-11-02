@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import Select from 'react-select'
 import { setModelSelect } from '../../../redux/actionCreators/serviceInfoAC'
-import { sagaGetServiceTypeAC } from '../../../redux/actionCreators/asyncAC/asyncServiseInfoAC'
 import styles from './SelectModelButton.module.css';
 
 function SelectModelButton() {

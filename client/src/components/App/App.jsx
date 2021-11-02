@@ -56,7 +56,7 @@ function App() {
             <ServiceList />
           </Route>
 
-          <Route exact path="/addcar">
+          <Route exact path="/car">
             <AddCar />
           </Route>
 
