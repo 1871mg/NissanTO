@@ -5,7 +5,7 @@ import { useLayoutEffect } from 'react'
 
 
 const fetchGetServiceInfo = async () => {
-  const response = await fetch('http://localhost:5000/main', {
+  const response = await fetch('/main', {
     method: 'GET',
     credentials: 'include',
   })
@@ -15,7 +15,6 @@ const fetchGetServiceInfo = async () => {
 
 function* getServiceInfoWorcker() {
  const serviceInfo = yield call(fetchGetServiceInfo)
- console.log("get");
  yield put(getServiceInfo(serviceInfo))
 }
 
@@ -23,7 +22,7 @@ function* getServiceInfoWorcker() {
 const fetchGetServiceType = async (action) => {
   const carModelId = action.payload.carModelId
   const milegeId = action.payload.milegeId
-  const response = await fetch(`http://localhost:5000/services?carModelId=${carModelId}&milegeId=${milegeId}`, {
+  const response = await fetch(`/services?carModelId=${carModelId}&milegeId=${milegeId}`, {
     method: 'GET',
     credentials: 'include',
   })

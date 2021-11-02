@@ -1,11 +1,13 @@
 import React, { useEffect} from 'react'
 import { useSelector } from 'react-redux'
 import styles from './ServiceList.module.css'
+import { useHistory } from 'react-router'
 import Button from '../UI/Button/Button'
 import SelectComponentsButton from '../UI/SelectComponentsButton/SelectComponentsButton'
 import SelectServiceButton from '../UI/SelectServiceButton/SelectServiceButton'
 
 function ServiceList() {
+  const history = useHistory()
   const serviceType = useSelector(
     (state) => state.serviceInfoReducer.fullService
   )
@@ -52,7 +54,7 @@ function ServiceList() {
         <SelectComponentsButton />
       </ul>
       <div className={styles.buttonDateTime}>
-        <Button name="ВЫБРАТЬ ДАТУ И ВРЕМЯ" />
+        <Button clickFunc={() => history.push('/calendar')} name="ВЫБРАТЬ ДАТУ И ВРЕМЯ" />
       </div>
     </>
   )
