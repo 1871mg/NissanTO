@@ -17,50 +17,94 @@ function ServiceList() {
   const servicesTotalPrice = useSelector(
     (state) => state.serviceInfoReducer.servicesAllPrice
   )
-  const addServices = useSelector((state) => state.serviceInfoReducer.newOrder.serviceId)
-  const addComponents = useSelector((state) => state.serviceInfoReducer.newOrder.componentId)
-  const orderAdditionsPrices = useSelector((state) => state.serviceInfoReducer.newOrder)
-
-  console.log(addServices);
+  const addServices = useSelector(
+    (state) => state.serviceInfoReducer.newOrder.serviceId
+  )
+  const addComponents = useSelector(
+    (state) => state.serviceInfoReducer.newOrder.componentId
+  )
+  const orderAdditionsPrices = useSelector(
+    (state) => state.serviceInfoReducer.newOrder
+  )
 
   return (
 
-      <>
-        <ul className={styles.servicelist}>
-          <div className={styles.whitetext}>
-            <>
-              {servicesList?.Services?.map((service) => (
-                <div key={service.id}>
-                  {service.title}: {service.price} ₽
-                </div>
-              ))}
-            </>
-            <div>
-              Cтоимость {serviceType.title}: {servicesTotalPrice.sumServicesPrice}{' '}
-              ₽
-            </div>
+    <>
+      <ul className={styles.servicelist}>
+        <div className={styles.whitetext}>
+          <>
+            {servicesList.Services.map((service) => (
+              <div key={service.id}>
+                {service.title}: {service.price} ₽
+              </div>
+            ))}{' '}
+          </>
+          <>
+            {servicesList.Components.map((component) => (
+              <div key={component.id}>
+                {component.title} : {component.price} ₽
+              </div>
+            ))}{' '}
+          </>
+          <div>
+            Cтоимость {serviceType.title}:{' '}
+            {servicesTotalPrice.totalServiceTypePrice} ₽
+          </div>
+        </div>
+        <div>
+        <div>&nbsp;</div>
+          <div>Дополнительные услуги:</div>
+          <>
+            {addServices.length
+              ? addServices.map(
+                  (addService) =>
+                    (addService = (
+                      <div key={addService.value}>{addService.label}</div>
+                    ))
+                )
+              : 'Ничего не выбрано'}
+          </>
+          <div>
+            Общая стоимость дополнительныx услуг:{' '}
+            {orderAdditionsPrices.addServiceTotalPrice} ₽
+          </div>
+        </div>
+        <div>
+          <div>Дополнительные детали:</div>
+          <>
+            {addComponents.length > 0
+              ? addComponents.map(
+                  (addComponent) =>
+                    (addComponent = (
+                      <div key={addComponent.value}>{addComponent.label}</div>
+                    ))
+                )
+              : 'Ничего не выбрано'}
+          </>
+          <div>
+	          <div>&nbsp;</div>
+              <div>Дополнительные детали:</div>
+              <>{addComponents.length > 0 ? addComponents.map((addComponent) => addComponent = <div key={addComponent.value}>{addComponent.label}</div>) : 'Ничего не выбрано'}</>
+            <div>Общая стоимость допдеталей: {orderAdditionsPrices.addComponentTotalPrice} ₽</div>
+          </div>
+          <div>
+              Общая стоимость дополнительныx деталей:{' '}
+             {orderAdditionsPrices.addComponentTotalPrice} ₽
 
-          <div>
-	          <div>&nbsp;</div>
-	          <div>Дополнительные услуги:</div>
-            <>{addServices.length ? addServices.map((addService) => addService = <div key={addService.value}>{addService.label}</div>) : 'Ничего не выбрано'}</>
-            <div>Общая стоимость допуслуг: {orderAdditionsPrices.addServiceTotalPrice} ₽</div>
           </div>
-          <div>
-	          <div>&nbsp;</div>
-            <div>Дополнительные детали:</div>
-            <>{addComponents.length > 0 ? addComponents.map((addComponent) => addComponent = <div key={addComponent.value}>{addComponent.label}</div>) : 'Ничего не выбрано'}</>
-          <div>Общая стоимость допдеталей: {orderAdditionsPrices.addComponentTotalPrice} ₽</div>
-          </div>
-          </div>
-          <SelectServiceButton />
-          <SelectComponentsButton />
-        </ul>
+          <div>Полная стоимость обслуживания: {orderAdditionsPrices.totalPrice}</div>
+        </div>
+        <SelectServiceButton />
+        <SelectComponentsButton />
+      </ul>
       <div className={styles.buttonDateTime}>
-        <Button clickFunc={() => history.push('/calendar')} name="ВЫБРАТЬ ДАТУ И ВРЕМЯ" />
+        <Button
+          clickFunc={() => history.push('/calendar')}
+          name="ВЫБРАТЬ ДАТУ И ВРЕМЯ"
+        />
       </div>
-      </>
-  )
+    </>  
+    )
 }
 
 export default ServiceList

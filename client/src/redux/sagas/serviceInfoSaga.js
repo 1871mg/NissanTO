@@ -37,7 +37,6 @@ function* getServiceTypeWorcker(action) {
   yield put(getServiceType(serviceType))
   console.log('ffff');
   // yield put(showTextMain())
-  
  }
 
 

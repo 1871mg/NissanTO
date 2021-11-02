@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import Select from 'react-select'
 import { setModelSelect } from '../../../redux/actionCreators/serviceInfoAC'
-import styles from './SelectModelButton.module.css';
+import styles from './SelectModelButton.module.css'
 
 function SelectModelButton() {
   const dispatch = useDispatch()
@@ -24,11 +24,10 @@ function SelectModelButton() {
           options={allModels.map(
             (option) => (option = { value: option.id, label: option.title })
           )}
-          placeholder = 'выберите автомобиль'
-
+          placeholder="выберите автомобиль"
         />
       )}
-	  </div>
+    </div>
   )
 }
 
