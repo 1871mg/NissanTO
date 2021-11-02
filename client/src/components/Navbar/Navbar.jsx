@@ -2,6 +2,7 @@ import React from 'react';
 import { Link , useHistory} from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { sagaGetLogoutAC } from '../../redux/actionCreators/asyncAC/asyncUserAC'
+import { getLogoutAdminAC } from '../../redux/actionCreators/adminAC'
 import styles from './Navbar.module.css';
 import logo from './img/logo.svg';
 
@@ -9,9 +10,11 @@ const Navbar = () => {
   const dispatch = useDispatch()
   const history = useHistory()
   const user = useSelector((state) => state.userReducer.user);
+  const admin = useSelector((state) => state.adminReducer.admin)
   const isUserLogout = useSelector((state) => state.userReducer.isUserLogout)
   const logoutFunc = () => {
     dispatch(sagaGetLogoutAC())
+    dispatch(getLogoutAdminAC())
  }
  if (isUserLogout) {
   history.push('/')
@@ -38,6 +41,8 @@ const Navbar = () => {
 	          <li><Link to="/login">войти</Link></li>
           </>
           )}
+
+          
         </ul>
       </nav>
     </header>
