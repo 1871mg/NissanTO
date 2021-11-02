@@ -9,7 +9,7 @@ const router = express.Router();
 router.post('/', async (req, res) => {
   try {
     const { phone, password } = req.body;
-    
+
     const userByPhone = await Owner.findOne({
       where: {
         phone,
@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
     if (!userByPhone) {
       res.status(401).json({
         user: false,
-        message: 'Пользователя с таким email не существует',
+        message: 'Пользователя с таким телефоном не существует',
       });
     }
 
