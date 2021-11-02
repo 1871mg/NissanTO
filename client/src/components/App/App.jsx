@@ -29,7 +29,7 @@ function App() {
     dispatch(sagaCheckSessionAC());
     dispatch(sagaCheckSessionAdminAC())
     dispatch(sagaGetServiceInfoAC());
-    dispatch(sagaGetOrdersAC());
+    // dispatch(sagaGetOrdersAC());
   }, [])
 
   return (

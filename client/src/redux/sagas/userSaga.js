@@ -4,6 +4,8 @@ import {
   SAGA_GET_REGISTRATION,
   SAGA_GET_LOGIN,
   SAGA_GET_LOGOUT,
+  SAGA_CREATE_OWNER_CAR
+
 } from '../actionTypes/asyncAT/asyncUserAT'
 import { checkSessionAC, setErrorPassConfirmAC, getLogoutAC } from '../actionCreators/userAC'
 
@@ -91,9 +93,28 @@ function* getLogoutWorcker() {
   // }
 }
 
+const fetchCreateOwnerCar = async (action) => {
+  const response = await fetch('http://localhost:5000/car', {
+    method: 'POST',
+    credentials: 'include',
+    headers: {
+      'Content-type': 'application/json',
+    },
+    body: JSON.stringify(action.payload),
+  })
+
+  const dataFromServer = await response.json()
+  return dataFromServer
+}
+
+function* createOwnerCarWorcker(action) {
+  const  ownerCar  = yield call(fetchCreateOwnerCar, action)
+}
+
 export function* userWatcher() {
   yield takeEvery(SAGA_CHECK_SESSION, checkSessionWorcker)
   yield takeEvery(SAGA_GET_REGISTRATION, getRegistrationWorcker)
   yield takeEvery(SAGA_GET_LOGIN, getLoginWorcker)
   yield takeEvery(SAGA_GET_LOGOUT, getLogoutWorcker)
+  yield takeEvery(SAGA_CREATE_OWNER_CAR, createOwnerCarWorcker)
 }
