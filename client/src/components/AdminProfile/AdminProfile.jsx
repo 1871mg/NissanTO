@@ -8,6 +8,7 @@ const AdminProfile = () => {
   return (
     <div className={styles.adminMain}>
       <h1 className={styles.ordersHeader}>Заказы</h1>
+      <h3>История заказов</h3>
       {/* {
         orders 
         &&
