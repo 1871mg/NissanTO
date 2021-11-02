@@ -11,7 +11,6 @@ const router = express.Router()
 router.get('/', async (req, res) => {
   try {
     const { carModelId, milegeId } = req.query;
-
     const fullService = await FullService.findAll({
       where: {
         MilegeId: milegeId,

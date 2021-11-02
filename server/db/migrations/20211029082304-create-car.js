@@ -15,7 +15,7 @@ module.exports = {
           key: 'id',
         },
       },
-      ModelId: {
+      CarModelId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -23,7 +23,7 @@ module.exports = {
           key: 'id',
         },
       },
-      stateNumber: { type: Sequelize.INTEGER, allowNull: false, unique: true },
+      stateNumber: { type: Sequelize.TEXT, allowNull: false, unique: true },
       yearIssue: { type: Sequelize.INTEGER, allowNull: false },
       MilegeId: {
         type: Sequelize.INTEGER,

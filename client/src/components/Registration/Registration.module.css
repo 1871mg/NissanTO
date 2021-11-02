@@ -1,9 +1,14 @@
 .registration {
     display: flex;
-    align-items: center;
-    justify-content: space-around;
+    justify-content: center;
+    color: white;
     flex-direction: column;
-    background: lightslategray;
-    height: 100vh;
-    width: 100vw;
+    padding: 100px 0 0 0;
+}
+
+.registrationinput {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }

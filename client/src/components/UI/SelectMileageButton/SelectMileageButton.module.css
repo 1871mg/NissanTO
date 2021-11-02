@@ -1,3 +1,15 @@
+.selectmileagebutton {
+    margin: 10px 10px 10px 10px;
+    color: gray;
+}
+
+@media (min-width: 430pt) {
+    .selectmileagebutton {
+        margin: 5px 10px 0px 10px;
+        color: gray;
+    }
+}
+
 /*body {*/
 /*    background: #ffffff;*/
 /*    color: #414141;*/

@@ -1,30 +1,29 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 
-const { User } = require('../db/models');
+const { Owner } = require('../db/models');
 
 const router = express.Router();
 
 // eslint-disable-next-line consistent-return
 router.post('/', async (req, res) => {
   try {
-    const { email, password } = req.body;
-    console.log(email, password);
+    const { phone, password } = req.body;
 
-    const userByEmail = await User.findOne({
+    const userByPhone = await Owner.findOne({
       where: {
-        email,
+        phone,
       },
     });
 
-    if (!userByEmail) {
+    if (!userByPhone) {
       res.status(401).json({
         user: false,
-        message: 'Пользователя с таким email не существует',
+        message: 'Пользователя с таким телефоном не существует',
       });
     }
 
-    const isValidPassword = await bcrypt.compare(password, userByEmail.password);
+    const isValidPassword = await bcrypt.compare(password, userByPhone.password);
 
     if (!isValidPassword) {
       return res.status(401).json({
@@ -34,11 +33,14 @@ router.post('/', async (req, res) => {
     }
 
     req.session.user = {
-      id: userByEmail.id,
-      username: userByEmail.username,
-      email: userByEmail.username,
+      id: userByPhone.id,
+      firstname: userByPhone.firstname,
+      parentname: userByPhone.parentname,
+      lastname: userByPhone.lastname,
+      phone: userByPhone.phone,
+      email: userByPhone.email,
     };
-
+    console.log(req.session.user);
     res.json({ user: req.session.user });
   } catch (error) {
     console.log(error.message);

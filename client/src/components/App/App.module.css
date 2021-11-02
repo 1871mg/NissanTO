@@ -6,3 +6,24 @@
     text-decoration: none;
     font-family: Roboto;
 }
+
+html {
+    background-color: lightslategray;
+}
+
+ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px 0 0 0;
+}
+
+li {
+    list-style: none;
+    display: inline;
+    font-size: 1.4rem;
+    font-weight: 300;
+    margin: 0 1.5rem 0 1.5rem;
+    color: white;
+}
+

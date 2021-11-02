@@ -1,25 +1,42 @@
-import React, { useState } from 'react';
-import Select from 'react-select';
-
-const options = [
-  { value: 'components1', label: 'Фильтр воздушный' },
-  { value: 'components2', label: 'Масляный фильтр' },
-  { value: 'components3', label: 'Уплотнение пробки корпуса раздаточной коробки' },
-];
+import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import Select from 'react-select'
+import styles from './SelectComponentsButton.module.css'
+import {addAdditionalComponentAC} from '../../../redux/actionCreators/serviceInfoAC'
 
 function SelectComponentsButton() {
-  const [selectedOption, setSelectedOption] = useState(null);
+  const dispatch = useDispatch()
+  const [selectValue, setSelectValue] = useState()
+  const addComponents = useSelector(
+    (state) => state.serviceInfoReducer.components
+  )
+
+  const addComponent = () => {
+    dispatch(addAdditionalComponentAC(selectValue))
+    setSelectValue('')
+  }
 
   return (
-    <>
+    <div className={styles.selectcomponentsbutton}>
       <Select
-        defaultValue={selectedOption}
-        onChange={setSelectedOption}
-        options={options}
-        placeholder={<div className="select-placeholder-text">дополнительные запчасти</div>}
+        value={selectValue}
+        onChange={setSelectValue}
+        options={addComponents.map(
+          (addComponent) =>
+            (addComponent = {
+              value: addComponent.id,
+              label: `${addComponent.title}: ${addComponent.price} ₽`,
+              title: addComponent.title,
+              price: addComponent.price
+            })
+        )}
+        placeholder={
+          <div className="select-placeholder-text">дополнительные запчасти</div>
+        }
       />
-    </>
-  );
+      <button onClick={addComponent} className={styles.selectcomponentsbuttonplus}>+</button>
+    </div>
+  )
 }
 
-export default SelectComponentsButton;
+export default SelectComponentsButton

@@ -3,15 +3,19 @@
 } */
 
 .background {
-  background-color: gray;
+  background-color: lightslategray;
 }
 
 .btnAddEntry {
-  width: 200px;
-  background-color: #fff;
-  color: gray;
-  height: 80px;
-  margin-top: 100px;
+  border: 1px solid white;
+  border-radius: 6px;
+  width: 100%;
+  background-color: lightslategray;
+  color: white;
+  height: 40px;
+  margin-top: 81px;
+  font-size: 1rem;
+  font-weight: 400;
   cursor: pointer;
 }
 
@@ -25,18 +29,16 @@
   display: flex;
   justify-content: center;
   padding-top: 5rem;
-  color: black;
   z-index: 100;
-
 }
 
 .modalBody {
-  padding: 2rem;
-  width: 800px;
-  border-radius: 5px;
-  background: #fff;
-  height: 700px;
-  margin-top: 60px;  
+  padding: 1rem;
+  width: 100%;
+  border-radius: 40px;
+  background: lightslategray;
+  height: 300px;
+  margin-top: 60px;
   z-index: 100;
 }
 

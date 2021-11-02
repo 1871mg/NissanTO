@@ -3,35 +3,43 @@
     top: 0;
     left: 0;
     width: 100vw;
-    height: 12vh;
+    height: 80px;
     background: rgba(255,255,255,0.3);
-}
-
-ul {
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    padding: 6vh 0 0 0;
-}
-
-li {
-    list-style: none;
-    display: inline;
-    font-size: 1.5rem;
-    font-weight: 300;
-    margin: 0 1.5rem 0 1.5rem;
-    color: white;
 }
 
 a {
     color: white;
 }
 
+.navbarexit {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+}
+.adminNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.adminHeader {
+  color: whitesmoke;
+  
+}
+
 @media (min-width: 430pt) {
     .navbar {
-        height: 14vh;
+        height: 80px;
     }
     ul {
-        padding: 4vh 0 0 0;
+        padding: 10px 0 0 0;
     }
 }
+
+.navbartext {
+    padding: 0 0px 9px 0px;
+    margin: 4px;
+}
+

@@ -1,0 +1,10 @@
+.loader {
+  display: flex;
+  justify-content: center;
+  padding-top: 50%;
+}
+
+.calendarContainer {
+  background-color: white;
+  height: 100vh;
+}

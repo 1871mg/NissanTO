@@ -1,0 +1,14 @@
+.offer {
+    margin: 0 10px 10px 10px;
+}
+
+@media (min-width: 430pt) {
+    .offer {
+        margin: 0 10px 10px 10px;
+    }
+}
+
+.offermoney {
+    font-size: 2rem;
+    margin: 0;
+}
