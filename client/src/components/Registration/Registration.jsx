@@ -110,7 +110,7 @@ const Registration = () => {
               placeholder="проверка пароля"
             />
           </div>
-          <Button name="зарегистрироваться" />
+          <Button name="ЗАРЕГИСТРИРОВАТЬСЯ" />
         </form>
       </main>
     </div>

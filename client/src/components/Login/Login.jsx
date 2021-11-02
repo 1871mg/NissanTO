@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useHistory, Redirect } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { setErrorPassConfirmAC } from '../../redux/actionCreators/userAC'
 import { sagaGetLoginAC } from '../../redux/actionCreators/asyncAC/asyncUserAC'
@@ -7,7 +7,6 @@ import styles from './Login.module.css'
 import Button from '../UI/Button/Button'
 
 const Login = () => {
-  const history = useHistory()
   const dispatch = useDispatch()
   const isError = useSelector((state) => state.userReducer.isError)
   const [errorMessage, seterrorMessage] = useState('')
@@ -26,12 +25,14 @@ const Login = () => {
     dispatch(sagaGetLoginAC(body))
   }
 
-  if (user) {
-    history.push('/profile')
-  }
-
   return (
-    <div className={styles.login}>
+    <>
+    {
+      user 
+      ?
+      <Redirect to="/profile" />
+      : 
+      <div className={styles.login}>
       <main className="form">
         <form
           id="registerForm"
@@ -57,13 +58,15 @@ const Login = () => {
               placeholder="пароль"
             />
           </div>
-          <Button name="войти" />
+          <Button name="ВОЙТИ" />
         </form>
         <li>
           <Link to="/registration">регистрация</Link>
         </li>
       </main>
-    </div>
+    </div> 
+    }
+    </>
   )
 }
 export default Login

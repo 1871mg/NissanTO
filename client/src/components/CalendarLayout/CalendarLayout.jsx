@@ -173,7 +173,7 @@ const CalendarLayout = () => {
       <DayView
         startDayHour={9}
         endDayHour={22}
-        name=''
+        name='День'
         cellDuration={30}
       />
 

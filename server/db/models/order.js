@@ -1,4 +1,3 @@
-'use strict';
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
@@ -8,7 +7,6 @@ module.exports = (sequelize, DataTypes) => {
       Worker,
       Box,
       FullService,
-      Milege,
       OrderService,
       OrderComponent,
       Component,
@@ -18,7 +16,6 @@ module.exports = (sequelize, DataTypes) => {
       Order.belongsTo(Worker);
       Order.belongsTo(Box);
       Order.belongsTo(FullService);
-      Order.belongsTo(Milege);
       Order.belongsToMany(Component, { through: OrderComponent });
       Order.belongsToMany(Service, { through: OrderService });
     }
