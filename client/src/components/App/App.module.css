@@ -13,9 +13,9 @@ html {
 
 ul {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-between;
-    padding: 17px 0 0 0;
+    padding: 11px 0 0 0;
 }
 
 li {

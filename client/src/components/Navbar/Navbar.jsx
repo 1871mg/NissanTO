@@ -24,7 +24,8 @@ const Navbar = () => {
     <header className={styles.navbar}>
       <nav>
         <ul>
-	        <Link to='/'><li><img src={logo} alt="" width="80px" /></li></Link>
+	        <Link to='/'><li><img src={logo} alt="" width="70px" /></li></Link>
+	        <div className={styles.navbartext}>
           {user
           && (
           <>
@@ -38,6 +39,7 @@ const Navbar = () => {
 	          <li><Link to="/login">войти</Link></li>
           </>
           )}
+	        </div>
         </ul>
       </nav>
     </header>

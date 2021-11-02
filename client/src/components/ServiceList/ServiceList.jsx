@@ -39,16 +39,19 @@ function ServiceList() {
               Cтоимость {serviceType.title}: {servicesTotalPrice.sumServicesPrice}{' '}
               ₽
             </div>
-          </div>
+
           <div>
-            <div>Дополнительные услуги:</div>
+	          <div>&nbsp;</div>
+	          <div>Дополнительные услуги:</div>
             <>{addServices.length ? addServices.map((addService) => addService = <div key={addService.value}>{addService.label}</div>) : 'Ничего не выбрано'}</>
-            <div>Общая стоимость дополнительный услуг: {orderAdditionsPrices.addServiceTotalPrice} ₽</div>
+            <div>Общая стоимость допуслуг: {orderAdditionsPrices.addServiceTotalPrice} ₽</div>
           </div>
           <div>
+	          <div>&nbsp;</div>
             <div>Дополнительные детали:</div>
             <>{addComponents.length > 0 ? addComponents.map((addComponent) => addComponent = <div key={addComponent.value}>{addComponent.label}</div>) : 'Ничего не выбрано'}</>
-          <div>Общая стоимость дополнительныx деталей: {orderAdditionsPrices.addComponentTotalPrice} ₽</div>
+          <div>Общая стоимость допдеталей: {orderAdditionsPrices.addComponentTotalPrice} ₽</div>
+          </div>
           </div>
           <SelectServiceButton />
           <SelectComponentsButton />
