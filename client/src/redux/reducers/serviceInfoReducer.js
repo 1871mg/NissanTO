@@ -11,7 +11,6 @@ import {
   ADD_ADDITIONAL_COMPONENT,
 } from '../actionTypes/serviceInfoAT'
 
-
 const yearsCeed = [
   { value: 2021, label: '2021' },
   { value: 2020, label: '2020' },
@@ -40,6 +39,7 @@ const initialState = {
     componentId: [],
     addComponentTotalPrice: 0,
     orderAdditionsTotalPrice: 0,
+    totalPrice: 0,
   },
   newCar: {
     modelId: null,
@@ -48,7 +48,6 @@ const initialState = {
     milegeId: null,
   },
 }
-
 
 export const serviceInfoReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -74,14 +73,14 @@ export const serviceInfoReducer = (state = initialState, action) => {
       return { ...newsetMilegeState }
 
     case SET_YEAR_SELECT:
-      const newsetYearState = { ...state}
+      const newsetYearState = { ...state }
       newsetYearState.newCar.yearIssue = action.payload
-      return {...newsetYearState}
+      return { ...newsetYearState }
 
     case SET_STATE_NUMBER:
-      const newsetStateNumber = {...state}
+      const newsetStateNumber = { ...state }
       newsetStateNumber.newCar.stateNumber = action.payload
-      return {...newsetStateNumber}
+      return { ...newsetStateNumber }
 
     case GET_SERVICE_TYPE:
       const newServiceTypeState = { ...state }
@@ -95,6 +94,16 @@ export const serviceInfoReducer = (state = initialState, action) => {
           (newServiceTypeState.servicesAllPrice.sumServicesPrice +=
             servicePrice.price)
       )
+      newServiceTypeState.servicesAllPrice.sumComponentsPrice = 0
+      newServiceTypeState.fullService.Components.forEach(
+        (componentPrice) =>
+          (newServiceTypeState.servicesAllPrice.sumComponentsPrice +=
+            componentPrice.price)
+      )
+      newServiceTypeState.servicesAllPrice.totalServiceTypePrice = 0
+      newServiceTypeState.servicesAllPrice.totalServiceTypePrice =
+        newServiceTypeState.servicesAllPrice.sumServicesPrice +
+        newServiceTypeState.servicesAllPrice.sumComponentsPrice
       newServiceTypeState.mainRecommendation = true
       newServiceTypeState.newOrder.fullServiceId =
         newServiceTypeState.fullService.id
@@ -103,6 +112,10 @@ export const serviceInfoReducer = (state = initialState, action) => {
       newServiceTypeState.newOrder.addServiceTotalPrice = 0
       newServiceTypeState.newOrder.addComponentTotalPrice = 0
       newServiceTypeState.newOrder.orderAdditionsTotalPrice = 0
+      newServiceTypeState.newOrder.totalPrice = 0
+      newServiceTypeState.newOrder.totalPrice =
+      newServiceTypeState.servicesAllPrice.totalServiceTypePrice +
+      newServiceTypeState.newOrder.orderAdditionsTotalPrice
 
       return { ...newServiceTypeState }
 
@@ -143,6 +156,9 @@ export const serviceInfoReducer = (state = initialState, action) => {
       newAddAdditionalService.newOrder.orderAdditionsTotalPrice =
         newAddAdditionalService.newOrder.addServiceTotalPrice +
         newAddAdditionalService.newOrder.addComponentTotalPrice
+      newAddAdditionalService.newOrder.totalPrice =
+        newAddAdditionalService.servicesAllPrice.totalServiceTypePrice +
+        newAddAdditionalService.newOrder.orderAdditionsTotalPrice
 
       return { ...newAddAdditionalService }
 
@@ -170,6 +186,9 @@ export const serviceInfoReducer = (state = initialState, action) => {
       newAddAdditionalComponent.newOrder.orderAdditionsTotalPrice =
         newAddAdditionalComponent.newOrder.addServiceTotalPrice +
         newAddAdditionalComponent.newOrder.addComponentTotalPrice
+        newAddAdditionalComponent.newOrder.totalPrice =
+        newAddAdditionalComponent.servicesAllPrice.totalServiceTypePrice +
+        newAddAdditionalComponent.newOrder.orderAdditionsTotalPrice
 
       return { ...newAddAdditionalComponent }
 

@@ -27,22 +27,29 @@ function ServiceList() {
     (state) => state.serviceInfoReducer.newOrder
   )
 
-  console.log(addServices)
+  
 
   return (
     <>
       <ul className={styles.servicelist}>
         <div className={styles.whitetext}>
           <>
-            {servicesList?.Services?.map((service) => (
+            {servicesList.Services.map((service) => (
               <div key={service.id}>
                 {service.title}: {service.price} ₽
               </div>
-            ))}
+            ))}{' '}
+          </>
+          <>
+            {servicesList.Components.map((component) => (
+              <div key={component.id}>
+                {component.title} : {component.price} ₽
+              </div>
+            ))}{' '}
           </>
           <div>
-            Cтоимость {serviceType.title}: {servicesTotalPrice.sumServicesPrice}{' '}
-            ₽
+            Cтоимость {serviceType.title}:{' '}
+            {servicesTotalPrice.totalServiceTypePrice} ₽
           </div>
         </div>
         <div>
@@ -58,7 +65,7 @@ function ServiceList() {
               : 'Ничего не выбрано'}
           </>
           <div>
-            Общая стоимость дополнительный услуг:{' '}
+            Общая стоимость дополнительныx услуг:{' '}
             {orderAdditionsPrices.addServiceTotalPrice} ₽
           </div>
         </div>
@@ -78,6 +85,7 @@ function ServiceList() {
             Общая стоимость дополнительныx деталей:{' '}
             {orderAdditionsPrices.addComponentTotalPrice} ₽
           </div>
+          <div>Полная стоимость обслуживания: {orderAdditionsPrices.totalPrice}</div>
         </div>
         <SelectServiceButton />
         <SelectComponentsButton />

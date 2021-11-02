@@ -1,11 +1,11 @@
-import React, { useState} from 'react'
+import React, { useState } from 'react'
 import styles from './AddCar.module.css'
 import Button from '../UI/Button/Button'
-import {useDispatch, useSelector} from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import SelectModelButton from '../UI/SelectModelButton/SelectModelButton'
 import SelectMileageButton from '../UI/SelectMileageButton/SelectMileageButton'
 import SelectYearIssueButton from '../UI/SelectYearIssueButton/SelectYearIssueButton'
-import {setStateNumberAC} from '../../redux/actionCreators/serviceInfoAC'
+import { setStateNumberAC } from '../../redux/actionCreators/serviceInfoAC'
 import { sagaCreateOwnerCarAC } from '../../redux/actionCreators/asyncAC/asyncUserAC'
 
 function AddCar() {
@@ -17,9 +17,11 @@ function AddCar() {
     dispatch(setStateNumberAC(selectModelOption))
   }
 
-const newCar = useSelector((state) => state.serviceInfoReducer.newCar)
+  const newCar = useSelector((state) => state.serviceInfoReducer.newCar)
   const saveAuto = () => {
-    dispatch(sagaCreateOwnerCarAC(newCar))
+    if (newCar) {
+      dispatch(sagaCreateOwnerCarAC(newCar))
+    }
   }
   return (
     <ul className={styles.addcar}>
