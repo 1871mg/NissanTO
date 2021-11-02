@@ -19,6 +19,7 @@ const cars = [
     OwnerId: 3, CarModelId: 13, stateNumber: 'з999зз99', yearIssue: 2016, MilegeId: 3,
   }, {
     OwnerId: 5, CarModelId: 43, stateNumber: 'и111ии11', yearIssue: 2016, MilegeId: 5,
+
   },
 ];
 
