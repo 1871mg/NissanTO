@@ -21,7 +21,7 @@ import Calendar from '../Calendar/Calendar'
 function App() {
   const dispatch = useDispatch()
   useEffect(() => {
-    // dispatch(sagaCheckSessionAC());
+    dispatch(sagaCheckSessionAC());
     dispatch(sagaGetServiceInfoAC());
     // dispatch(sagaGetOrdersAC());
   }, [])
