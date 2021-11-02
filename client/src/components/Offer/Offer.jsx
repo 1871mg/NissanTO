@@ -13,7 +13,7 @@ function Offer() {
     <>
       {mainRecommendation ? (
         <ul className={styles.offer}>
-          <li>{fullService.title} {sumTotal.sumServicesPrice} ₽</li>
+          <li className={styles.offermoney}>{fullService.title} {sumTotal.sumServicesPrice} ₽</li>
         </ul>
       ) : (
         <div></div>

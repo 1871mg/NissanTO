@@ -7,24 +7,19 @@
     background: rgba(255,255,255,0.3);
 }
 
-ul {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    padding: 17px 0 0 0;
-}
 
-li {
-    list-style: none;
-    display: inline;
-    font-size: 1.4rem;
-    font-weight: 300;
-    margin: 0 1.5rem 0 1.5rem;
-    color: white;
-}
 
 a {
     color: white;
+}
+
+.navbarexit {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 @media (min-width: 430pt) {
@@ -35,3 +30,5 @@ a {
         padding: 17px 0 0 0;
     }
 }
+
+
