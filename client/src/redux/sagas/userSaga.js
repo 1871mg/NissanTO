@@ -3,9 +3,10 @@ import {
   SAGA_CHECK_SESSION,
   SAGA_GET_REGISTRATION,
   SAGA_GET_LOGIN,
-  SAGA_GET_LOGOUT
+  SAGA_GET_LOGOUT,
 } from '../actionTypes/asyncAT/asyncUserAT'
 import { checkSessionAC, setErrorPassConfirmAC, getLogoutAC } from '../actionCreators/userAC'
+
 
 const fetchGetUserSession = async () => {
   const response = await fetch('http://localhost:5000/isauth', {
