@@ -50,7 +50,7 @@ function ServiceList() {
             Cтоимость {serviceType.title}:{' '}
             {servicesTotalPrice.totalServiceTypePrice} ₽
           </div>
-        </div>
+
         <div>
         <div>&nbsp;</div>
           <div>Дополнительные услуги:</div>
@@ -65,12 +65,13 @@ function ServiceList() {
               : 'Ничего не выбрано'}
           </>
           <div>
-            Общая стоимость дополнительныx услуг:{' '}
+            Общая стоимость допуслуг:{' '}
             {orderAdditionsPrices.addServiceTotalPrice} ₽
           </div>
         </div>
         <div>
-          <div>Дополнительные детали:</div>
+	        <div>&nbsp;</div>
+          <div>Дополнительные запчасти:</div>
           <>
             {addComponents.length > 0
               ? addComponents.map(
@@ -82,17 +83,12 @@ function ServiceList() {
               : 'Ничего не выбрано'}
           </>
           <div>
-	          <div>&nbsp;</div>
-              <div>Дополнительные детали:</div>
-              <>{addComponents.length > 0 ? addComponents.map((addComponent) => addComponent = <div key={addComponent.value}>{addComponent.label}</div>) : 'Ничего не выбрано'}</>
-            <div>Общая стоимость допдеталей: {orderAdditionsPrices.addComponentTotalPrice} ₽</div>
-          </div>
-          <div>
-              Общая стоимость дополнительныx деталей:{' '}
+              Общая стоимость допдеталей:{' '}
              {orderAdditionsPrices.addComponentTotalPrice} ₽
-
           </div>
-          <div>Полная стоимость обслуживания: {orderAdditionsPrices.totalPrice}</div>
+	        <div>&nbsp;</div>
+          <div>Итого: {orderAdditionsPrices.totalPrice} ₽</div>
+        </div>
         </div>
         <SelectServiceButton />
         <SelectComponentsButton />
@@ -103,7 +99,7 @@ function ServiceList() {
           name="ВЫБРАТЬ ДАТУ И ВРЕМЯ"
         />
       </div>
-    </>  
+    </>
     )
 }
 
