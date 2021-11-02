@@ -27,7 +27,7 @@ function App() {
 
   useEffect(() => {
     dispatch(sagaCheckSessionAC());
-    dispatch(sagaCheckSessionAdminAC())
+    dispatch(sagaCheckSessionAdminAC());
     dispatch(sagaGetServiceInfoAC());
     dispatch(sagaGetOrdersAC());
   }, [])
