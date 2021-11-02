@@ -58,13 +58,12 @@ function App() {
             <AddCar />
           </Route>
 
-            
+
           <PrivateRoute exact path="/calendar" isAuthenticated={user}>
-            console.log(user);
             <Calendar />
           </PrivateRoute>
-          
-{/* 
+
+{/*
           <Route exact path="/calendar">
             <Calendar />
           </Route> */}

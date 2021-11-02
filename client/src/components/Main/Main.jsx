@@ -9,10 +9,9 @@ import styles from './Main.module.css'
 import SelectMileageButton from '../UI/SelectMileageButton/SelectMileageButton'
 import { sagaGetServiceTypeAC } from '../../redux/actionCreators/asyncAC/asyncServiseInfoAC'
 import { hideTextMain } from '../../redux/actionCreators/serviceInfoAC'
-
+import auto from './img/default.png';
 
 const Main = () => {
-  const auto = 'https://iframe.nms-dws.ru/upload/dealer/maintenance/images/J11.png';
 
   const carModelId = useSelector(
     (state) => state.serviceInfoReducer.mainSelectValue.carModelId

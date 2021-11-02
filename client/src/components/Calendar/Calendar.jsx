@@ -19,17 +19,16 @@ const Calendar = () => {
           if(event.target.tagName === 'SECTION') setIsOpen(!isOpen)
         }} className={styles.modal}>
           <div className={styles.modalBody}>
-            <AddEntryForm closeModel={closeModel}/>     
+            <AddEntryForm closeModel={closeModel}/>
           </div>
         </section>
       }
-        <button onClick={addEntry} className={styles.btnAddEntry}>Записаться на ТО</button>
+        <button onClick={addEntry} className={styles.btnAddEntry}>НАЖМИТЕ ДЛЯ ВЫБОРА ДАТЫ</button>
         <div className={styles.calendar}>
           <CalendarLayout  />
         </div>
       </section>
     </>
-    
   )
 }
 
