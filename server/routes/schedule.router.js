@@ -15,6 +15,7 @@ router.get('/', async (req, res) => {
     const orders = await Order.findAll({
       include: [FullService, Box, Worker],
     });
+
     const activeOrders = orders.filter((order) => !order.isComplite);
 
     const scheduleData = activeOrders.map((order) => {
@@ -77,7 +78,7 @@ router.post('/', async (req, res) => {
         BoxId: 1,
         FullServiceId: fullServiceId,
         timeStart: startDateNewOrder,
-        MilegeId: 2,
+        //MilegeId: 2,
         isComplite: false,
       });
       const newOrderFullService = await FullService.findOne({
