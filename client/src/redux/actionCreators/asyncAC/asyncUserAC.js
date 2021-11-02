@@ -1,4 +1,8 @@
-import { SAGA_CHECK_SESSION, SAGA_GET_REGISTRATION, SAGA_GET_LOGIN, SAGA_GET_LOGOUT } from '../../actionTypes/asyncAT/asyncUserAT'
+import { SAGA_CHECK_SESSION, 
+  SAGA_GET_REGISTRATION, 
+  SAGA_GET_LOGIN, 
+  SAGA_GET_LOGOUT,
+ } from '../../actionTypes/asyncAT/asyncUserAT'
 
 export const sagaCheckSessionAC = (payload) => {
   return {
@@ -26,3 +30,4 @@ export const sagaGetLogoutAC = () => {
     type: SAGA_GET_LOGOUT,
   }
 }
+
