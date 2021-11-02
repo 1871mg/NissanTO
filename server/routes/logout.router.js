@@ -9,7 +9,7 @@ router.route('/')
         return next(err);
       }
       res.clearCookie('user_sid');
-      return res.json({ isUserLogout: true, user: false });
+      return res.json({ isUserLogout: true, user: false, admin: false });
     });
   });
 
