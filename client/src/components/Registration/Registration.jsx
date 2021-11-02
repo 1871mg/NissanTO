@@ -55,41 +55,41 @@ const Registration = () => {
           method="POST"
         >
           {isError && <div className="error">{errorMessage}</div>}
-          <div className="loginInputs">
+          <div className={styles.registrationinput}>
             <input
               name="firstname"
               type="name"
               className="form-control"
               id="inputFirstName"
-              placeholder="имя"
+              placeholder=" имя"
             />
             <input
               name="parentname"
               type="name"
               className="form-control"
               id="inputParentName"
-              placeholder="отчество"
+              placeholder=" отчество"
             />
             <input
               name="lastname"
               type="name"
               className="form-control"
               id="inputLastnameName"
-              placeholder="фамилия"
+              placeholder=" фамилия"
             />
             <input
               name="email"
               type="email"
               className="form-control"
               id="inputEmail"
-              placeholder="почта"
+              placeholder=" почта"
             />
             <input
               name="phone"
               type="phone"
               className="form-control"
               id="inputPhone"
-              placeholder="телефон"
+              placeholder=" телефон"
             />
             <input
               name="password"
@@ -98,7 +98,7 @@ const Registration = () => {
               minLength="6"
               className="form-control"
               id="inputPassword"
-              placeholder="пароль"
+              placeholder=" пароль"
             />
             <input
               name="passwordConfirm"
@@ -107,7 +107,7 @@ const Registration = () => {
               minLength="6"
               className="form-control"
               id="inputPassword"
-              placeholder="проверка пароля"
+              placeholder=" проверка пароля"
             />
           </div>
           <Button name="ЗАРЕГИСТРИРОВАТЬСЯ" />

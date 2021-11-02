@@ -28,12 +28,12 @@ const Login = () => {
   return (
     <>
     {
-      user 
+      user
       ?
       <Redirect to="/profile" />
-      : 
+      :
       <div className={styles.login}>
-      <main className="form">
+      <main>
         <form
           id="registerForm"
           onSubmit={sendLogForm}
@@ -41,13 +41,13 @@ const Login = () => {
           method="POST"
         >
           {isError && <div className="error">{errorMessage}</div>}
-          <div>
+          <div className={styles.logininput}>
             <input
               name="phone"
               type="phone"
               className="form-control"
               id="inputPhone"
-              placeholder="телефон"
+              placeholder=" телефон"
             />
             <input
               name="password"
@@ -55,16 +55,18 @@ const Login = () => {
               minLength="6"
               className="form-control"
               id="inputPassword"
-              placeholder="пароль"
+              placeholder=" пароль"
             />
           </div>
-          <Button name="ВОЙТИ" />
+	        <li className={styles.logininput}><Button name="В О Й Т И" /></li>
         </form>
-        <li>
-          <Link to="/registration">регистрация</Link>
-        </li>
+	      <div>&nbsp;</div>
+	      <div>&nbsp;</div>
+	      <li className={styles.logininput}>если нет пароля -</li>
+	      <li className={styles.logininput}>нажмите ниже на</li>
+	      <li className={styles.logininput}><Link to="/registration">Р Е Г И С Т Р А Ц И Я</Link></li>
       </main>
-    </div> 
+    </div>
     }
     </>
   )
