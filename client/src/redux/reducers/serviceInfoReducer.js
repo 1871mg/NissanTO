@@ -20,7 +20,7 @@ const initialState = {
     serviceIdStatus: false,
     componentId: [],
     addComponentTotalPrice: 0,
-    orderAdditionsTotalPrice: 0
+    orderAdditionsTotalPrice: 0,
   },
 }
 
@@ -83,32 +83,54 @@ export const serviceInfoReducer = (state = initialState, action) => {
 
     case ADD_ADDITIONAL_SERVICE:
       const newAddAdditionalService = { ...state }
-      newAddAdditionalService.newOrder.serviceId.push(action.payload)
-      newAddAdditionalService.newOrder.serviceIdStatus = true
+      newAddAdditionalService.newOrder = { ...state.newOrder }
+      newAddAdditionalService.newOrder.serviceId = [
+        ...state.newOrder.serviceId,
+        action.payload,
+      ]
+      let filterStateServices = []
       newAddAdditionalService.newOrder.serviceId.forEach(
         (el) =>
-          (newAddAdditionalService.services =
-            newAddAdditionalService.services.filter(
-              (service) => service.id !== el.value
-            ))
+          (filterStateServices = newAddAdditionalService.services.filter(
+            (service) => service.id !== el.value
+          ))
       )
-      newAddAdditionalService.newOrder.serviceId.forEach((service) => newAddAdditionalService.newOrder.addServiceTotalPrice += service.price)
-      newAddAdditionalService.newOrder.orderAdditionsTotalPrice = newAddAdditionalService.newOrder.addServiceTotalPrice + newAddAdditionalService.newOrder.addComponentTotalPrice
+      newAddAdditionalService.services = filterStateServices
+      newAddAdditionalService.newOrder.serviceId.forEach(
+        (service) =>
+          (newAddAdditionalService.newOrder.addServiceTotalPrice +=
+            service.price)
+      )
+      newAddAdditionalService.newOrder.orderAdditionsTotalPrice =
+        newAddAdditionalService.newOrder.addServiceTotalPrice +
+        newAddAdditionalService.newOrder.addComponentTotalPrice
 
       return { ...newAddAdditionalService }
+
     case ADD_ADDITIONAL_COMPONENT:
       const newAddAdditionalComponent = { ...state }
-      newAddAdditionalComponent.newOrder.componentId.push(action.payload)
+      newAddAdditionalComponent.newOrder = { ...state.newOrder }
+      newAddAdditionalComponent.newOrder.componentId = [
+        ...state.newOrder.componentId,
+        action.payload,
+      ]
+      let filterStateComponents = []
       newAddAdditionalComponent.newOrder.componentId.forEach(
         (el) =>
-          (newAddAdditionalComponent.components =
-            newAddAdditionalComponent.components.filter(
-              (component) => component.id !== el.value
-            ))
+          (filterStateComponents = newAddAdditionalComponent.components.filter(
+            (component) => component.id !== el.value
+          ))
       )
-      newAddAdditionalComponent.newOrder.componentId.forEach((component) => newAddAdditionalComponent.newOrder.addComponentTotalPrice += component.price)
-      newAddAdditionalComponent.newOrder.orderAdditionsTotalPrice = newAddAdditionalComponent.newOrder.addServiceTotalPrice + newAddAdditionalComponent.newOrder.addComponentTotalPrice
+      newAddAdditionalComponent.components = filterStateComponents
 
+      newAddAdditionalComponent.newOrder.componentId.forEach(
+        (component) =>
+          (newAddAdditionalComponent.newOrder.addComponentTotalPrice +=
+            component.price)
+      )
+      newAddAdditionalComponent.newOrder.orderAdditionsTotalPrice =
+        newAddAdditionalComponent.newOrder.addServiceTotalPrice +
+        newAddAdditionalComponent.newOrder.addComponentTotalPrice
 
       return { ...newAddAdditionalComponent }
 

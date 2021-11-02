@@ -1,3 +1,4 @@
+
 import React from 'react';
 import styles from './AddCar.module.css';
 import Button from '../UI/Button/Button';
@@ -5,9 +6,11 @@ import SelectModelButton from '../UI/SelectModelButton/SelectModelButton';
 import SelectMileageButton from '../UI/SelectMileageButton/SelectMileageButton';
 import SelectYearIssueButton from '../UI/SelectYearIssueButton/SelectYearIssueButton';
 
+
 function AddCar() {
   return (
     <ul className={styles.addcar}>
+
 	    <SelectModelButton />
 	    <SelectYearIssueButton />
 	    <input
@@ -20,7 +23,7 @@ function AddCar() {
 	    <SelectMileageButton />
       <Button name='ДОБАВИТЬ АВТОМОБИЛЬ'/>
     </ul>
-  );
+  )
 }
 
-export default AddCar;
+export default AddCar

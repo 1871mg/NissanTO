@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import {useHistory} from 'react-router'
 import SelectModelButton from '../UI/SelectModelButton/SelectModelButton'
@@ -27,12 +27,6 @@ const Main = () => {
   }
   const history = useHistory()
 
-  // useEffect(() => {
-  //   if (carModelId && milegeId) {
-  //     dispatch(sagaGetServiceTypeAC({ carModelId, milegeId }))
-  //   }
-  // }, [carModelId, milegeId])
-
   const hidetextMain = () => {
     dispatch(hideTextMain())
     history.push('/servicelist')
@@ -44,7 +38,7 @@ const Main = () => {
       <SelectMileageButton />
       <Offer />
 
-      <Button clickFunc={hidetextMain} name='ПОДРОБНО'/>
+      <Button clickFunc={hidetextMain} name='ПОДРОБНЕЕ'/>
       <>
       {carImg ? <><li><img src={carImg} alt="" /></li>
 	    <></></> : <><li><img src={auto} alt="" /></li>
