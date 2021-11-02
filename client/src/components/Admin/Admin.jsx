@@ -7,7 +7,7 @@ import Button from '../UI/Button/Button'
 
 const Admin = () => {
   const dispatch = useDispatch()
-  
+  const history = useHistory()
   const admin  = useSelector((state) => state.adminReducer.admin)
 
   const sendLogForm = async (event) => {
@@ -18,15 +18,18 @@ const Admin = () => {
       password: dataInput.get('password'),
     }
     dispatch(sagaGetLoginAdminAC(body))
+
+  }
+  
+  if(admin) {
+    history.push('/admin/profile');
   }
 
   return (
     <>
     {
-      admin 
-      ?
-      <Redirect to="/admin/profile" />
-      : 
+      !admin &&
+      
       <div className={styles.login}>
       <main className="form">
         <form
