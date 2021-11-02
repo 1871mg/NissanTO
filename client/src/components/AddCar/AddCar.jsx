@@ -18,9 +18,20 @@ function AddCar() {
   }
 
   const newCar = useSelector((state) => state.serviceInfoReducer.newCar)
+  const {id} = useSelector((state) => state.userReducer.user)
+
+  const body = {
+    ownerId : id,
+    modelId : newCar.modelId, 
+    stateNumber : newCar.stateNumber, 
+    yearIssue: newCar.yearIssue,  
+    milegeId : newCar.milegeId,
+  }
+  console.log(body);
+
   const saveAuto = () => {
     if (newCar) {
-      dispatch(sagaCreateOwnerCarAC(newCar))
+      dispatch(sagaCreateOwnerCarAC(body))
     }
   }
   return (

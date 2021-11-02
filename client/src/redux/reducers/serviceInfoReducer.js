@@ -63,22 +63,32 @@ export const serviceInfoReducer = (state = initialState, action) => {
       newsetModelState.mainSelectValue.imgCar = newsetModelState.allModels.find(
         (carModel) => carModel.id === action.payload
       ).photoLink
+      newsetModelState.newCar = { ...state.newCar }
       newsetModelState.newCar.modelId = action.payload
       return { ...newsetModelState }
+
+    // case SET_MODEl_SELECT_CAR:
+    //   const newsetModelSelectCar = { ...state }
+    //   newsetModelSelectCar.newCar = { ...state.newCar }
+    //   newsetModelSelectCar.newCar.modelId = action.payload
+    //   return { ...newsetModelSelectCar }
 
     case SET_MILEGE_SELECT:
       const newsetMilegeState = { ...state }
       newsetMilegeState.mainSelectValue.milegeId = action.payload
+      newsetMilegeState.newCar = { ...state.newCar }
       newsetMilegeState.newCar.milegeId = action.payload
       return { ...newsetMilegeState }
 
     case SET_YEAR_SELECT:
       const newsetYearState = { ...state }
+      newsetYearState.newCar = { ...state.newCar }
       newsetYearState.newCar.yearIssue = action.payload
       return { ...newsetYearState }
 
     case SET_STATE_NUMBER:
       const newsetStateNumber = { ...state }
+      newsetStateNumber.newCar = { ...state.newCar }
       newsetStateNumber.newCar.stateNumber = action.payload
       return { ...newsetStateNumber }
 
@@ -114,8 +124,8 @@ export const serviceInfoReducer = (state = initialState, action) => {
       newServiceTypeState.newOrder.orderAdditionsTotalPrice = 0
       newServiceTypeState.newOrder.totalPrice = 0
       newServiceTypeState.newOrder.totalPrice =
-      newServiceTypeState.servicesAllPrice.totalServiceTypePrice +
-      newServiceTypeState.newOrder.orderAdditionsTotalPrice
+        newServiceTypeState.servicesAllPrice.totalServiceTypePrice +
+        newServiceTypeState.newOrder.orderAdditionsTotalPrice
 
       return { ...newServiceTypeState }
 
@@ -186,7 +196,7 @@ export const serviceInfoReducer = (state = initialState, action) => {
       newAddAdditionalComponent.newOrder.orderAdditionsTotalPrice =
         newAddAdditionalComponent.newOrder.addServiceTotalPrice +
         newAddAdditionalComponent.newOrder.addComponentTotalPrice
-        newAddAdditionalComponent.newOrder.totalPrice =
+      newAddAdditionalComponent.newOrder.totalPrice =
         newAddAdditionalComponent.servicesAllPrice.totalServiceTypePrice +
         newAddAdditionalComponent.newOrder.orderAdditionsTotalPrice
 
