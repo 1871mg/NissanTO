@@ -1,0 +1,11 @@
+.adminMain {
+    margin-top: 90px;
+    background: lightslategray;
+    height: 100vh;
+    width: 100vw;
+    color: whitesmoke;
+}
+
+.ordersHeader {
+  text-align: center;
+}

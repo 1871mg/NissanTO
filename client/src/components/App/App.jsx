@@ -27,9 +27,9 @@ function App() {
 
   useEffect(() => {
     dispatch(sagaCheckSessionAC());
-    dispatch(sagaCheckSessionAdminAC())
+    dispatch(sagaCheckSessionAdminAC());
     dispatch(sagaGetServiceInfoAC());
-    // dispatch(sagaGetOrdersAC());
+    dispatch(sagaGetOrdersAC());
   }, [])
 
   return (
@@ -62,9 +62,8 @@ function App() {
             <AddCar />
           </Route>
 
-            
+
           <PrivateRoute exact path="/calendar" isAuthenticated={user}>
-            console.log(user);
             <Calendar />
           </PrivateRoute>
 

@@ -27,9 +27,8 @@ function ServiceList() {
     (state) => state.serviceInfoReducer.newOrder
   )
 
-  
-
   return (
+
     <>
       <ul className={styles.servicelist}>
         <div className={styles.whitetext}>
@@ -51,8 +50,9 @@ function ServiceList() {
             Cтоимость {serviceType.title}:{' '}
             {servicesTotalPrice.totalServiceTypePrice} ₽
           </div>
-        </div>
+        
         <div>
+        <div>&nbsp;</div>
           <div>Дополнительные услуги:</div>
           <>
             {addServices.length
@@ -82,10 +82,18 @@ function ServiceList() {
               : 'Ничего не выбрано'}
           </>
           <div>
-            Общая стоимость дополнительныx деталей:{' '}
-            {orderAdditionsPrices.addComponentTotalPrice} ₽
+	          <div>&nbsp;</div>
+              <div>Дополнительные детали:</div>
+              <>{addComponents.length > 0 ? addComponents.map((addComponent) => addComponent = <div key={addComponent.value}>{addComponent.label}</div>) : 'Ничего не выбрано'}</>
+            <div>Общая стоимость допдеталей: {orderAdditionsPrices.addComponentTotalPrice} ₽</div>
+          </div>
+          <div>
+              Общая стоимость дополнительныx деталей:{' '}
+             {orderAdditionsPrices.addComponentTotalPrice} ₽
+
           </div>
           <div>Полная стоимость обслуживания: {orderAdditionsPrices.totalPrice}</div>
+        </div>
         </div>
         <SelectServiceButton />
         <SelectComponentsButton />
@@ -96,8 +104,8 @@ function ServiceList() {
           name="ВЫБРАТЬ ДАТУ И ВРЕМЯ"
         />
       </div>
-    </>
-  )
+    </>  
+    )
 }
 
 export default ServiceList

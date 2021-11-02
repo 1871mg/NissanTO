@@ -16,6 +16,8 @@ const servicesRouter = require('./routes/services.router');
 const scheduleRouter = require('./routes/schedule.router');
 const adminRouter = require('./routes/admin.router')
 const carRouter = require('./routes/car.router')
+const ordersRouter = require('./routes/orders.route');
+
 
 const app = express();
 
@@ -49,6 +51,7 @@ app.use('/logout', logoutRouter);
 app.use('/isauth', isAuthRouter);
 app.use('/admin', adminRouter);
 app.use('/car', carRouter)
+app.use('/orders', ordersRouter);
 
 const PORT = process.env.PORT || 5000;
 

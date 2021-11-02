@@ -3,11 +3,9 @@
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100px;
+    height: 80px;
     background: rgba(255,255,255,0.3);
 }
-
-
 
 a {
     color: white;
@@ -21,14 +19,27 @@ a {
     background-color: transparent;
     cursor: pointer;
 }
+.adminNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.adminHeader {
+  color: whitesmoke;
+  
+}
 
 @media (min-width: 430pt) {
     .navbar {
-        height: 100px;
+        height: 80px;
     }
     ul {
-        padding: 17px 0 0 0;
+        padding: 10px 0 0 0;
     }
 }
 
+.navbartext {
+    padding: 0 0px 9px 0px;
+    margin: 4px;
+}
 
