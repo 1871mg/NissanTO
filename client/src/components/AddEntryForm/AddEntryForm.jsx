@@ -43,11 +43,10 @@ const AddEntryForm = ({closeModel}) => {
     dispatch(addOrder(data.orderToRender))
     dispatch(changeCurrentDay(new Date(data.endDateNewOrder)))
     alert('Запись прошла успешно!');
+    closeModel();
   } else {
     alert('Данное время уже занято!')
   }
-
-  closeModel();
  }
 
 
