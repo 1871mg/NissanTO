@@ -50,7 +50,7 @@ function ServiceList() {
             Cтоимость {serviceType.title}:{' '}
             {servicesTotalPrice.totalServiceTypePrice} ₽
           </div>
-        </div>
+        
         <div>
         <div>&nbsp;</div>
           <div>Дополнительные услуги:</div>
@@ -93,6 +93,7 @@ function ServiceList() {
 
           </div>
           <div>Полная стоимость обслуживания: {orderAdditionsPrices.totalPrice}</div>
+        </div>
         </div>
         <SelectServiceButton />
         <SelectComponentsButton />
