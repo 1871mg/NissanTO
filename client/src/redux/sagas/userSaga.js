@@ -4,11 +4,13 @@ import {
   SAGA_GET_REGISTRATION,
   SAGA_GET_LOGIN,
   SAGA_GET_LOGOUT,
-  SAGA_CREATE_OWNER_CAR
-
+  SAGA_CREATE_OWNER_CAR,
 } from '../actionTypes/asyncAT/asyncUserAT'
-import { checkSessionAC, setErrorPassConfirmAC, getLogoutAC } from '../actionCreators/userAC'
-
+import {
+  checkSessionAC,
+  setErrorPassConfirmAC,
+  getLogoutAC,
+} from '../actionCreators/userAC'
 
 const fetchGetUserSession = async () => {
   const response = await fetch('http://localhost:5000/isauth', {
@@ -79,14 +81,15 @@ const fetchGetLogout = async (action) => {
   })
 
   const dataFromServer = await response.json()
-  console.log('logout', dataFromServer);
+  console.log('logout', dataFromServer)
   return dataFromServer
 }
 
 function* getLogoutWorcker() {
-  const { isUserLogout } = yield call(fetchGetLogout )
+  const { isUserLogout } = yield call(fetchGetLogout)
   if (isUserLogout) {
-    yield put(getLogoutAC(isUserLogout))}
+    yield put(getLogoutAC(isUserLogout))
+  }
   //  else {
   //   yield put(setErrorPassConfirmAC(false))
   //   // setErrorMessage(dataFromServer.message);
@@ -94,6 +97,7 @@ function* getLogoutWorcker() {
 }
 
 const fetchCreateOwnerCar = async (action) => {
+  console.log('fetch', action.payload)
   const response = await fetch('http://localhost:5000/car', {
     method: 'POST',
     credentials: 'include',
@@ -108,7 +112,7 @@ const fetchCreateOwnerCar = async (action) => {
 }
 
 function* createOwnerCarWorcker(action) {
-  const  ownerCar  = yield call(fetchCreateOwnerCar, action)
+  const ownerCar = yield call(fetchCreateOwnerCar, action)
 }
 
 export function* userWatcher() {

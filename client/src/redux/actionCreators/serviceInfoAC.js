@@ -9,6 +9,7 @@ import {
   SHOW_TEXT_MAIN,
   ADD_ADDITIONAL_SERVICE,
   ADD_ADDITIONAL_COMPONENT,
+ 
 } from '../actionTypes/serviceInfoAT'
 
 export const getServiceInfo = (payload) => {
@@ -78,3 +79,5 @@ export const addAdditionalComponentAC = (payload) => {
     payload,
   }
 }
+
+
