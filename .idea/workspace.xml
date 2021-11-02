@@ -2,16 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="198db94e-91e9-4dbb-ba35-ab30f25097f8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/client/src/components/UI/SelectYearIssueButton/SelectYearIssueButton.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/UI/SelectYearIssueButton/SelectYearIssueButton.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/App/App.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/App/App.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/ServiceList/ServiceList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/ServiceList/ServiceList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/ServiceList/ServiceList.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/ServiceList/ServiceList.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/UI/Button/Button.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UI/Button/Button.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/UI/SelectComponentsButton/SelectComponentsButton.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UI/SelectComponentsButton/SelectComponentsButton.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/UI/SelectComponentsButton/SelectComponentsButton.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UI/SelectComponentsButton/SelectComponentsButton.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/UI/SelectServiceButton/SelectServiceButton.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UI/SelectServiceButton/SelectServiceButton.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/UI/SelectServiceButton/SelectServiceButton.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UI/SelectServiceButton/SelectServiceButton.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/db/config/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/db/config/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/AddCar/AddCar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/AddCar/AddCar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/AddCar/AddCar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/AddCar/AddCar.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/UI/ButtonSubmit/ButtonSubmit.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UI/ButtonSubmit/ButtonSubmit.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +17,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -40,7 +36,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js.linters.configure.manually.selectedeslint" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/client/src/components/UI" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/client/src/components/UI/SelectYearIssueButton" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -52,11 +48,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/src/components/UI/SelectYearIssueButton" />
       <recent name="$PROJECT_DIR$/client/src/components/UI" />
       <recent name="$PROJECT_DIR$/client/src/components/Offer" />
       <recent name="$PROJECT_DIR$/client/src/components/UI/SelectMileageButton" />
       <recent name="$PROJECT_DIR$/client/src/components/Main" />
-      <recent name="$PROJECT_DIR$/client/src/components/Navbar" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -73,7 +69,8 @@
       <workItem from="1635669825799" duration="14644000" />
       <workItem from="1635747422245" duration="3234000" />
       <workItem from="1635753492285" duration="1066000" />
-      <workItem from="1635755125561" duration="11827000" />
+      <workItem from="1635755125561" duration="16295000" />
+      <workItem from="1635840540148" duration="2125000" />
     </task>
     <servers />
   </component>

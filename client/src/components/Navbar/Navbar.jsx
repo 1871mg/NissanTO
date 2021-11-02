@@ -29,7 +29,7 @@ const Navbar = () => {
           && (
           <>
             <li><Link to="/profile">профиль</Link></li>
-            <li><button onClick={logoutFunc}>выйти</button></li>
+            <li><button className={styles.navbarexit} onClick={logoutFunc}>выйти</button></li>
           </>
           )}
           {!user
