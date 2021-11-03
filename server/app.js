@@ -50,7 +50,7 @@ app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
 app.use('/isauth', isAuthRouter);
 app.use('/admin', adminRouter);
-app.use('/car', carRouter)
+app.use('/car', carRouter);
 app.use('/orders', ordersRouter);
 
 const PORT = process.env.PORT || 5000;
