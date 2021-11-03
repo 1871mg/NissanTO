@@ -1,7 +1,7 @@
 import React from 'react';
 import { getDayForInput } from '../../utils/getToday';
 import { getMaxDayFromToday } from '../../utils/getMaxDay';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addOrder } from '../../redux/actionCreators/ordersAC';
 import { changeCurrentDay } from '../../redux/actionCreators/calendarAC'
 import styles from './AddEntryForm.module.css';
@@ -11,6 +11,11 @@ import Button from '../UI/Button/Button'
 
 const AddEntryForm = ({closeModel}) => {
   const dispatch = useDispatch();
+  const {ownerCars} = useSelector(state => state.userReducer.user)
+  const serviceIds = useSelector(state => state.serviceInfoReducer.newOrder.serviceId)  
+  const componentId = useSelector(state => state.serviceInfoReducer.newOrder.componentId)
+  const fullServiceId = useSelector(state => state.serviceInfoReducer.newOrder.fullServiceId) 
+
 
   const onSubmit = async (event) => {
   event.preventDefault();
@@ -19,10 +24,11 @@ const AddEntryForm = ({closeModel}) => {
 
   //const endDate = new Date(startDate.getTime() + (2 * 60 * 60 * 1000)) // 2 - количество часов - обработка на сервере
 
-  const serviceIds = ['1', '2', '3']   // заглушка - идет из стейта
-  const fullServiceId = '4'  // заглушка - идет из стейта
-  const carId = '1' // заглушка - идет из инпута или стейта
-
+    console.log('car.value', car.value,)
+      console.log('serviceIds', serviceIds,)
+      console.log('componentId', componentId,)
+      console.log('fullServiceId', fullServiceId,)
+      console.log('startDate', startDate,)
 
   const response = await fetch('http://localhost:5000/schedule', {
     method: 'POST',
@@ -31,13 +37,15 @@ const AddEntryForm = ({closeModel}) => {
       'content-type': 'application/json'
     },
     body: JSON.stringify({
-      carId,
+      carId: car.value,
       serviceIds,
+      componentId,
       fullServiceId,
       startDate,
     })
 
   })
+
   const data = await response.json()
   if(data.isOrdered) {
     dispatch(addOrder(data.orderToRender))
@@ -54,7 +62,7 @@ const AddEntryForm = ({closeModel}) => {
   	<ul className={styles.addentryform}>
     <form onSubmit={onSubmit}>
       <select name="car" id="">
-        <option value="car 1">Car 1</option>
+        <>{ownerCars.map(ownerCar => <option key={ownerCar.id} value={ownerCar.id}>{ownerCar.CarModel.title} {ownerCar.stateNumber} {ownerCar.yearIssue}г. </option>)}</>
       </select>
       <li>выберите дату и время</li>
       <input required name="date" defaultValue={getDayForInput(new Date())} type="date" min={getDayForInput(new Date())} max={getMaxDayFromToday(30)} />
