@@ -1,10 +1,13 @@
 import React from 'react'
 import styles from './Profile.module.css'
 import Button from '../UI/Button/Button'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import {hideTextMain} from '../../redux/actionCreators/serviceInfoAC'
 
 function Profile() {
+  const dispatch = useDispatch()
+  dispatch(hideTextMain())
   const { ownerCars } = useSelector((state) => state.userReducer.user)
 
   return (
@@ -14,7 +17,7 @@ function Profile() {
         {ownerCars ?
         ownerCars.length ? (
           ownerCars.map((ownerCar) => (
-            <li>
+            <li key={ownerCar.id}>
               Авто: {ownerCar.CarModel.title} гос.номер: {ownerCar.stateNumber}{' '}
               год выпуска: {ownerCar.yearIssue} пробег: {ownerCar.Milege.distanse}км
             </li>
@@ -31,7 +34,7 @@ function Profile() {
       <li>Nissan Tiida (C13)</li>
       <li>Nissan Pathfinder (R51) 2,5 турбодизель DPF</li>
       <Link to="/car">ДОБАВИТЬ АВТО</Link> 
-      <Link to="/calendar">ЗАПИСАТЬСЯ НА ТО</Link>
+      <Link to="/">ЗАПИСАТЬСЯ НА ТО</Link>
     </ul>
   )
 }

@@ -30,7 +30,8 @@ function ServiceList() {
     (state) => state.serviceInfoReducer.newOrder
   )
   const { user } = useSelector((state) => state.userReducer)
-
+  
+  const ownerCar = useSelector(state => state.serviceInfoReducer.newOrder.model)
   const clickButton = () => {
     if (user) {
       history.push('/calendar')
@@ -43,6 +44,7 @@ function ServiceList() {
     <>
       <ul className={styles.servicelist}>
         <div className={styles.whitetext}>
+          <div className={styles.whitetext}>{`Авто: ${ownerCar}`}</div>
           <>
             {servicesList.Services.map((service) => (
               <div key={service.id}>

@@ -7,6 +7,10 @@ router.get('/', async (req, res) => {
     const isUserAuth = !!req.session.user;
     const isAdminAuth = !!req.session.admin;
     if (isUserAuth) {
+      if(!req.session.user.ownerCars.length){
+        req.session.user.loginEntrance = true,
+        req.session.user.registerEntrance = false
+      }
       res.json({ user: req.session.user, admin: false });
     } else if (isAdminAuth) {
       res.json({ admin: req.session.admin, user: false });
