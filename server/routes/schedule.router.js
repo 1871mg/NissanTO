@@ -55,7 +55,6 @@ router.get('/', async (req, res) => {
           order.Worker.lastname,
           order.Worker.parentname),
       };
-      console.log(orderObj);
       scheduleData.push(orderObj);
     }
 

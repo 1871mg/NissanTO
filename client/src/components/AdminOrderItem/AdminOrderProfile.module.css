@@ -1,0 +1,16 @@
+
+.orderItem {
+  border: 1px solid whitesmoke;
+  margin-bottom: 10px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.orderItem:hover {
+  background-color: whitesmoke;
+  color: #778798;
+  transition: all 0.4s;
+  border-radius: 5px;
+}
+
+

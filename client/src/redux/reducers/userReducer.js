@@ -5,6 +5,7 @@ const initialState = { user: false, isError: null, isUserLogout: false }
 export const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case CHECK_SESSION:
+      console.log(action.payload);
       return { ...state, user: action.payload, isUserLogout: false };
     case SET_ERROR_PASS_CONFIRM:
       return {...state, isError: action.payload}

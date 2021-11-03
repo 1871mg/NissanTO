@@ -2,9 +2,11 @@ const express = require('express');
 
 const router = express.Router();
 
-router.get('/', async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
-    res.send('profile');
+    const orderId = req.params.id;
+
+    res.json({ orderId });
   } catch (error) {
     console.log(error.message);
     res.status(500).end();
