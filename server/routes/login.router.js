@@ -37,7 +37,7 @@ router.post('/', async (req, res) => {
       include: [
         {
           model: CarModel,
-          attributes: ['id', 'title',],
+          attributes: ['id', 'title', 'photoLink'],
         },
         {
           model: Milege,

@@ -1,13 +1,16 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import styles from './ServiceList.module.css'
 import { useHistory } from 'react-router'
 import Button from '../UI/Button/Button'
 import SelectComponentsButton from '../UI/SelectComponentsButton/SelectComponentsButton'
 import SelectServiceButton from '../UI/SelectServiceButton/SelectServiceButton'
+import { hideTextMain } from '../../redux/actionCreators/serviceInfoAC'
 
 function ServiceList() {
   const history = useHistory()
+  const dispatch = useDispatch()
+  dispatch(hideTextMain())
   const serviceType = useSelector(
     (state) => state.serviceInfoReducer.fullService
   )
@@ -26,6 +29,15 @@ function ServiceList() {
   const orderAdditionsPrices = useSelector(
     (state) => state.serviceInfoReducer.newOrder
   )
+  const { user } = useSelector((state) => state.userReducer)
+
+  const clickButton = () => {
+    if (user) {
+      history.push('/calendar')
+    } else {
+      history.push('/login')
+    }
+  }
 
   return (
     <>
@@ -88,19 +100,15 @@ function ServiceList() {
             <div>&nbsp;</div>
             <div>Итого: {orderAdditionsPrices.totalPrice} ₽</div>
           </div>
-	        <div>&nbsp;</div>
+          <div>&nbsp;</div>
           <div>Итого: {orderAdditionsPrices.totalPrice} ₽</div>
-        </div>
         </div>
 
         <SelectServiceButton />
         <SelectComponentsButton />
       </ul>
       <div className={styles.buttonDateTime}>
-        <Button
-          clickFunc={() => history.push('/calendar')}
-          name="ВЫБРАТЬ ДАТУ И ВРЕМЯ"
-        />
+        <Button clickFunc={clickButton} name="ВЫБРАТЬ ДАТУ И ВРЕМЯ" />
       </div>
     </>
   )
