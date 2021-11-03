@@ -11,6 +11,7 @@ import {
   checkSessionAC,
   setErrorPassConfirmAC,
   getLogoutAC,
+  setUserCarsAC
 } from '../actionCreators/userAC'
 
 const fetchGetUserSession = async () => {
@@ -114,6 +115,9 @@ const fetchCreateOwnerCar = async (action) => {
 
 function* createOwnerCarWorcker(action) {
   const ownerCar = yield call(fetchCreateOwnerCar, action)
+  if (ownerCar) {
+    yield put(setUserCarsAC(ownerCar))
+  }
 }
 
 export function* userWatcher() {

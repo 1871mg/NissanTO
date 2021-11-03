@@ -29,8 +29,6 @@ router.post('/', async (req, res) => {
       MilegeId: milegeId,
     })
 
-    console.log(ownerCar)
-
     res.json({ ownerCar })
   } catch (error) {
     console.log(error.message)

@@ -32,6 +32,7 @@ router.post('/', async (req, res) => {
       lastname: user.lastname,
       phone: user.phone,
       email: user.email,
+      registerEntrance: true
     };
 
     res.json({ user: req.session.user });
