@@ -1,11 +1,30 @@
 const components = [
-  { title: 'Корпус двигателя almera', price: 17500, counterType: '1шт' },
-  { title: 'Корпус двигателя tiida', price: 20000, counterType: '1шт' },
-  { title: 'Корпус двигателя juke', price: 22250, counterType: '1шт' },
-  { title: 'Корпус двигателя qashqai', price: 35500, counterType: '1шт' },
-  { title: 'Корпус двигателя pathfinder', price: 45000, counterType: '1шт' },
-  { title: 'Антифриз Nissan Coolant L248 Premix', price: 420, counterType: '1л' },
-  { title: 'Смазка направляющих суппортов Toyota', price: 250, counterType: '100гр' },
+
+  // Almera (G15) (Наименование всех запчастей для всех ТО)
+  { title: 'Уплотнительное кольцо', price: 79, counterType: '1шт' },
+  { title: 'Масляный фильтр', price: 450, counterType: '1шт' },
+  { title: 'Фильтр воздушный', price: 1050, counterType: '1шт' },
+  { title: 'Масло моторное', price: 2500, counterType: '4.8л' },
+  { title: 'Набор автохимии для технического обслуживания', price: 1250, counterType: '1шт' },
+
+  { title: 'Болт катушки зажигания', price: 650, counterType: '4шт' },
+  { title: 'Свечи зажигания', price: 1350, counterType: '4шт' },
+  { title: 'Жидкость тормозная', price: 950, counterType: '1шт' },
+
+  { title: 'Болт натяжителя ремня грм', price: 90, counterType: '1шт' },
+  { title: 'Болт катушки зажигания', price: 650, counterType: '4шт' },
+  { title: 'Заглушка впускного распредвала', price: 300, counterType: '4шт' },
+  { title: 'Заглушка выпускного распредвала', price: 250, counterType: '1шт' },
+  { title: 'Ремень привода генератора', price: 2650, counterType: '1шт' },
+  { title: 'Обводной ролик приводного ремня', price: 1900, counterType: '1шт' },
+  { title: 'Натяжитель приводного ремня', price: 3800, counterType: '1шт' },
+  { title: 'Шкив коленчатого вала', price: 5500, counterType: '1шт' },
+  { title: 'Болт ролика натяжителя', price: 200, counterType: '1шт' },
+  { title: 'Ремень привода грм', price: 7200, counterType: '1шт' },
+
+  { title: 'Охлаждающая жидкость type d (концентрат)', price: 2400, counterType: '2.8л' },
+
+  //
 ];
 
 module.exports = {

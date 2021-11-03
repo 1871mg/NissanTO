@@ -1,3 +1,5 @@
+const bcrypt = require('bcrypt');
+
 const owners = [
   {
     firstname: 'ИванOwner', parentname: 'Иванович', lastname: 'Иванов', email: 'ivan@mail.ru', phone: '89111111111', password: '123456789',
@@ -35,7 +37,7 @@ module.exports = {
         lastname: owners[i].lastname,
         email: owners[i].email,
         phone: owners[i].phone,
-        password: owners[i].password,
+        password: await bcrypt.hash(owners[i].password, 10),
 
         createdAt: new Date(),
         updatedAt: new Date(),
