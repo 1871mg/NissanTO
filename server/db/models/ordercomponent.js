@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
           model: 'Order',
           key: 'id',
         },
+        onDelete: 'cascade',
       },
       ComponentId: {
         primaryKey: true,

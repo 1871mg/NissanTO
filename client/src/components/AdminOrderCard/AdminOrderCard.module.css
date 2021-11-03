@@ -1,0 +1,81 @@
+
+.card{
+  border: 1px solid whitesmoke;
+  margin: 100px auto;
+  padding: 10px;
+  width: 90%;
+  height: 100vh;
+  color: whitesmoke;
+  border-radius: 5px;
+}
+
+.textCenter {
+  text-align: center;
+}
+
+.cardInfo {
+  padding: 20px;
+}
+
+.cardInfo p {
+  margin-top: 10px;
+}
+
+.cardInfo div {
+  margin-top: 10px;
+}
+
+.active {
+  font-weight: bold;
+}
+
+.finished {
+  text-decoration: line-through;
+  font-style: italic;
+}
+
+.buttonDelete {
+  background-color: transparent;
+  width: 150px;
+  color: white;
+  border: 1px solid #e7e7e7;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px 20px 10px 20px;
+  transition-duration: 0.5s;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.buttonDelete:hover {
+  background-color: #c76b6b;
+  border-radius: 7px;
+}
+
+.buttonFinish {
+  width: 150px;
+  background-color: transparent;
+  color: white;
+  border: 1px solid #e7e7e7;
+  padding: 16px 24px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px 20px 10px 20px;
+  transition-duration: 0.5s;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.buttonFinish:hover {
+  background-color: #96bfe1;
+  border-radius: 7px;
+}
+
+
+
+

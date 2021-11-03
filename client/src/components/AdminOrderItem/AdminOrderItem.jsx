@@ -7,7 +7,7 @@ const AdminOrderItem = ({order}) => {
   const history = useHistory()
   
   return (
-    <div onClick={() => history.push(`/admin/profile/${order.id}`)} key={order.id} className={styles.orderItem}>
+    <div onClick={() => history.push(`/admin/profile/${order.id}`)} key={order.id} className={order.isComplite ? styles.orderItemComplite : styles.orderItemActive}>
       <p>{order.title}</p>
       <p>Начало: {setCurrentTimeZonePlus(new Date(order.startDate))}</p>
       <p>Окончание: {setCurrentTimeZonePlus(new Date(order.endDate))}</p>

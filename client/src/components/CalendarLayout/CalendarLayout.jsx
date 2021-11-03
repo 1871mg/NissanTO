@@ -170,7 +170,7 @@ const CalendarLayout = () => {
         startDayHour={9}
         endDayHour={22}
         name='День'
-        cellDuration={30}
+        cellDuration={60}
       />
 
       <Appointments
