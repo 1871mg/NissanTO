@@ -1,5 +1,6 @@
 import { call, put, takeEvery } from 'redux-saga/effects'
 
+
 import { SAGA_CHECK_SESSION_ADMIN, SAGA_GET_LOGIN_ADMIN, SAGA_GET_LOGOUT_ADMIN   } from '../actionTypes/asyncAT/asyncAdminAT'
 import { checkSessionAdminAC, getLogoutAdminAC } from '../actionCreators/adminAC'
 
@@ -18,8 +19,8 @@ const fetchGetLoginAdmin = async (action) => {
 }
 
 function* getLoginAdminWorker(action) {
-  console.log('getLoginAdminWorker', action);
   const { admin } = yield call(fetchGetLoginAdmin, action)
+  console.log(admin);
   if (admin) {
     yield put(checkSessionAdminAC(admin))
   } 
@@ -32,14 +33,12 @@ const fetchGetAdminSession = async () => {
     credentials: 'include',
   })
   const data = await response.json()
-  console.log(data);
   return data
 }
 
 function* checkSessionAdminWorker() {
   const { admin } = yield call(fetchGetAdminSession)
-  console.log(admin);
-  //if(!admin) yield put(checkSessionAdminAC(admin))
+  yield put(checkSessionAdminAC(admin))
 }
 
 const fetchGetLogoutAdmin = async (action) => {

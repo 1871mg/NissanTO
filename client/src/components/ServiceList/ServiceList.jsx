@@ -90,18 +90,16 @@ function ServiceList() {
           <div>Итого: {orderAdditionsPrices.totalPrice} ₽</div>
         </div>
         </div>
-        </div>
         <SelectServiceButton />
         <SelectComponentsButton />
       </ul>
       <div className={styles.buttonDateTime}>
         <Button
           clickFunc={() => history.push('/calendar')}
-          name="ВЫБРАТЬ ДАТУ И ВРЕМЯ"
-        />
+          name="ВЫБРАТЬ ДАТУ И ВРЕМЯ"/>
       </div>
     </>
-    )
+  )
 }
 
 export default ServiceList
