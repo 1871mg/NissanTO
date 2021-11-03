@@ -1,6 +1,6 @@
 import { CHECK_SESSION_ADMIN, GET_LOGOUT_ADMIN } from '../actionTypes/adminAT';
 
-const initialState = { admin: false }
+const initialState = { isLogout: true, admin: false }
 
 export const adminReducer = (state = initialState, action) => {
   switch (action.type) {

@@ -38,7 +38,7 @@ router.post('/login', async (req, res) => {
       phone: adminByPhone.phone,
       email: adminByPhone.email,
     };
-
+    console.log(req.session.admin);
     res.json({ admin: req.session.admin });
   } catch (error) {
     console.log(error.message);

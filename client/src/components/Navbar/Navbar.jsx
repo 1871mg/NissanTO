@@ -2,7 +2,7 @@ import React from 'react';
 import { Link , useHistory} from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { sagaGetLogoutAC } from '../../redux/actionCreators/asyncAC/asyncUserAC'
-import { getLogoutAdminAC } from '../../redux/actionCreators/adminAC'
+import { sagaGetLogoutAdminAC } from '../../redux/actionCreators/asyncAC/asyncAdminAC';
 import styles from './Navbar.module.css';
 import logo from './img/logo.svg';
 
@@ -12,9 +12,13 @@ const Navbar = () => {
   const user = useSelector((state) => state.userReducer.user);
   const admin = useSelector((state) => state.adminReducer.admin)
   const isUserLogout = useSelector((state) => state.userReducer.isUserLogout)
+  
   const logoutFunc = () => {
     dispatch(sagaGetLogoutAC())
-    dispatch(getLogoutAdminAC())
+ }
+
+ const logoutFuncAdmin = () => {
+  dispatch(sagaGetLogoutAdminAC())
  }
  if (isUserLogout) {
   history.push('/')
@@ -24,10 +28,18 @@ const Navbar = () => {
   return (
     <header className={styles.navbar}>
       <nav>
-        <ul>
+        {
+          admin ?
+          <div className={styles.adminNav}>
+            <h1 className={styles.adminHeader}>Adminka</h1>
+            <li><button className={styles.navbarexit} onClick={logoutFuncAdmin}>выйти</button></li>
+          </div>
+          
+          :
+          <ul>
 	        <Link to='/'><li><img src={logo} alt="" width="70px" /></li></Link>
 	        <div className={styles.navbartext}>
-          {user
+          {user 
           && (
           <>
             <li><Link to="/profile">профиль</Link></li>
@@ -43,6 +55,8 @@ const Navbar = () => {
 	        </div>
 
         </ul>
+        }
+        
       </nav>
     </header>
   );

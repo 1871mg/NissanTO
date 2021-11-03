@@ -19,6 +19,15 @@ a {
     background-color: transparent;
     cursor: pointer;
 }
+.adminNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.adminHeader {
+  color: whitesmoke;
+  
+}
 
 @media (min-width: 430pt) {
     .navbar {

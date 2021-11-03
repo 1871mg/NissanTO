@@ -40,7 +40,7 @@ router.post('/', async (req, res) => {
       phone: userByPhone.phone,
       email: userByPhone.email,
     };
-
+    console.log(req.session.user);
     res.json({ user: req.session.user });
   } catch (error) {
     console.log(error.message);

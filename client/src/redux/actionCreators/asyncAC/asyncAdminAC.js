@@ -7,9 +7,16 @@ export const sagaGetLoginAdminAC = (payload) => {
   }
 }
 
-export const sagaCheckSessionAdminAC = () => {
+export const sagaCheckSessionAdminAC = (payload) => {
   return {
     type: SAGA_CHECK_SESSION_ADMIN,
+    payload
+  }
+}
+
+export const sagaGetLogoutAdminAC = () => {
+  return {
+    type: SAGA_GET_LOGOUT_ADMIN,
   }
 }
 

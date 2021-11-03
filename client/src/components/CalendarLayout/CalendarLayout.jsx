@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
@@ -151,10 +150,7 @@ const CalendarLayout = () => {
   const currentDate = useSelector(state => state.calendarReducer.currentDate);
   const currentViewName = useSelector(state => state.calendarReducer.currentViewName);
   const onCurrentDateChange = (currentDate) => dispatch(changeCurrentDay(currentDate));
-  
-  useEffect(() => {
 
-  }, [])
   return (
 <div className={classes.calendarContainer}>
 {orders 

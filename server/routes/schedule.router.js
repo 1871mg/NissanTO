@@ -1,3 +1,4 @@
+/* eslint-disable no-await-in-loop */
 const express = require('express');
 const getShortName = require('../utils/getShortName');
 const getEndDate = require('../utils/getEndDate');
@@ -6,7 +7,7 @@ const setCurrentTimeZoneTimeMinus = require('../utils/setCurrentTimeZoneTimeMinu
 const sendEmail = require('../utils/sendEmail');
 
 const {
-  FullService, Order, Box, Worker,
+  FullService, Order, Box, Worker, Car, Owner, CarModel,
 } = require('../db/models');
 
 const router = express.Router();
@@ -18,23 +19,45 @@ router.get('/', async (req, res) => {
     });
 
     const activeOrders = orders.filter((order) => !order.isComplite);
-
-    const scheduleData = activeOrders.map((order) => {
+    const scheduleData = [];
+    for (let i = 0; i < activeOrders.length; i += 1) {
+      const order = activeOrders[i];
       const startDate = new Date(order.timeStart.getTime()
-       - (Math.abs(order.timeStart.getTimezoneOffset()) * 60 * 1000));
+        - (Math.abs(order.timeStart.getTimezoneOffset()) * 60 * 1000));
       const endDate = getEndDate(startDate, order.FullService.duration);
 
-      return {
+      const car = await Car.findOne({
+        where: {
+          id: order.CarId,
+        },
+      });
+      const owner = await Owner.findOne({
+        where: {
+          id: car.OwnerId,
+        },
+      });
+      const model = await CarModel.findOne({
+        where: {
+          id: car.CarModelId,
+        },
+      });
+      const orderObj = {
         location: order.Box.title,
         id: order.id,
         title: order.FullService.title,
         startDate,
         endDate,
+        carModel: model.title,
+        owner: getShortName(owner.firstname,
+          owner.lastname,
+          owner.parentname),
         worker: getShortName(order.Worker.firstname,
           order.Worker.lastname,
           order.Worker.parentname),
       };
-    });
+      console.log(orderObj);
+      scheduleData.push(orderObj);
+    }
 
     res.json({ scheduleData });
   } catch (error) {
