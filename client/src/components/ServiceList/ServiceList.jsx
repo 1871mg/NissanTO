@@ -28,7 +28,6 @@ function ServiceList() {
   )
 
   return (
-
     <>
       <ul className={styles.servicelist}>
         <div className={styles.whitetext}>
@@ -51,45 +50,44 @@ function ServiceList() {
             {servicesTotalPrice.totalServiceTypePrice} ₽
           </div>
 
-        <div>
-        <div>&nbsp;</div>
-          <div>Дополнительные услуги:</div>
-          <>
-            {addServices.length
-              ? addServices.map(
-                  (addService) =>
-                    (addService = (
-                      <div key={addService.value}>{addService.label}</div>
-                    ))
-                )
-              : 'Ничего не выбрано'}
-          </>
           <div>
-            Общая стоимость допуслуг:{' '}
-            {orderAdditionsPrices.addServiceTotalPrice} ₽
+            <div>&nbsp;</div>
+            <div>Дополнительные услуги:</div>
+            <>
+              {addServices.length
+                ? addServices.map(
+                    (addService) =>
+                      (addService = (
+                        <div key={addService.value}>{addService.label}</div>
+                      ))
+                  )
+                : 'Ничего не выбрано'}
+            </>
+            <div>
+              Общая стоимость допуслуг:{' '}
+              {orderAdditionsPrices.addServiceTotalPrice} ₽
+            </div>
           </div>
-        </div>
-        <div>
-	        <div>&nbsp;</div>
-          <div>Дополнительные запчасти:</div>
-          <>
-            {addComponents.length > 0
-              ? addComponents.map(
-                  (addComponent) =>
-                    (addComponent = (
-                      <div key={addComponent.value}>{addComponent.label}</div>
-                    ))
-                )
-              : 'Ничего не выбрано'}
-          </>
           <div>
+            <div>&nbsp;</div>
+            <div>Дополнительные запчасти:</div>
+            <>
+              {addComponents.length > 0
+                ? addComponents.map(
+                    (addComponent) =>
+                      (addComponent = (
+                        <div key={addComponent.value}>{addComponent.label}</div>
+                      ))
+                  )
+                : 'Ничего не выбрано'}
+            </>
+            <div>
               Общая стоимость допдеталей:{' '}
-             {orderAdditionsPrices.addComponentTotalPrice} ₽
+              {orderAdditionsPrices.addComponentTotalPrice} ₽
+            </div>
+            <div>&nbsp;</div>
+            <div>Итого: {orderAdditionsPrices.totalPrice} ₽</div>
           </div>
-	        <div>&nbsp;</div>
-          <div>Итого: {orderAdditionsPrices.totalPrice} ₽</div>
-        </div>
-        </div>
         </div>
         <SelectServiceButton />
         <SelectComponentsButton />
@@ -101,7 +99,7 @@ function ServiceList() {
         />
       </div>
     </>
-    )
+  )
 }
 
 export default ServiceList
