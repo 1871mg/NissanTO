@@ -1,7 +1,7 @@
 import React from 'react';
 import { getDayForInput } from '../../utils/getToday';
 import { getMaxDayFromToday } from '../../utils/getMaxDay';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addOrder } from '../../redux/actionCreators/ordersAC';
 import { changeCurrentDay } from '../../redux/actionCreators/calendarAC'
 import styles from './AddEntryForm.module.css';
@@ -11,18 +11,19 @@ import Button from '../UI/Button/Button'
 
 const AddEntryForm = ({closeModel}) => {
   const dispatch = useDispatch();
+  const {newOrder} = useSelector(state => state.serviceInfoReducer)
+  const serviceType = useSelector(state => state.serviceInfoReducer.fullService.title)
+  const serviceIds = useSelector(state => state.serviceInfoReducer.newOrder.serviceId)  
+  const componentId = useSelector(state => state.serviceInfoReducer.newOrder.componentId)
+  const fullServiceId = useSelector(state => state.serviceInfoReducer.newOrder.fullServiceId) 
+
 
   const onSubmit = async (event) => {
   event.preventDefault();
-  const { car, time, date } = event.target;
+  const {time, date } = event.target;
   const startDate = new Date(`${date.value} ${time.value}`)
 
   //const endDate = new Date(startDate.getTime() + (2 * 60 * 60 * 1000)) // 2 - количество часов - обработка на сервере
-
-  const serviceIds = ['1', '2', '3']   // заглушка - идет из стейта
-  const fullServiceId = '4'  // заглушка - идет из стейта
-  const carId = '1' // заглушка - идет из инпута или стейта
-
 
   const response = await fetch('http://localhost:5000/schedule', {
     method: 'POST',
@@ -31,13 +32,15 @@ const AddEntryForm = ({closeModel}) => {
       'content-type': 'application/json'
     },
     body: JSON.stringify({
-      carId,
+      carId: newOrder.carId,
       serviceIds,
+      componentId,
       fullServiceId,
       startDate,
     })
 
   })
+
   const data = await response.json()
   if(data.isOrdered) {
     dispatch(addOrder(data.orderToRender))
@@ -53,9 +56,7 @@ const AddEntryForm = ({closeModel}) => {
   return (
   	<ul className={styles.addentryform}>
     <form onSubmit={onSubmit}>
-      <select name="car" id="">
-        <option value="car 1">Car 1</option>
-      </select>
+      <li>{`${serviceType}: ${newOrder.model} `}</li>
       <li>выберите дату и время</li>
       <input required name="date" defaultValue={getDayForInput(new Date())} type="date" min={getDayForInput(new Date())} max={getMaxDayFromToday(30)} />
       <input required id="appt-time"defaultValue="09:00:00" list="times" min="09:00:00" max="18:00:00" type="time" name="time" step="1800" />

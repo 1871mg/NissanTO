@@ -9,6 +9,7 @@ import {
   SHOW_TEXT_MAIN,
   ADD_ADDITIONAL_SERVICE,
   ADD_ADDITIONAL_COMPONENT,
+  SET_OWNER_CAR_IN_ORDER,
 } from '../actionTypes/serviceInfoAT'
 
 const yearsCeed = [
@@ -31,6 +32,7 @@ const initialState = {
   hash: { years: yearsCeed },
   newOrder: {
     carId: null,
+    model: null,
     fullServiceId: null,
     timeStart: null,
     serviceId: [],
@@ -59,6 +61,7 @@ export const serviceInfoReducer = (state = initialState, action) => {
       }
     case SET_MODEL_SELECT:
       const newsetModelState = { ...state }
+      newsetModelState.mainSelectValue = { ...state.mainSelectValue }
       newsetModelState.mainSelectValue.carModelId = action.payload
       newsetModelState.mainSelectValue.imgCar = newsetModelState.allModels.find(
         (carModel) => carModel.id === action.payload
@@ -67,14 +70,9 @@ export const serviceInfoReducer = (state = initialState, action) => {
       newsetModelState.newCar.modelId = action.payload
       return { ...newsetModelState }
 
-    // case SET_MODEl_SELECT_CAR:
-    //   const newsetModelSelectCar = { ...state }
-    //   newsetModelSelectCar.newCar = { ...state.newCar }
-    //   newsetModelSelectCar.newCar.modelId = action.payload
-    //   return { ...newsetModelSelectCar }
-
     case SET_MILEGE_SELECT:
       const newsetMilegeState = { ...state }
+      newsetMilegeState.mainSelectValue = { ...state.mainSelectValue }
       newsetMilegeState.mainSelectValue.milegeId = action.payload
       newsetMilegeState.newCar = { ...state.newCar }
       newsetMilegeState.newCar.milegeId = action.payload
@@ -199,9 +197,14 @@ export const serviceInfoReducer = (state = initialState, action) => {
       newAddAdditionalComponent.newOrder.totalPrice =
         newAddAdditionalComponent.servicesAllPrice.totalServiceTypePrice +
         newAddAdditionalComponent.newOrder.orderAdditionsTotalPrice
-
       return { ...newAddAdditionalComponent }
 
+    case SET_OWNER_CAR_IN_ORDER:
+      const newSetOwnerCarInOrderState = { ...state }
+      newSetOwnerCarInOrderState.newOrder = { ...state.newOrder }
+      newSetOwnerCarInOrderState.newOrder.carId = action.payload.carId
+      newSetOwnerCarInOrderState.newOrder.model = action.payload.label
+      return { ...newSetOwnerCarInOrderState }
     default:
       return state
   }
