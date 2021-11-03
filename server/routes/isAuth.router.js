@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
     const isWorkerAuth = !!req.session.worker;
 
     if (isUserAuth) {
-      res.json({ user: req.session.user });
+      res.json({ user: req.session.user, admin: false });
     } else if (isAdminAuth) {
       res.json({ admin: req.session.admin });
     } else if (isWorkerAuth) {

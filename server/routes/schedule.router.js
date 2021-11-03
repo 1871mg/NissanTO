@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
     });
 
     const activeOrders = orders.filter((order) => !order.isComplite);
-    const scheduleData = [];
+    const scheduleUnSorted = [];
     for (let i = 0; i < activeOrders.length; i += 1) {
       const order = activeOrders[i];
       const startDate = new Date(order.timeStart.getTime()
@@ -47,7 +47,9 @@ router.get('/', async (req, res) => {
         title: order.FullService.title,
         startDate,
         endDate,
+        isComplite: order.isComplite,
         carModel: model.title,
+        ownerId: owner.id,
         owner: getShortName(owner.firstname,
           owner.lastname,
           owner.parentname),
@@ -55,11 +57,12 @@ router.get('/', async (req, res) => {
           order.Worker.lastname,
           order.Worker.parentname),
       };
-      console.log(orderObj);
-      scheduleData.push(orderObj);
+      scheduleUnSorted.push(orderObj);
     }
 
-    res.json({ scheduleData });
+    const scheduleData = scheduleUnSorted.sort((a, b) => new Date(a.startDate).getTime()
+    - new Date(b.startDate).getTime());
+    res.json({ scheduleData, orders });
   } catch (error) {
     console.log(error.message);
     res.status(500).end();

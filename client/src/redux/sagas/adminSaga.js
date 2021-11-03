@@ -2,27 +2,27 @@ import { call, put, takeEvery } from 'redux-saga/effects'
 
 
 import { SAGA_CHECK_SESSION_ADMIN, SAGA_GET_LOGIN_ADMIN, SAGA_GET_LOGOUT_ADMIN   } from '../actionTypes/asyncAT/asyncAdminAT'
-import { checkSessionAdminAC, getLogoutAdminAC } from '../actionCreators/adminAC'
+import { checkSessionAdminAC, getLogoutAdminAC, getLoginAdminAC } from '../actionCreators/adminAC'
 
-const fetchGetLoginAdmin = async (action) => {
+const fetchGetLoginAdmin = async (payload) => {
   const response = await fetch('http://localhost:5000/admin/login', {
     method: 'POST',
     credentials: 'include',
     headers: {
       'Content-type': 'application/json',
     },
-    body: JSON.stringify(action.payload),
+    body: JSON.stringify(payload),
   })
-
+  
   const dataFromServer = await response.json()
+  console.log(dataFromServer);
   return dataFromServer
 }
 
 function* getLoginAdminWorker(action) {
-  const { admin } = yield call(fetchGetLoginAdmin, action)
-  console.log(admin);
+  const { admin } = yield call(fetchGetLoginAdmin, action.payload)
   if (admin) {
-    yield put(checkSessionAdminAC(admin))
+    yield put(getLoginAdminAC(admin))
   } 
 }
 
@@ -37,8 +37,11 @@ const fetchGetAdminSession = async () => {
 }
 
 function* checkSessionAdminWorker() {
-  const { admin } = yield call(fetchGetAdminSession)
-  yield put(checkSessionAdminAC(admin))
+
+  const { admin } = yield call(fetchGetAdminSession);
+
+  if(admin) yield put(checkSessionAdminAC(admin))
+
 }
 
 const fetchGetLogoutAdmin = async (action) => {

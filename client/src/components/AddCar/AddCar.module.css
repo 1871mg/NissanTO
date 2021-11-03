@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    background: lightslategray;
     padding: 120px 0 0 20px;
     font-weight: 300;
+    font-size: 1.2rem;
 }

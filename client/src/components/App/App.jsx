@@ -21,7 +21,9 @@ import PrivateRoute from '../PrivateRoute/PrivateRoute'
 import Admin from '../Admin/Admin'
 import Worker from '../Worker/Worker'
 import AdminProfile from '../AdminProfile/AdminProfile'
+
 import WorkerProfile from '../AdminProfile/AdminProfile'
+import AdminOrderCard from '../AdminOrderCard/AdminOrderCard'
 
 
 function App() {
@@ -82,6 +84,11 @@ function App() {
           <Route exact path="/admin/profile">
 		        <AdminProfile />
 	        </Route>
+
+          <Route exact path="/admin/profile/:order">
+            <AdminOrderCard />
+          </Route>
+
           <Route exact path="/admin">
 		        <Admin />
 	        </Route>

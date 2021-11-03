@@ -9,6 +9,7 @@ import {
   SHOW_TEXT_MAIN,
   ADD_ADDITIONAL_SERVICE,
   ADD_ADDITIONAL_COMPONENT,
+  SET_OWNER_CAR_IN_ORDER
  
 } from '../actionTypes/serviceInfoAT'
 
@@ -77,6 +78,13 @@ export const addAdditionalComponentAC = (payload) => {
   return {
     type: ADD_ADDITIONAL_COMPONENT,
     payload,
+  }
+}
+
+export const setOwnerCarInOrderAC = (payload) => {
+  return {
+    type: SET_OWNER_CAR_IN_ORDER,
+    payload
   }
 }
 

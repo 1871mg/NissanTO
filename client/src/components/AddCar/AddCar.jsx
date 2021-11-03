@@ -22,9 +22,9 @@ function AddCar() {
 
   const body = {
     ownerId : id,
-    modelId : newCar.modelId, 
-    stateNumber : newCar.stateNumber, 
-    yearIssue: newCar.yearIssue,  
+    modelId : newCar.modelId,
+    stateNumber : newCar.stateNumber,
+    yearIssue: newCar.yearIssue,
     milegeId : newCar.milegeId,
   }
   console.log(body);
@@ -38,17 +38,16 @@ function AddCar() {
     <ul className={styles.addcar}>
       <SelectModelButton />
       <SelectYearIssueButton />
-      <input
+	    <SelectMileageButton />
+     <li><input
         value={stateNumber}
         onChange={inputChange}
         name="stateNumber"
-        type="integer"
-        className="form-control"
-        id="yearIssue"
-        placeholder="номер в формате а123ве123"
+        type="name"
+        id="stateNumber"
+        placeholder="номер, например а123ве45"
         required
-      />
-      <SelectMileageButton />
+      /></li>
       <Button clickFunc={saveAuto} name="ДОБАВИТЬ АВТОМОБИЛЬ" />
     </ul>
   )

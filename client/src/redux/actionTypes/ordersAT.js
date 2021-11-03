@@ -1,3 +1,8 @@
 export const GET_ORDERS = 'GET_ORDERS';
 export const ADD_ORDER = 'ADD_ORDER';
+export const GET_FULL_INFO_ORDER = 'GET_FULL_INFO_ORDER';
+export const FINISH_ORDER = 'FINISH_ORDER';
+export const DELETE_ORDER = 'DELETE_ORDER';
+export const CHANGE_STATUS_ORDER = 'CHANGE_STATUS_ORDER';
+
 
