@@ -19,7 +19,7 @@ import Calendar from '../Calendar/Calendar'
 import PrivateRoute from '../PrivateRoute/PrivateRoute'
 import Admin from '../Admin/Admin'
 import AdminProfile from '../AdminProfile/AdminProfile'
-
+import AdminOrderCard from '../AdminOrderCard/AdminOrderCard'
 
 function App() {
   const dispatch = useDispatch()
@@ -27,9 +27,9 @@ function App() {
 
   useEffect(() => {
     dispatch(sagaCheckSessionAC());
-    dispatch(sagaCheckSessionAdminAC());
     dispatch(sagaGetServiceInfoAC());
     dispatch(sagaGetOrdersAC());
+    dispatch(sagaCheckSessionAdminAC());
   }, [])
 
   return (
@@ -78,6 +78,11 @@ function App() {
           <Route exact path="/admin/profile">
 		        <AdminProfile />
 	        </Route>
+
+          <Route exact path="/admin/profile/:order">
+            <AdminOrderCard />
+          </Route>
+
           <Route exact path="/admin">
 		        <Admin />
 	        </Route>

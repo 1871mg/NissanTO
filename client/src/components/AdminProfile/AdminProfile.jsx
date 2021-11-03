@@ -1,21 +1,24 @@
 import React from 'react';
 import styles from './Adminprofile.module.css'
-import { useSelector, useDispatch } from 'react-redux';
-
+import { useSelector } from 'react-redux';
+import AdminOrderItem from '../AdminOrderItem/AdminOrderItem';
 
 const AdminProfile = () => {
   const orders = useSelector(state => state.ordersReducer.orders);
   return (
     <div className={styles.adminMain}>
       <h1 className={styles.ordersHeader}>Заказы</h1>
-      <h3>История заказов</h3>
-      {/* {
+      <section className={styles.container}>
+        <ol className={styles.ordersList}>
+        {
         orders 
-        &&
-        <ul className='list-group list-group-flush'>
-        {orders.map((order) =>  <li className='list-group-item'></li>)}
-        </ul>
-      } */}
+          &&
+        orders.map((order) => <AdminOrderItem key={order.id} order={order}/>)
+        }
+        </ol>
+      </section>
+      
+
       
     </div>
   )
