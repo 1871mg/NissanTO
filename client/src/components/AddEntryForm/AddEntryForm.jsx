@@ -11,7 +11,8 @@ import Button from '../UI/Button/Button'
 
 const AddEntryForm = ({closeModel}) => {
   const dispatch = useDispatch();
-  const {ownerCars} = useSelector(state => state.userReducer.user)
+  const {newOrder} = useSelector(state => state.serviceInfoReducer)
+  const serviceType = useSelector(state => state.serviceInfoReducer.fullService.title)
   const serviceIds = useSelector(state => state.serviceInfoReducer.newOrder.serviceId)  
   const componentId = useSelector(state => state.serviceInfoReducer.newOrder.componentId)
   const fullServiceId = useSelector(state => state.serviceInfoReducer.newOrder.fullServiceId) 
@@ -19,16 +20,10 @@ const AddEntryForm = ({closeModel}) => {
 
   const onSubmit = async (event) => {
   event.preventDefault();
-  const { car, time, date } = event.target;
+  const {time, date } = event.target;
   const startDate = new Date(`${date.value} ${time.value}`)
 
   //const endDate = new Date(startDate.getTime() + (2 * 60 * 60 * 1000)) // 2 - количество часов - обработка на сервере
-
-    console.log('car.value', car.value,)
-      console.log('serviceIds', serviceIds,)
-      console.log('componentId', componentId,)
-      console.log('fullServiceId', fullServiceId,)
-      console.log('startDate', startDate,)
 
   const response = await fetch('http://localhost:5000/schedule', {
     method: 'POST',
@@ -37,7 +32,7 @@ const AddEntryForm = ({closeModel}) => {
       'content-type': 'application/json'
     },
     body: JSON.stringify({
-      carId: car.value,
+      carId: newOrder.carId,
       serviceIds,
       componentId,
       fullServiceId,
@@ -61,9 +56,7 @@ const AddEntryForm = ({closeModel}) => {
   return (
   	<ul className={styles.addentryform}>
     <form onSubmit={onSubmit}>
-      <select name="car" id="">
-        <>{ownerCars.map(ownerCar => <option key={ownerCar.id} value={ownerCar.id}>{ownerCar.CarModel.title} {ownerCar.stateNumber} {ownerCar.yearIssue}г. </option>)}</>
-      </select>
+      <li>{`${serviceType}: ${newOrder.model} `}</li>
       <li>выберите дату и время</li>
       <input required name="date" defaultValue={getDayForInput(new Date())} type="date" min={getDayForInput(new Date())} max={getMaxDayFromToday(30)} />
       <input required id="appt-time"defaultValue="09:00:00" list="times" min="09:00:00" max="18:00:00" type="time" name="time" step="1800" />

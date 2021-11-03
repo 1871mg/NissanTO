@@ -3,17 +3,17 @@ import { Link, useHistory, Redirect } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { setErrorPassConfirmAC } from '../../redux/actionCreators/userAC'
 import { sagaGetLoginAC } from '../../redux/actionCreators/asyncAC/asyncUserAC'
+import {hideTextMain} from '../../redux/actionCreators/serviceInfoAC'
 import styles from './Login.module.css'
 import Button from '../UI/Button/Button'
 
 const Login = () => {
   const history = useHistory()
   const dispatch = useDispatch()
+  dispatch(hideTextMain())
   const isError = useSelector((state) => state.userReducer.isError)
   const [errorMessage, seterrorMessage] = useState('')
-
   const { loginEntrance } = useSelector((state) => state.userReducer.user)
-  const { ownerCars } = useSelector((state) => state.userReducer.user)
   console.log('loginEntrance', loginEntrance)
 
   const sendLogForm = async (event) => {
@@ -25,6 +25,7 @@ const Login = () => {
       phone: dataInput.get('phone'),
       password: dataInput.get('password'),
     }
+    dispatch(hideTextMain())
     dispatch(sagaGetLoginAC(body))
     
   }
@@ -50,6 +51,7 @@ const Login = () => {
                   className="form-control"
                   id="inputPhone"
                   placeholder=" телефон"
+                  required
                 />
                 <input
                   name="password"
@@ -58,6 +60,7 @@ const Login = () => {
                   className="form-control"
                   id="inputPassword"
                   placeholder=" пароль"
+                  required
                 />
               </div>
               <li className={styles.logininput}>

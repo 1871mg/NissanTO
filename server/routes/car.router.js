@@ -1,6 +1,6 @@
 const express = require('express')
 const bcrypt = require('bcrypt')
-const { Car } = require('../db/models')
+const { Car, CarModel, Milege } = require('../db/models')
 
 const router = express.Router()
 
@@ -21,14 +21,30 @@ router.post('/', async (req, res) => {
       })
     }
 
-    const ownerCar = await Car.create({
+    const newOwnerCar = await Car.create({
       OwnerId: ownerId,
       CarModelId: modelId,
       stateNumber,
       yearIssue,
       MilegeId: milegeId,
     })
+    
+    const ownerCar = await Car.findOne({
+      where: { id: newOwnerCar.id},
+      include: [
+        {
+          model: CarModel,
+          attributes: ['id', 'title',],
+        },
+        {
+          model: Milege,
+          attributes: ['id', 'distanse', 'years',]
+        }
+      ]
+    })
 
+    req.session.user.ownerCars.push(ownerCar)
+    
     res.json({ ownerCar })
   } catch (error) {
     console.log(error.message)

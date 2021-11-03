@@ -5,14 +5,14 @@ import {
   SAGA_GET_LOGIN,
   SAGA_GET_LOGOUT,
   SAGA_CREATE_OWNER_CAR,
-
 } from '../actionTypes/asyncAT/asyncUserAT'
 import {
   checkSessionAC,
   setErrorPassConfirmAC,
   getLogoutAC,
-  setUserCarsAC
+  setUserCarsAC,
 } from '../actionCreators/userAC'
+import { hideTextMain } from '../actionCreators/serviceInfoAC'
 
 const fetchGetUserSession = async () => {
   const response = await fetch('http://localhost:5000/isauth', {
@@ -83,7 +83,6 @@ const fetchGetLogout = async (action) => {
   })
 
   const dataFromServer = await response.json()
-  console.log('logout', dataFromServer)
   return dataFromServer
 }
 
