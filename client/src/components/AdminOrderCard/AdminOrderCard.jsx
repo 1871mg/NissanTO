@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams, useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFullInfoOrder, changeStatusOrder, deleteOrderAC } from '../../redux/actionCreators/ordersAC';
@@ -9,11 +9,13 @@ import { getShortName } from '../../utils/getShortName';
 import { getEndDate } from '../../utils/getEndDate';
 import { calcTotalPriceFullService } from '../../utils/calcTotalPriceFullService';
 import Loader from '../UI/Loader/Loader';
+import { alertWarning, alertSuccess } from '../../utils/alerts';
 
 const AdminOrderCard = () => {
   const dispatch = useDispatch();
   const orderId = useParams().order;
   const history = useHistory();
+  const [canDelete, setCanDelete] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -30,11 +32,19 @@ const AdminOrderCard = () => {
   }
 
   const deleteOrder = async () => {
+    if(!canDelete) {
+      alertWarning('убедитесь, что удаление необходимо');
+      setCanDelete(true);
+      return;
+    }
+    
     dispatch(deleteOrderAC(orderId));
     const response = await deleteOrderById(orderId);
     if(response.isOrderDeleted) {
-      alert('удаление прошло успешно')
-      history.goBack();
+      alertSuccess('удаление прошло успешно')
+      setTimeout(() => {
+        history.goBack();
+      }, 2000)
     }
   }
 
@@ -76,7 +86,34 @@ const AdminOrderCard = () => {
             :
             <p>-----</p>
           }
-          <p>Общая стоимость: {calcTotalPriceFullService(orderInfo.fullService.duration)} рублей</p>
+
+
+          {
+            orderInfo.order.Services.length
+            &&
+            <>
+              <p>Список дополнительных услуг:</p>
+              {orderInfo.order.Services.map((service, i) => <div key={service.id}>{`${i+1}. ${service.title}`}</div>)}
+            </>
+          }
+          {
+            orderInfo.order.Components.length
+            &&
+            <>
+              <p>Список дополнительных запчастей:</p>
+              {orderInfo.order.Components.map((component, i) => <div key={component.id}>{`${i+1}. ${component.title}`}</div>)}
+            </>
+          }
+          {
+            (orderInfo.order.Components.length || orderInfo.order.Services.length)
+            &&
+            <>
+              <p>Стоимость ТО: {calcTotalPriceFullService(orderInfo.fullService.duration, orderInfo.order.Components, orderInfo.order.Services).fullServiceCost} рублей</p>
+              <p>Стоимость доп услуг и запчастей: {calcTotalPriceFullService(orderInfo.fullService.duration, orderInfo.order.Components, orderInfo.order.Services).additionalItemsCost} рублей</p>
+            </>
+          }
+          
+          <p>Общая стоимость: {calcTotalPriceFullService(orderInfo.fullService.duration, orderInfo.order.Components, orderInfo.order.Services).total} рублей</p>
 
           <button onClick={finishOrder} className={styles.buttonFinish}>
             {

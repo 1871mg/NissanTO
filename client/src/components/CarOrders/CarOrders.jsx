@@ -8,7 +8,6 @@ export const CarOrders = () => {
   const carId = useParams().car_id;
   const everyOrders = useSelector(state => state.ordersReducer.everyOrders);
 
-
   return (
     <div className={styles.main}>
       <div className={styles.ordersHeader}>заказы</div>

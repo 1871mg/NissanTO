@@ -9,3 +9,25 @@
 .ordersHeader {
 text-align: center;
 }
+
+.main {
+  margin-top: 90px;
+    background: lightslategray;
+    height: 100vh;
+    width: 100vw;
+    color: whitesmoke;
+}
+
+.ordersHeader {
+  text-align: center;
+}
+
+
+.container {
+  width: 90%;
+  margin: 20px auto;
+}
+
+.orderItem {
+  border: 1px solid whitesmoke;
+}

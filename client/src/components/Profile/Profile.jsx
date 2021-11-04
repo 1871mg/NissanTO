@@ -27,8 +27,10 @@ function Profile() {
 
         ) : (
           <li>Вы не добавили автомобиль</li>
-        ) : <li>Вы не добавили автомобиль</li>
-        }
+
+        ) : (
+          <li>Вы не добавили автомобиль</li>
+        )}
       </>
 
       <div className={styles.profilebuttoncenter}><Link className={styles.profilebutton} to="/car">ДОБАВИТЬ АВТО</Link></div>
