@@ -4,9 +4,8 @@
     left: 0;
     width: 100vw;
     height: 80px;
-    background: rgba(255, 255, 255, 0.3);
-    /* background: rgb(103, 101, 101); */
-
+    /*background: rgba(255, 255, 255, 0.3);*/
+    background: lightslategray;
     z-index: 100000000000;
 }
 
@@ -46,14 +45,14 @@ a {
   cursor: pointer;
 }
 
-@media (min-width: 430pt) {
-    .navbar {
-        height: 80px;
-    }
-    ul {
-        padding: 10px 0 0 0;
-    }
-}
+/*@media (min-width: 430pt) {*/
+/*    .navbar {*/
+/*        height: 80px;*/
+/*    }*/
+/*    ul {*/
+/*        padding: 10px 0 0 0;*/
+/*    }*/
+/*}*/
 
 .navbartext {
     padding: 0 0 9px 0;

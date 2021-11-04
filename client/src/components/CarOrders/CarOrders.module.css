@@ -3,13 +3,16 @@
     background: lightslategray;
     height: 100vh;
     width: 100vw;
-    color: whitesmoke;
+    color: white;
+    font-family: Roboto, serif;
 }
 
 .ordersHeader {
   text-align: center;
+  font-family: Roboto, serif;
+  font-weight: 300;
+  font-size: 1.5rem;
 }
-
 
 .container {
   width: 90%;
@@ -17,5 +20,5 @@
 }
 
 .orderItem {
-  border: 1px solid whitesmoke;
+  border: 1px solid white;
 }

@@ -1,6 +1,8 @@
 .selectmodelbutton {
-    margin: 100px 10px 10px 10px;
+    margin: 10px 10px 10px 10px;
     color: gray;
+    width: 210pt;
+    min-width: 210pt;
 }
 
 @media (min-width: 430pt) {

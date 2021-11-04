@@ -17,7 +17,7 @@ function Profile() {
         {ownerCars ?
         ownerCars.length ? (
           ownerCars.map((ownerCar) => (
-            <li onClick={() => history.push(`car_orders/${ownerCar.id}`)} key={ownerCar.id}>
+            <li className={styles.profilebutton} onClick={() => history.push(`car_orders/${ownerCar.id}`)} key={ownerCar.id}>
               {ownerCar.CarModel.title}{' '}
 	            {ownerCar.yearIssue}{' '}
 	            {ownerCar.stateNumber}{' '}
@@ -27,22 +27,14 @@ function Profile() {
 
         ) : (
           <li>Вы не добавили автомобиль</li>
+
         ) : (
           <li>Вы не добавили автомобиль</li>
         )}
       </>
 
-      <li>
-        Nissan Qashqai (J11) 1,6 турбодизель 08.11.2021{' '}
-        <Button name="ОТМЕНИТЬ" />
-      </li>
-
-      <Link className={styles.profilebutton} to="/car">
-        ДОБАВИТЬ АВТО
-      </Link>
-      <Link className={styles.profilebutton} to="/calendar">
-        ЗАПИСАТЬСЯ НА ТО
-      </Link>
+      <div className={styles.profilebuttoncenter}><Link className={styles.profilebutton} to="/car">ДОБАВИТЬ АВТО</Link></div>
+	    <div className={styles.profilebuttoncenter}><Link className={styles.profilebutton} to="/calendar">ЗАПИСАТЬСЯ НА ТО</Link></div>
     </div>
   )
 }
