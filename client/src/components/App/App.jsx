@@ -24,6 +24,8 @@ import AdminProfile from '../AdminProfile/AdminProfile'
 
 import WorkerProfile from '../AdminProfile/AdminProfile'
 import AdminOrderCard from '../AdminOrderCard/AdminOrderCard'
+import { CarOrders } from '../CarOrders/CarOrders'
+import CarOrderCard from '../CarOrderCard/CarOrderCard'
 
 
 function App() {
@@ -96,9 +98,18 @@ function App() {
           <Route exact path="/worker/profile">
 		        <WorkerProfile />
 	        </Route>
+
           <Route exact path="/worker">
 		        <Worker />
 	        </Route>
+
+          <Route exact path="/car_orders/:car_id">
+            <CarOrders />
+          </Route>
+          
+          <Route exact path="/car_orders/:car_id/:order_id">
+            <CarOrderCard />
+          </Route>
 
         </Switch>
       </BrowserRouter>

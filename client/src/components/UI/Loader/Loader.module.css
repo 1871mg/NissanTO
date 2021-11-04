@@ -2,7 +2,7 @@
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  border: 3px dashed teal;
+  border: 3px dashed whitesmoke;
   animation: rotate 1s infinite linear;
 }
 

@@ -53,6 +53,7 @@ router.get('/', async (req, res) => {
         isComplite: order.isComplite,
         carModel: model.title,
         ownerId: owner.id,
+        carId: car.id,
         owner: getShortName(owner.firstname,
           owner.lastname,
           owner.parentname),
@@ -79,7 +80,7 @@ router.post('/', async (req, res) => {
     const {
       carId, serviceIds, componentIds, fullServiceId, startDate,
     } = req.body;
-    console.log(req.body);
+
     const startDateNewOrder = setCurrentTimeZoneTimePlus(new Date(startDate));
     const fullService = await FullService.findOne({ where: { id: fullServiceId } });
     const endDateNewOrder = getEndDate(startDateNewOrder, fullService.duration);
@@ -116,6 +117,12 @@ router.post('/', async (req, res) => {
         isComplite: false,
       });
 
+      const car = await Car.findOne({
+        where: {
+          id: newOrder.CarId,
+        },
+        include: CarModel,
+      });
       const newOrderFullService = await FullService.findOne({
         where: {
           id: fullServiceId,
@@ -124,7 +131,9 @@ router.post('/', async (req, res) => {
 
       const orderToRender = {
         location: 'Бокс 1',
+        carId: newOrder.CarId,
         id: newOrder.id,
+        carModel: car.CarModel.title,
         title: newOrderFullService.title,
         startDate: setCurrentTimeZoneTimeMinus(startDateNewOrder),
         endDate: setCurrentTimeZoneTimeMinus(endDateNewOrder),
@@ -155,9 +164,11 @@ router.post('/', async (req, res) => {
       }
 
       const emailMsg = `Ваша запись успешно создана. Начало ТО - ${orderToRender.startDate}, окончание - ${orderToRender.endDate}`;
-      sendEmail(req.session.user.email, 'Ниссан ТО', emailMsg);
-
-      res.json({ isOrdered: true, orderToRender, endDateNewOrder });
+      sendEmail('nikkaminskiy.kk@mail.ru', 'Ниссан ТО', emailMsg);
+//req.session.user.email
+      res.json({
+        isOrdered: true, orderToRender, endDateNewOrder, car,
+      });
     } else {
       res.json({ isOrdered: false });
     }
