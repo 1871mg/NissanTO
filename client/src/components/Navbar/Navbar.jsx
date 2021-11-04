@@ -39,18 +39,18 @@ const Navbar = () => {
       <nav>
         {admin ? (
           <div className={styles.adminNav}>
-            <h1 className={styles.adminHeader}>Admin</h1>
+            <p className={styles.adminNav}>администратор</p>
             <li>
-              <button className={styles.navbarexit} onClick={logoutFuncAdmin}>
+              <p className={`${[styles.adminNav, styles.adminExit].join(' ')}`} onClick={logoutFuncAdmin}>
                 выйти
-              </button>
+              </p>
             </li>
           </div>
         ) : worker ? (
           <div className={styles.adminNav}>
-            <h1 className={styles.adminHeader}>Worker</h1>
+            <h1 className={styles.adminNav}>МЕХАНИК</h1>
             <li>
-              <button className={styles.navbarexit} onClick={logoutFuncWorker}>
+              <button className={`${[styles.adminNav, styles.adminExit].join(' ')}`} onClick={logoutFuncWorker}>
                 выйти
               </button>
             </li>

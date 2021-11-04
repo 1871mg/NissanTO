@@ -13,8 +13,8 @@ export const ordersReducer = (state = initialState, action) => {
     case ADD_ORDER:
       return { 
         ...state, 
-        orders: [ ...state.orders, action.payload ],
-        everyOrders: [ ...state.everyOrders, action.payload ]
+        orders: [ ...state.orders, action.payload ].sort((a,b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime()),
+        everyOrders: [ ...state.everyOrders, action.payload ].sort((a,b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime()),
       }
     case GET_FULL_INFO_ORDER: 
       return { ...state, fullInfoOrder: action.payload }
@@ -52,7 +52,8 @@ export const ordersReducer = (state = initialState, action) => {
     case DELETE_ORDER:
       return {
         ...state,
-        orders: [...state.orders.filter((order) => order.id !== Number(action.payload))]
+        orders: [...state.orders.filter((order) => order.id !== Number(action.payload))],
+        everyOrders: [...state.everyOrders.filter((order) => order.id !== Number(action.payload))],
       }
     default: return state
   }
