@@ -81,7 +81,7 @@ router.post('/', async (req, res) => {
     const {
       carId, serviceIds, componentIds, fullServiceId, startDate,
     } = req.body;
-
+    console.log(req.body);
     const startDateNewOrder = setCurrentTimeZoneTimePlus(new Date(startDate));
     const fullService = await FullService.findOne({ where: { id: fullServiceId } });
     const endDateNewOrder = getEndDate(startDateNewOrder, fullService.duration);
@@ -136,7 +136,7 @@ router.post('/', async (req, res) => {
         id: newOrder.id,
         carModel: car.CarModel.title,
         title: newOrderFullService.title,
-        workerId: newOrder.Worker.id,
+        workerId: newOrder.WorkerId,
         startDate: setCurrentTimeZoneTimeMinus(startDateNewOrder),
         endDate: setCurrentTimeZoneTimeMinus(endDateNewOrder),
         worker: getShortName(randomWorker.firstname,

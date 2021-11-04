@@ -4,7 +4,7 @@ import Select from 'react-select'
 import { setMilegeSelect } from '../../../redux/actionCreators/serviceInfoAC'
 import { sagaGetServiceTypeAC } from '../../../redux/actionCreators/asyncAC/asyncServiseInfoAC'
 import styles from './SelectMileageButton.module.css';
-
+import { getYearsTitle } from '../../../utils/getYearsTitle'
 
 function SelectMileageButton() {
   const dispatch = useDispatch()
@@ -25,7 +25,7 @@ function SelectMileageButton() {
           onChange={setSelectedMilegeOption}
           options={allMilege.map(
             (option) =>
-              (option = { value: option.id, label: `${option.distanse} км` })
+              (option = { value: option.id, label: `${option.distanse} км или ${option.years} ${getYearsTitle(option.years)}` })
           )}
           placeholder = 'выберите пробег (год)'
 

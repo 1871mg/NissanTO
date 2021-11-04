@@ -15,6 +15,8 @@ import {
 import { setIsCreateNewCarTrue,
   setIsCreateNewCarFalse, hideTextMain} from '../../redux/actionCreators/serviceInfoAC'
  
+import { alertSuccess, alertWarning, alertError } from '../../utils/alerts'
+
 const fetchGetUserSession = async () => {
   const response = await fetch('http://localhost:5000/isauth', {
     method: 'GET',
@@ -119,6 +121,7 @@ function* createOwnerCarWorcker(action) {
   if (ownerCar) {
     yield put(setUserCarsAC(ownerCar))
     yield put(setIsCreateNewCarTrue(true))
+    alertSuccess('машина добавлена')
   } else {
     yield put(setIsCreateNewCarFalse(false))
   }

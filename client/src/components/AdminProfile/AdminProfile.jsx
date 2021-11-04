@@ -8,7 +8,7 @@ const AdminProfile = () => {
   
   return (
     <div className={styles.adminMain}>
-      <h1 className={styles.ordersHeader}>Заказы</h1>
+      <p className={styles.ordersHeader}>Заказы</p>
       <section className={styles.container}>
         <ol className={styles.ordersList}>
         {
