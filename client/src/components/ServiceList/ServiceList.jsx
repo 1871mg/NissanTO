@@ -105,7 +105,7 @@ function ServiceList() {
           <div>&nbsp;</div>
           <div>Итого: {orderAdditionsPrices.totalPrice} ₽</div>
         </div>
-
+       
         <SelectServiceButton />
         <SelectComponentsButton />
       </ul>

@@ -1,9 +1,10 @@
 
-.orderItem {
-  border: 1px solid whitesmoke;
+.orderItemComplite {
+  border: 1px solid #a7a2a2;;
   margin-bottom: 10px;
   cursor: pointer;
   padding: 10px;
+  color: #a7a2a2;
 }
 
 .orderItem:hover {
@@ -13,4 +14,10 @@
   border-radius: 5px;
 }
 
-
+.orderItemActive {
+  border: 1px solid whitesmoke;
+  margin-bottom: 10px;
+  cursor: pointer;
+  padding: 10px;
+  color: whitesmoke;
+}

@@ -9,6 +9,7 @@ module.exports = {
           model: 'Orders',
           key: 'id',
         },
+        onDelete: 'cascade',
       },
       ServiceId: {
         primaryKey: true,

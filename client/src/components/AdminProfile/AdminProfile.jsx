@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import AdminOrderItem from '../AdminOrderItem/AdminOrderItem';
 
 const AdminProfile = () => {
-  const orders = useSelector(state => state.ordersReducer.orders);
+  const orders = useSelector(state => state.ordersReducer.everyOrders);
   return (
     <div className={styles.adminMain}>
       <h1 className={styles.ordersHeader}>Заказы</h1>

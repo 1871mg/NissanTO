@@ -14,7 +14,7 @@ const AddEntryForm = ({closeModel}) => {
   const {newOrder} = useSelector(state => state.serviceInfoReducer)
   const serviceType = useSelector(state => state.serviceInfoReducer.fullService.title)
   const serviceIds = useSelector(state => state.serviceInfoReducer.newOrder.serviceId)  
-  const componentId = useSelector(state => state.serviceInfoReducer.newOrder.componentId)
+  const componentIds = useSelector(state => state.serviceInfoReducer.newOrder.componentId)
   const fullServiceId = useSelector(state => state.serviceInfoReducer.newOrder.fullServiceId) 
 
 
@@ -34,7 +34,7 @@ const AddEntryForm = ({closeModel}) => {
     body: JSON.stringify({
       carId: newOrder.carId,
       serviceIds,
-      componentId,
+      componentIds,
       fullServiceId,
       startDate,
     })

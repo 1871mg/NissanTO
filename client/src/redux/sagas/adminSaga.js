@@ -1,7 +1,10 @@
 import { call, put, takeEvery } from 'redux-saga/effects'
-
+import {  toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { SAGA_CHECK_SESSION_ADMIN, SAGA_GET_LOGIN_ADMIN, SAGA_GET_LOGOUT_ADMIN   } from '../actionTypes/asyncAT/asyncAdminAT'
 import { checkSessionAdminAC, getLogoutAdminAC, getLoginAdminAC } from '../actionCreators/adminAC'
+
+toast.configure();
 
 const fetchGetLoginAdmin = async (payload) => {
   const response = await fetch('http://localhost:5000/admin/login', {
@@ -19,9 +22,17 @@ const fetchGetLoginAdmin = async (payload) => {
 }
 
 function* getLoginAdminWorker(action) {
-  console.log('getLoginAdminWorker', action);
-  const { admin } = yield call(fetchGetLoginAdmin, action.payload)
+  const { admin, error } = yield call(fetchGetLoginAdmin, action.payload)
   if (admin) {
+    toast.success('🦄 Wow so easy!', {
+      position: "bottom-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      });
     yield put(getLoginAdminAC(admin))
   } 
 }
@@ -33,14 +44,15 @@ const fetchGetAdminSession = async () => {
     credentials: 'include',
   })
   const data = await response.json()
-  console.log(data);
   return data
 }
 
 function* checkSessionAdminWorker() {
+
   const { admin } = yield call(fetchGetAdminSession);
 
   if(admin) yield put(checkSessionAdminAC(admin))
+
 }
 
 const fetchGetLogoutAdmin = async (action) => {

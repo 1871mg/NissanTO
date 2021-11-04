@@ -1,4 +1,4 @@
-const boxes = ['Box 1', 'Box 2', 'Box 3'];
+const boxes = ['Box 1'];
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {

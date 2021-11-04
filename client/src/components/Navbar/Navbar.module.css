@@ -19,14 +19,16 @@ a {
     background-color: transparent;
     cursor: pointer;
 }
+
 .adminNav {
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
+
 .adminHeader {
   color: whitesmoke;
-  
+
 }
 
 @media (min-width: 430pt) {
@@ -39,7 +41,7 @@ a {
 }
 
 .navbartext {
-    padding: 0 0px 9px 0px;
+    padding: 0 0 9px 0;
     margin: 4px;
 }
 
