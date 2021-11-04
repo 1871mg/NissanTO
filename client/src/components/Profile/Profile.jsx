@@ -8,31 +8,31 @@ function Profile() {
   const { ownerCars } = useSelector((state) => state.userReducer.user)
 
   return (
-    <ul className={styles.profile}>
+    <div className={styles.profile}>
       <>
-      
+
         {ownerCars ?
         ownerCars.length ? (
           ownerCars.map((ownerCar) => (
             <li>
-              Авто: {ownerCar.CarModel.title} гос.номер: {ownerCar.stateNumber}{' '}
-              год выпуска: {ownerCar.yearIssue} пробег: {ownerCar.Milege.distanse}км
+              {ownerCar.CarModel.title}{' '}
+	            {ownerCar.yearIssue}{' '}
+	            {ownerCar.stateNumber}{' '}
+	            {ownerCar.Milege.distanse}{' '}км
             </li>
           ))
         ) : (
-          <li>Вы еще не добавили свой автомобиль</li>
-        ) : <li>Вы еще не добавили свой автомобиль</li>}
+          <li>Вы не добавили автомобиль</li>
+        ) : <li>Вы не добавили автомобиль</li>}
       </>
 
       <li>
-        Nissan Qashqai (J11) 1,6 турбодизель 08.11.2021{' '}
-        <Button name="ОТМЕНИТЬ" />
+        Nissan Qashqai (J11) 1,6 турбодизель 08.11.2021{' '}<Button name="ОТМЕНИТЬ" />
       </li>
-      <li>Nissan Tiida (C13)</li>
-      <li>Nissan Pathfinder (R51) 2,5 турбодизель DPF</li>
-      <Link to="/car">ДОБАВИТЬ АВТО</Link> 
-      <Link to="/calendar">ЗАПИСАТЬСЯ НА ТО</Link>
-    </ul>
+
+      <Link className={styles.profilebutton} to="/car">ДОБАВИТЬ АВТО</Link>
+      <Link className={styles.profilebutton} to="/calendar">ЗАПИСАТЬСЯ НА ТО</Link>
+    </div>
   )
 }
 
