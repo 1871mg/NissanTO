@@ -164,8 +164,8 @@ router.post('/', async (req, res) => {
       }
 
       const emailMsg = `Ваша запись успешно создана. Начало ТО - ${orderToRender.startDate}, окончание - ${orderToRender.endDate}`;
-      sendEmail('nikkaminskiy.kk@mail.ru', 'Ниссан ТО', emailMsg);
-//req.session.user.email
+      sendEmail(req.session.user.email, 'Ниссан ТО', emailMsg);
+
       res.json({
         isOrdered: true, orderToRender, endDateNewOrder, car,
       });
