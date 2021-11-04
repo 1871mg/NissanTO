@@ -29,6 +29,7 @@ const AdminOrderCard = () => {
   const finishOrder = async () => {
     dispatch(changeStatusOrder(orderId));
     const response = await changeStatusOrderById(orderId);
+    alertWarning('статус заказа изменен')
   }
 
   const deleteOrder = async () => {
@@ -108,12 +109,12 @@ const AdminOrderCard = () => {
             (orderInfo.order.Components.length || orderInfo.order.Services.length)
             &&
             <>
-              <p>Стоимость ТО: {calcTotalPriceFullService(orderInfo.fullService.duration, orderInfo.order.Components, orderInfo.order.Services).fullServiceCost} рублей</p>
-              <p>Стоимость доп услуг и запчастей: {calcTotalPriceFullService(orderInfo.fullService.duration, orderInfo.order.Components, orderInfo.order.Services).additionalItemsCost} рублей</p>
+              <p>Стоимость ТО: {calcTotalPriceFullService(orderInfo.fullService.duration, orderInfo.order.Components, orderInfo.order.Services, orderInfo.fullService.Components).fullServiceCost} рублей</p>
+              <p>Стоимость доп услуг и запчастей: {calcTotalPriceFullService(orderInfo.fullService.duration, orderInfo.order.Components, orderInfo.order.Services, orderInfo.fullService.Components).additionalItemsCost} рублей</p>
             </>
           }
           
-          <p>Общая стоимость: {calcTotalPriceFullService(orderInfo.fullService.duration, orderInfo.order.Components, orderInfo.order.Services).total} рублей</p>
+          <p>Общая стоимость: {calcTotalPriceFullService(orderInfo.fullService.duration, orderInfo.order.Components, orderInfo.order.Services, orderInfo.fullService.Components).total} рублей</p>
 
           <button onClick={finishOrder} className={styles.buttonFinish}>
             {

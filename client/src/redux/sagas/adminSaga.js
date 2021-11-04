@@ -3,8 +3,8 @@ import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { SAGA_CHECK_SESSION_ADMIN, SAGA_GET_LOGIN_ADMIN, SAGA_GET_LOGOUT_ADMIN   } from '../actionTypes/asyncAT/asyncAdminAT'
 import { checkSessionAdminAC, getLogoutAdminAC, getLoginAdminAC } from '../actionCreators/adminAC'
+import { alertSuccess, alertError } from '../../utils/alerts'
 
-toast.configure();
 
 const fetchGetLoginAdmin = async (payload) => {
   const response = await fetch('http://localhost:5000/admin/login', {
@@ -24,17 +24,10 @@ const fetchGetLoginAdmin = async (payload) => {
 function* getLoginAdminWorker(action) {
   const { admin, error } = yield call(fetchGetLoginAdmin, action.payload)
   if (admin) {
-    toast.success('🦄 Wow so easy!', {
-      position: "bottom-center",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      });
     yield put(getLoginAdminAC(admin))
-  } 
+  } else {
+    alertError()
+  }
 }
 
 const fetchGetAdminSession = async () => {
