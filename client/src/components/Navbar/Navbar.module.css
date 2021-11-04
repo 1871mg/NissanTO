@@ -29,9 +29,21 @@ a {
   justify-content: space-around;
 }
 
-.adminHeader {
-  color: whitesmoke;
+.adminNav {
+  color: #FFFFFF;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: normal;
+  font-family: Roboto, Courier, monospace;
+  font-weight: normal;
+  margin-top: 7px;
+}
 
+.adminExit {
+  cursor: pointer;
 }
 
 @media (min-width: 430pt) {
