@@ -26,10 +26,12 @@ const Main = () => {
     (state) => state.serviceInfoReducer.mainSelectValue.imgCar
   )
 
+
   if (carModelId && milegeId) {
     dispatch(sagaGetServiceTypeAC({ carModelId, milegeId }))
   }
   const { loginEntrance } = useSelector((state) => state.userReducer.user)
+
   const { registerEntrance } = useSelector((state) => state.userReducer.user)
   const { ownerCars } = useSelector((state) => state.userReducer.user)
   const hidetextMain = () => {
@@ -50,7 +52,8 @@ const Main = () => {
 
   return (
     <>
-      {loginEntrance || registerEntrance ? (
+      {(loginEntrance || registerEntrance )? (
+
         ownerCars ? (
           !ownerCars.length ? (
             <Redirect to="/car" />

@@ -21,16 +21,15 @@ const Worker = () => {
     dispatch(sagaGetLoginWorkerAC(body))
 
   }
-  
-  if(worker) {
-    history.push('/worker/profile');
-  }
 
   return (
     <>
     {
-      !worker &&
-      
+      worker 
+      ?
+
+      <Redirect to='/worker/profile' />
+      :
       <div className={styles.login}>
       <main className="form">
         <form

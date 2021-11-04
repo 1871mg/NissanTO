@@ -50,6 +50,7 @@ router.get('/', async (req, res) => {
         title: order.FullService.title,
         startDate,
         endDate,
+        workerId: order.Worker.id,
         isComplite: order.isComplite,
         carModel: model.title,
         ownerId: owner.id,
@@ -135,6 +136,7 @@ router.post('/', async (req, res) => {
         id: newOrder.id,
         carModel: car.CarModel.title,
         title: newOrderFullService.title,
+        workerId: newOrder.Worker.id,
         startDate: setCurrentTimeZoneTimeMinus(startDateNewOrder),
         endDate: setCurrentTimeZoneTimeMinus(endDateNewOrder),
         worker: getShortName(randomWorker.firstname,
@@ -164,8 +166,8 @@ router.post('/', async (req, res) => {
       }
 
       const emailMsg = `Ваша запись успешно создана. Начало ТО - ${orderToRender.startDate}, окончание - ${orderToRender.endDate}`;
-      sendEmail('nikkaminskiy.kk@mail.ru', 'Ниссан ТО', emailMsg);
-//req.session.user.email
+      sendEmail(req.session.user.email, 'Ниссан ТО', emailMsg);
+
       res.json({
         isOrdered: true, orderToRender, endDateNewOrder, car,
       });

@@ -14,36 +14,29 @@ function Profile() {
   return (
     <div className={styles.profile}>
       <>
-        {ownerCars ? (
-          ownerCars.length ? (
-            ownerCars.map((ownerCar) => (
-              <li
-                onClick={() => history.push(`/car_orders/${ownerCar.id}`)}
-                key={ownerCar.id}
-              >
-                {ownerCar.CarModel.title} {ownerCar.yearIssue}{' '}
-                {ownerCar.stateNumber} {ownerCar.Milege.distanse} км
-              </li>
-            ))
-          ) : (
-            <li>Вы не добавили автомобиль</li>
-          )
+
+        {ownerCars ?
+        ownerCars.length ? (
+          ownerCars.map((ownerCar) => (
+            <li className={styles.profilebutton} onClick={() => history.push(`car_orders/${ownerCar.id}`)} key={ownerCar.id}>
+              {ownerCar.CarModel.title}{' '}
+	            {ownerCar.yearIssue}{' '}
+	            {ownerCar.stateNumber}{' '}
+	            {ownerCar.Milege.distanse}{' '}км
+            </li>
+          ))
+
+        ) : (
+          <li>Вы не добавили автомобиль</li>
+
         ) : (
           <li>Вы не добавили автомобиль</li>
         )}
       </>
 
-      <li>
-        Nissan Qashqai (J11) 1,6 турбодизель 08.11.2021{' '}
-        <Button name="ОТМЕНИТЬ" />
-      </li>
+      <div className={styles.profilebuttoncenter}><Link className={styles.profilebutton} to="/car">ДОБАВИТЬ АВТО</Link></div>
+	    <div className={styles.profilebuttoncenter}><Link className={styles.profilebutton} to="/">ЗАПИСАТЬСЯ НА ТО</Link></div>
 
-      <Link className={styles.profilebutton} to="/car">
-        ДОБАВИТЬ АВТО
-      </Link>
-      <Link className={styles.profilebutton} to="/">
-        ЗАПИСАТЬСЯ НА ТО
-      </Link>
     </div>
   )
 }

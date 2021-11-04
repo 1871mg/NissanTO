@@ -13,11 +13,13 @@ import {
 import { sagaCreateOwnerCarAC } from '../../redux/actionCreators/asyncAC/asyncUserAC'
 import { useHistory } from 'react-router-dom'
 
+
 function AddCar() {
   const dispatch = useDispatch()
   const history = useHistory()
   const [stateNumber, setStateNumber] = useState('')
   const { mainSelectValue } = useSelector((state) => state.serviceInfoReducer)
+
   const newCar = useSelector((state) => state.serviceInfoReducer.newCar)
   const { id } = useSelector((state) => state.userReducer.user)
   console.log(stateNumber);
@@ -60,6 +62,7 @@ function AddCar() {
 
   return (
     <ul className={styles.addcar}>
+	    <li>добавление автомобиля</li>
       <SelectModelButton />
       <SelectYearIssueButton />
       <SelectMileageButton />

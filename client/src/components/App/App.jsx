@@ -22,7 +22,7 @@ import Admin from '../Admin/Admin'
 import Worker from '../Worker/Worker'
 import AdminProfile from '../AdminProfile/AdminProfile'
 
-import WorkerProfile from '../AdminProfile/AdminProfile'
+import WorkerProfile from '../WorkerProfile/WorkerProfile'
 import AdminOrderCard from '../AdminOrderCard/AdminOrderCard'
 import { CarOrders } from '../CarOrders/CarOrders'
 import CarOrderCard from '../CarOrderCard/CarOrderCard'

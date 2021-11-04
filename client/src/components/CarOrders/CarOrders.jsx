@@ -8,14 +8,13 @@ export const CarOrders = () => {
   const carId = useParams().car_id;
   const everyOrders = useSelector(state => state.ordersReducer.everyOrders);
 
-
   return (
     <div className={styles.main}>
-      <h1 className={styles.ordersHeader}>Заказы</h1>
+      <div className={styles.ordersHeader}>заказы</div>
       <section className={styles.container}>
         <ol className={styles.ordersList}>
         {
-        everyOrders 
+        everyOrders
           &&
           everyOrders.filter((order) => Number(order.carId) === Number(carId)).map((order) => <CarOrderItem key={order.id} order={order}/>)
         }
