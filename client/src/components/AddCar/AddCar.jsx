@@ -21,7 +21,7 @@ function AddCar() {
   const history = useHistory();
   const newCar = useSelector((state) => state.serviceInfoReducer.newCar)
   const { id } = useSelector((state) => state.userReducer.user)
-  
+
 
   const body = {
     ownerId: id,
@@ -48,7 +48,7 @@ function AddCar() {
         }, 2000)
       }
     }
-  
+
 
   return (
 
@@ -57,16 +57,16 @@ function AddCar() {
           <SelectModelButton />
           <SelectYearIssueButton />
           <SelectMileageButton />
-          <li>
+          <div className={styles.addcarinput}>
             <input
               value={stateNumber}
               onChange={(e) => setStateNumber(e.target.value)}
               name="stateNumber"
               type="name"
               id="stateNumber"
-              placeholder="номер, например а123ве45"
+              placeholder="&nbsp;&nbsp;номер, например а123ве45"
             />
-          </li>
+          </div>
           <Button clickFunc={()=> saveAuto()} name="ДОБАВИТЬ АВТОМОБИЛЬ" />
         </ul>
 

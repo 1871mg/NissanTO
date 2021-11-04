@@ -98,11 +98,11 @@ function ServiceList() {
             <div>Итого: {orderAdditionsPrices.totalPrice} ₽</div>
           </div>
         </div>
-
-        <SelectServiceButton />
-        <SelectComponentsButton />
       </ul>
+
       <div className={styles.buttonDateTime}>
+	      <SelectServiceButton />
+	      <SelectComponentsButton />
         <Button clickFunc={clickButton} name="ВЫБРАТЬ ДАТУ И ВРЕМЯ" />
       </div>
     </>
