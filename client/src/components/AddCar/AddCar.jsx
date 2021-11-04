@@ -11,10 +11,11 @@ import { sagaCreateOwnerCarAC } from '../../redux/actionCreators/asyncAC/asyncUs
 function AddCar() {
   const dispatch = useDispatch()
   const [stateNumber, setStateNumber] = useState()
+
   const inputChange = (event) => {
     const selectModelOption = event.target.value
     setStateNumber(selectModelOption)
-    dispatch(setStateNumberAC(selectModelOption))
+    dispatch(setStateNumberAC(stateNumber))
   }
 
   const newCar = useSelector((state) => state.serviceInfoReducer.newCar)
@@ -27,7 +28,6 @@ function AddCar() {
     yearIssue: newCar.yearIssue,
     milegeId : newCar.milegeId,
   }
-  console.log(body);
 
   const saveAuto = () => {
     if (newCar) {
