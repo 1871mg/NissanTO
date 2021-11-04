@@ -38,18 +38,20 @@ function AddCar() {
   }
   return (
     <ul className={styles.addcar}>
+	    <li>добавление автомобиля</li>
+	    <li> </li>
       <SelectModelButton />
       <SelectYearIssueButton />
 	    <SelectMileageButton />
-     <li><input
+     <div className={styles.addcarinput}><input
         value={stateNumber}
         onChange={inputChange}
         name="stateNumber"
         type="name"
         id="stateNumber"
-        placeholder="номер, например а123ве45"
+        placeholder="&nbsp;&nbsp;номер в формате а123ве45"
         required
-      /></li>
+      /></div>
       <Button clickFunc={saveAuto} name="ДОБАВИТЬ АВТОМОБИЛЬ" />
     </ul>
   )

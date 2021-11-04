@@ -26,7 +26,7 @@ const Main = () => {
 
   // const {ownerCars} = useSelector(state => state.useReducer.user)
 
-  
+
   if (carModelId && milegeId) {
     dispatch(sagaGetServiceTypeAC({ carModelId, milegeId }))
   }

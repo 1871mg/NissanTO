@@ -1,6 +1,7 @@
 .selectyearissuebutton {
     margin: 20px 10px 20px 10px;
-    color: gray;
+    color: black;
+    min-width: 210pt;
 }
 
 @media (min-width: 430pt) {
