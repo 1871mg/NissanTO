@@ -3,6 +3,7 @@ import styles from './Profile.module.css'
 import Button from '../UI/Button/Button'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router'
+import { Redirect } from 'react-router'
 import { Link } from 'react-router-dom'
 import { hideTextMain } from '../../redux/actionCreators/serviceInfoAC'
 
@@ -11,19 +12,20 @@ function Profile() {
   dispatch(hideTextMain())
   const { ownerCars } = useSelector((state) => state.userReducer.user)
   const history = useHistory()
+  //onClick={() => history.push(`/car_orders/${ownerCar.id}`)}
   return (
     <div className={styles.profile}>
       <>
 
         {ownerCars ?
-        ownerCars.length ? (
-          ownerCars.map((ownerCar) => (
-            <li className={styles.profilebutton} onClick={() => history.push(`car_orders/${ownerCar.id}`)} key={ownerCar.id}>
+          ownerCars.length ? (
+            ownerCars.map((ownerCar) => (
+            <Link to={`/car_orders/${ownerCar.id}`} className={styles.profilebutton} key={ownerCar.id}>
               {ownerCar.CarModel.title}{' '}
 	            {ownerCar.yearIssue}{' '}
 	            {ownerCar.stateNumber}{' '}
 	            {ownerCar.Milege.distanse}{' '}км
-            </li>
+            </Link>
           ))
 
         ) : (

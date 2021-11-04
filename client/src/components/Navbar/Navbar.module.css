@@ -6,7 +6,6 @@
     height: 80px;
     /*background: rgba(255, 255, 255, 0.3);*/
     background: lightslategray;
-    z-index: 100000000000;
 }
 
 a {

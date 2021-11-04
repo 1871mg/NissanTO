@@ -24,3 +24,15 @@ export const alertWarning = (message) => {
     progress: undefined,
   });
 }
+
+export const alertError = (message = 'Что-то пошло не так...') => {
+  toast.error(message, {
+    position: "top-center",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  });
+}

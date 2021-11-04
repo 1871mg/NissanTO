@@ -6,7 +6,7 @@ import { addOrder } from '../../redux/actionCreators/ordersAC';
 import { changeCurrentDay } from '../../redux/actionCreators/calendarAC'
 import styles from './AddEntryForm.module.css';
 import Button from '../UI/Button/Button'
-
+import { alertSuccess, alertError } from '../../utils/alerts';
 
 
 const AddEntryForm = ({closeModel}) => {
@@ -19,14 +19,17 @@ const AddEntryForm = ({closeModel}) => {
 
 
   const onSubmit = async (event) => {
-  event.preventDefault();
-  const {time, date } = event.target;
-  const startDate = new Date(`${date.value} ${time.value}`)
+    event.preventDefault();
+    const {time, date } = event.target;
+    const startDate = new Date(`${date.value} ${time.value}`)
+    console.log(serviceIds,
+      componentIds,
+      fullServiceId,
+      startDate,);
+    //const endDate = new Date(startDate.getTime() + (2 * 60 * 60 * 1000)) // 2 - количество часов - обработка на сервере
 
-  //const endDate = new Date(startDate.getTime() + (2 * 60 * 60 * 1000)) // 2 - количество часов - обработка на сервере
-
-  const response = await fetch('http://localhost:5000/schedule', {
-    method: 'POST',
+    const response = await fetch('http://localhost:5000/schedule', {
+      method: 'POST',
     credentials: 'include',
     headers: {
       'content-type': 'application/json'
@@ -42,13 +45,14 @@ const AddEntryForm = ({closeModel}) => {
   })
 
   const data = await response.json()
+
   if(data.isOrdered) {
     dispatch(addOrder(data.orderToRender))
     dispatch(changeCurrentDay(new Date(data.endDateNewOrder)))
-    alert('Запись прошла успешно!');
+    alertSuccess('Запись прошла успешно!');
     closeModel();
   } else {
-    alert('Данное время уже занято!')
+    alertError('Данное время уже занято!')
   }
  }
 
@@ -59,7 +63,7 @@ const AddEntryForm = ({closeModel}) => {
       <li>{`${serviceType}: ${newOrder.model} `}</li>
       <li>выберите дату и время</li>
       <input required name="date" defaultValue={getDayForInput(new Date())} type="date" min={getDayForInput(new Date())} max={getMaxDayFromToday(30)} />
-      <input required id="appt-time"defaultValue="09:00:00" list="times" min="09:00:00" max="18:00:00" type="time" name="time" step="1800" />
+      <input required id="appt-time"defaultValue="09:00:00" list="times" min="09:00:00" max="22:00:00" type="time" name="time" step="1800" />
       <datalist id="times">
 	        <option value="08:00:00" />
           <option value="09:00:00" />
