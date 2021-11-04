@@ -2,11 +2,12 @@ import React from 'react'
 import styles from './Profile.module.css'
 import Button from '../UI/Button/Button'
 import { useSelector } from 'react-redux'
+import { useHistory } from 'react-router'
 import { Link } from 'react-router-dom'
 
 function Profile() {
   const { ownerCars } = useSelector((state) => state.userReducer.user)
-
+  const history = useHistory();
   return (
     <div className={styles.profile}>
       <>
@@ -14,7 +15,7 @@ function Profile() {
         {ownerCars ?
         ownerCars.length ? (
           ownerCars.map((ownerCar) => (
-            <li>
+            <li onClick={() => history.push(`car_orders/${ownerCar.id}`)} key={ownerCar.id}>
               {ownerCar.CarModel.title}{' '}
 	            {ownerCar.yearIssue}{' '}
 	            {ownerCar.stateNumber}{' '}

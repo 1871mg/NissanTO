@@ -3,17 +3,16 @@ import { useParams, useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFullInfoOrder, changeStatusOrder, deleteOrderAC } from '../../redux/actionCreators/ordersAC';
 import { getOrderById, changeStatusOrderById, deleteOrderById } from '../../http/order';
-import styles from './AdminOrderCard.module.css';
+import styles from './CarOrderCard.module.css';
 import { handleTimeFormat } from '../../utils/handleTimeFormat';
 import { getShortName } from '../../utils/getShortName';
 import { getEndDate } from '../../utils/getEndDate';
 import { calcTotalPriceFullService } from '../../utils/calcTotalPriceFullService';
 import Loader from '../UI/Loader/Loader';
 
-const AdminOrderCard = () => {
+const CarOrderCard = () => {
   const dispatch = useDispatch();
-  const orderId = useParams().order;
-  const history = useHistory();
+  const orderId = useParams().order_id;
 
   useEffect(() => {
     (async () => {
@@ -23,27 +22,13 @@ const AdminOrderCard = () => {
   }, [])
 
   const orderInfo = useSelector(state => state.ordersReducer.fullInfoOrder)
-  
-  const finishOrder = async () => {
-    dispatch(changeStatusOrder(orderId));
-    const response = await changeStatusOrderById(orderId);
-  }
-
-  const deleteOrder = async () => {
-    dispatch(deleteOrderAC(orderId));
-    const response = await deleteOrderById(orderId);
-    if(response.isOrderDeleted) {
-      alert('удаление прошло успешно')
-      history.goBack();
-    }
-  }
-
   return (
     <>
+    
     {
       orderInfo 
         ?
-        <section className={styles.card}>
+      <section className={styles.card}>
         <div className={styles.cardInfo}>
           <h3 className={styles.textCenter}>{orderInfo.fullService.title}</h3>
           <p>Статус: {orderInfo.order.isComplite ? <span className={styles.finished}>завершен</span> : <span className={styles.active}>активный</span>}</p>
@@ -77,18 +62,6 @@ const AdminOrderCard = () => {
             <p>-----</p>
           }
           <p>Общая стоимость: {calcTotalPriceFullService(orderInfo.fullService.duration)} рублей</p>
-
-          <button onClick={finishOrder} className={styles.buttonFinish}>
-            {
-              orderInfo.order.isComplite
-              ?
-              'активировать'
-              :
-              'завершить'
-            }  
-          </button>
-          <button onClick={deleteOrder} className={styles.buttonDelete}>отменить</button>
-
         </div>
       </section>
       :
@@ -99,5 +72,5 @@ const AdminOrderCard = () => {
   )
 }
 
-export default AdminOrderCard
+export default CarOrderCard
 
