@@ -1,10 +1,8 @@
 const orderServices = [
-  // { OrderId: 1, ServiceId: 1 },
-  // { OrderId: 1, ServiceId: 2 },
-  // { OrderId: 1, ServiceId: 3 },
-  // { OrderId: 1, ServiceId: 4 },
-  // { OrderId: 1, ServiceId: 5 },
-  // { OrderId: 1, ServiceId: 19 },
+  { OrderId: 5, ServiceId: 13 },
+  { OrderId: 6, ServiceId: 26 },
+  { OrderId: 7, ServiceId: 39 },
+  { OrderId: 8, ServiceId: 52 },
 ];
 
 module.exports = {
