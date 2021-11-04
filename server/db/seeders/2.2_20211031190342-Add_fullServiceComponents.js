@@ -398,11 +398,11 @@ const fullServiceComponents = [
   // { FullServiceId: 361, ComponentId: 36 },
   // { FullServiceId: 361, ComponentId: 39 },
   // { FullServiceId: 361, ComponentId: 47 },
-];
+]
 
 const model1 = () => {
-  const modelArr = [];
-  for (let i = 1; i < 25; i += 1) {
+  const modelArr = []
+  for (let i = 1; i < 185; i += 1) {
     modelArr.push(
       { FullServiceId: i, ComponentId: 24 },
       { FullServiceId: i, ComponentId: 25 },
@@ -410,14 +410,14 @@ const model1 = () => {
       { FullServiceId: i, ComponentId: 31 },
       { FullServiceId: i, ComponentId: 41 },
       { FullServiceId: i, ComponentId: 42 },
-      { FullServiceId: i, ComponentId: 52 },
-    );
+      { FullServiceId: i, ComponentId: 52 }
+    )
   }
-  return modelArr;
-};
+  return modelArr
+}
 const model2 = () => {
-  const modelArr = [];
-  for (let i = 25; i < 47; i += 1) {
+  const modelArr = []
+  for (let i = 185; i < 369; i += 1) {
     modelArr.push(
       { FullServiceId: i, ComponentId: 24 },
       { FullServiceId: i, ComponentId: 25 },
@@ -425,31 +425,37 @@ const model2 = () => {
       { FullServiceId: i, ComponentId: 31 },
       { FullServiceId: i, ComponentId: 41 },
       { FullServiceId: i, ComponentId: 42 },
-      { FullServiceId: i, ComponentId: 52 },
-    );
+      { FullServiceId: i, ComponentId: 52 }
+    )
   }
-  return modelArr;
-};
+  return modelArr
+}
 
-const arr1 = model1();
-const arr2 = model2();
+const arr1 = model1()
+const arr2 = model2()
 
-const arr = [...arr1, ...arr2];
+const arr = [...arr1, ...arr2]
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     for (let i = 0; i < arr.length; i += 1) {
       // eslint-disable-next-line no-await-in-loop
-      await queryInterface.bulkInsert('FullServiceComponents', [{
-        FullServiceId: arr[i].FullServiceId,
-        ComponentId: arr[i].ComponentId,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      }], {});
+      await queryInterface.bulkInsert(
+        'FullServiceComponents',
+        [
+          {
+            FullServiceId: arr[i].FullServiceId,
+            ComponentId: arr[i].ComponentId,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+          },
+        ],
+        {}
+      )
     }
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete('FullServiceComponents', null, {});
+    await queryInterface.bulkDelete('FullServiceComponents', null, {})
   },
-};
+}

@@ -18,7 +18,7 @@ function AddCar() {
   const dispatch = useDispatch()
   const [stateNumber, setStateNumber] = useState('')
   const { mainSelectValue } = useSelector((state) => state.serviceInfoReducer)
-  const history = useHistory();
+  const history = useHistory()
   const newCar = useSelector((state) => state.serviceInfoReducer.newCar)
   const { id } = useSelector((state) => state.userReducer.user)
 
@@ -32,7 +32,7 @@ function AddCar() {
   }
 
   const saveAuto = () => {
-    console.log('save auto');
+    console.log('save auto')
     if (!mainSelectValue.carModelId) {
       alertError('Не указана модель автомобиля')
     } else if (!newCar.yearIssue) {
@@ -42,12 +42,13 @@ function AddCar() {
     } else if (!stateNumber) {
       alertError('Не указан гос.номер')
     } else {
-        dispatch(sagaCreateOwnerCarAC(body))
-        setTimeout(() => {
-          history.goBack()
-        }, 2000)
-      }
+      dispatch(hideTextMain())
+      dispatch(sagaCreateOwnerCarAC(body))
+      setTimeout(() => {
+        history.goBack()
+      }, 2000)
     }
+
 
   return (
 

@@ -712,7 +712,7 @@ const serviceFullServices = [
 
 const model1 = () => {
   const modelArr = [];
-  for (let i = 1; i < 25; i += 1) {
+  for (let i = 1; i < 185; i += 1) {
     modelArr.push(
       { FullServiceId: i, ServiceId: 16 },
       { FullServiceId: i, ServiceId: 9 },
@@ -733,7 +733,7 @@ const model1 = () => {
 };
 const model2 = () => {
   const modelArr = [];
-  for (let i = 25; i < 47; i += 1) {
+  for (let i = 185; i < 369; i += 1) {
     modelArr.push(
       { FullServiceId: i, ServiceId: 16 },
       { FullServiceId: i, ServiceId: 9 },
@@ -754,6 +754,7 @@ const model2 = () => {
 };
 
 const arr = [...model1(), ...model2()];
+
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
