@@ -32,6 +32,7 @@ const Main = () => {
   }
   const history = useHistory()
   const { loginEntrance } = useSelector((state) => state.userReducer.user)
+  const {registerEntrance} = useSelector((state) => state.userReducer.user)
   const { ownerCars } = useSelector((state) => state.userReducer.user)
   const hidetextMain = () => {
     dispatch(hideTextMain())
@@ -40,7 +41,7 @@ const Main = () => {
 
   return (
     <>
-      {loginEntrance ? (
+      {(loginEntrance || registerEntrance )? (
         ownerCars ? (
           !ownerCars.length ? (
             <Redirect to="/car" />
