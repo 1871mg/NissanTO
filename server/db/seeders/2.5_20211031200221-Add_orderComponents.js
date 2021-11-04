@@ -1,4 +1,9 @@
-const orderComponents = [];
+const orderComponents = [
+  { OrderId: 5, ComponentId: 13 },
+  { OrderId: 6, ComponentId: 26 },
+  { OrderId: 7, ComponentId: 39 },
+  { OrderId: 8, ComponentId: 52 },
+];
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
