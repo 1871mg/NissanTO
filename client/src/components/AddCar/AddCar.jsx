@@ -12,6 +12,7 @@ import {
 } from '../../redux/actionCreators/serviceInfoAC'
 import { sagaCreateOwnerCarAC } from '../../redux/actionCreators/asyncAC/asyncUserAC'
 import { useHistory, Redirect } from 'react-router-dom'
+import { alertError, alertSuccess } from '../../utils/alerts'
 
 function AddCar() {
   const dispatch = useDispatch()
@@ -20,6 +21,7 @@ function AddCar() {
   const history = useHistory()
   const newCar = useSelector((state) => state.serviceInfoReducer.newCar)
   const { id } = useSelector((state) => state.userReducer.user)
+
 
   const body = {
     ownerId: id,
@@ -32,13 +34,13 @@ function AddCar() {
   const saveAuto = () => {
     console.log('save auto')
     if (!mainSelectValue.carModelId) {
-      alert('Не указана модель автомобиля')
+      alertError('Не указана модель автомобиля')
     } else if (!newCar.yearIssue) {
-      alert('Не указан год выпуска')
+      alertError('Не указан год выпуска')
     } else if (!mainSelectValue.milegeId) {
-      alert('Не указан пробег')
+      alertError('Не указан пробег')
     } else if (!stateNumber) {
-      alert('Не указан гос.номер')
+      alertError('Не указан гос.номер')
     } else {
       dispatch(hideTextMain())
       dispatch(sagaCreateOwnerCarAC(body))
@@ -46,26 +48,28 @@ function AddCar() {
         history.goBack()
       }, 2000)
     }
-  }
+
 
   return (
-    <ul className={styles.addcar}>
-      <li>добавление автомобиля</li>
-      <SelectModelButton />
-      <SelectYearIssueButton />
-      <SelectMileageButton />
-      <li>
-        <input
-          value={stateNumber}
-          onChange={(e) => setStateNumber(e.target.value)}
-          name="stateNumber"
-          type="name"
-          id="stateNumber"
-          placeholder="номер, например а123ве45"
-        />
-      </li>
-      <Button clickFunc={() => saveAuto()} name="ДОБАВИТЬ АВТОМОБИЛЬ" />
-    </ul>
+
+        <ul className={styles.addcar}>
+          <li>добавление автомобиля</li>
+          <SelectModelButton />
+          <SelectYearIssueButton />
+          <SelectMileageButton />
+          <div className={styles.addcarinput}>
+            <input
+              value={stateNumber}
+              onChange={(e) => setStateNumber(e.target.value)}
+              name="stateNumber"
+              type="name"
+              id="stateNumber"
+              placeholder="&nbsp;&nbsp;номер, например а123ве45"
+            />
+          </div>
+          <Button clickFunc={()=> saveAuto()} name="ДОБАВИТЬ АВТОМОБИЛЬ" />
+        </ul>
+
   )
 }
 

@@ -1,10 +1,6 @@
 .selectcomponentsbutton {
     display: flex;
     margin: 14px 0 14px 0;
-    min-width: 320px;
-
-    width: 200px;
-
 }
 
 .selectcomponentsbuttonplus {
