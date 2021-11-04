@@ -27,7 +27,7 @@ export const userReducer = (state = initialState, action) => {
           ownerCars: [...state.user.ownerCars, action.payload.ownerCar],
         },
       }
-    default:
+      default:
       return state
   }
 }

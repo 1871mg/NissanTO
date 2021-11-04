@@ -9,8 +9,10 @@ import {
   SHOW_TEXT_MAIN,
   ADD_ADDITIONAL_SERVICE,
   ADD_ADDITIONAL_COMPONENT,
-  SET_OWNER_CAR_IN_ORDER
- 
+  SET_OWNER_CAR_IN_ORDER,
+  IS_CREATE_NEW_CAR_TRUE,
+  IS_CREATE_NEW_CAR_FALSE,
+
 } from '../actionTypes/serviceInfoAT'
 
 export const getServiceInfo = (payload) => {
@@ -84,8 +86,20 @@ export const addAdditionalComponentAC = (payload) => {
 export const setOwnerCarInOrderAC = (payload) => {
   return {
     type: SET_OWNER_CAR_IN_ORDER,
+    payload,
+  }
+}
+
+export const setIsCreateNewCarTrue = (payload) => {
+  return {
+    type: IS_CREATE_NEW_CAR_TRUE,
     payload
   }
 }
 
-
+export const setIsCreateNewCarFalse = (payload) => {
+  return {
+    type: IS_CREATE_NEW_CAR_FALSE,
+    payload
+  }
+}

@@ -33,7 +33,7 @@ const Login = () => {
   return (
     <>
       {loginEntrance ? (
-        <Redirect to="/" />
+        <Redirect to="/profile" />
       ) : (
         <div className={styles.login}>
           <main>

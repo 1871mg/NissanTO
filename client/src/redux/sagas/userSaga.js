@@ -12,8 +12,9 @@ import {
   getLogoutAC,
   setUserCarsAC,
 } from '../actionCreators/userAC'
-import { hideTextMain } from '../actionCreators/serviceInfoAC'
-
+import { setIsCreateNewCarTrue,
+  setIsCreateNewCarFalse, hideTextMain} from '../../redux/actionCreators/serviceInfoAC'
+ 
 const fetchGetUserSession = async () => {
   const response = await fetch('http://localhost:5000/isauth', {
     method: 'GET',
@@ -90,6 +91,7 @@ function* getLogoutWorcker() {
   const { isUserLogout } = yield call(fetchGetLogout)
   if (isUserLogout) {
     yield put(getLogoutAC(isUserLogout))
+    yield put(hideTextMain())
   }
   //  else {
   //   yield put(setErrorPassConfirmAC(false))
@@ -116,6 +118,9 @@ function* createOwnerCarWorcker(action) {
   const ownerCar = yield call(fetchCreateOwnerCar, action)
   if (ownerCar) {
     yield put(setUserCarsAC(ownerCar))
+    yield put(setIsCreateNewCarTrue(true))
+  } else {
+    yield put(setIsCreateNewCarFalse(false))
   }
 }
 

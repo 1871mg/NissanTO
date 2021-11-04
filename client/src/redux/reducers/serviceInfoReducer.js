@@ -10,6 +10,8 @@ import {
   ADD_ADDITIONAL_SERVICE,
   ADD_ADDITIONAL_COMPONENT,
   SET_OWNER_CAR_IN_ORDER,
+  IS_CREATE_NEW_CAR_TRUE,
+  IS_CREATE_NEW_CAR_FALSE,
 } from '../actionTypes/serviceInfoAT'
 
 const yearsCeed = [
@@ -52,6 +54,7 @@ const initialState = {
     stateNumber: null,
     yearIssue: null,
     milegeId: null,
+    isCreate: false,
   },
 }
 
@@ -217,6 +220,18 @@ export const serviceInfoReducer = (state = initialState, action) => {
       newSetOwnerCarInOrderState.newOrder.carId = action.payload.carId
       newSetOwnerCarInOrderState.newOrder.model = action.payload.label
       return { ...newSetOwnerCarInOrderState }
+
+    case IS_CREATE_NEW_CAR_TRUE:
+      return {
+        ...state,
+        newCar: { ...state.newCar, isCreate: action.payload },
+      }
+
+    case IS_CREATE_NEW_CAR_FALSE:
+      return {
+        ...state,
+        newCar: { ...state.newCar, isCreate: action.payload },
+      }
     default:
       return state
   }

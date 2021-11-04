@@ -3,6 +3,8 @@ import {
   SET_ERROR_PASS_CONFIRM,
   GET_LOGOUT,
   SET_USER_CARS,
+  IS_CREATE_NEW_CAR_TRUE,
+  IS_CREATE_NEW_CAR_FALSE,
 } from '../actionTypes/userAT'
 
 export const checkSessionAC = (payload) => {
@@ -32,4 +34,6 @@ export const setUserCarsAC = (payload) => {
     payload,
   }
 }
+
+
 

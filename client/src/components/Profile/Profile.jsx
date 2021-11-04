@@ -10,10 +10,11 @@ function Profile() {
   const dispatch = useDispatch()
   dispatch(hideTextMain())
   const { ownerCars } = useSelector((state) => state.userReducer.user)
-  const history = useHistory();
+  const history = useHistory()
   return (
     <div className={styles.profile}>
       <>
+
         {ownerCars ?
         ownerCars.length ? (
           ownerCars.map((ownerCar) => (
@@ -34,7 +35,8 @@ function Profile() {
       </>
 
       <div className={styles.profilebuttoncenter}><Link className={styles.profilebutton} to="/car">ДОБАВИТЬ АВТО</Link></div>
-	    <div className={styles.profilebuttoncenter}><Link className={styles.profilebutton} to="/calendar">ЗАПИСАТЬСЯ НА ТО</Link></div>
+	    <div className={styles.profilebuttoncenter}><Link className={styles.profilebutton} to="/">ЗАПИСАТЬСЯ НА ТО</Link></div>
+
     </div>
   )
 }
