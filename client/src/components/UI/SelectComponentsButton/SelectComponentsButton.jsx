@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import Select from 'react-select'
 import styles from './SelectComponentsButton.module.css'
-import {addAdditionalComponentAC} from '../../../redux/actionCreators/serviceInfoAC'
+import { addAdditionalComponentAC } from '../../../redux/actionCreators/serviceInfoAC'
 
 function SelectComponentsButton() {
   const dispatch = useDispatch()
@@ -12,11 +12,21 @@ function SelectComponentsButton() {
   )
 
   const addComponent = () => {
-    dispatch(addAdditionalComponentAC(selectValue))
-    setSelectValue('')
+    if (!selectValue) {
+      alert('Дополнительная запчасть не выбрана')
+    } else {
+      dispatch(addAdditionalComponentAC(selectValue))
+      setSelectValue('')
+    }
   }
-
+	// const styles = {
+	// 	container: base => ({
+	// 		...base,
+	// 		width: '200px'
+	// 	})
+	// };
   return (
+
     <div className={styles.selectcomponentsbutton}>
       <Select
         value={selectValue}
@@ -27,14 +37,19 @@ function SelectComponentsButton() {
               value: addComponent.id,
               label: `${addComponent.title}: ${addComponent.price} ₽`,
               title: addComponent.title,
-              price: addComponent.price
+              price: addComponent.price,
             })
         )}
         placeholder={
           <div className="select-placeholder-text">дополнительные запчасти</div>
         }
       />
-      <button onClick={addComponent} className={styles.selectcomponentsbuttonplus}>+</button>
+      <button
+        onClick={addComponent}
+        className={styles.selectcomponentsbuttonplus}
+      >
+        +
+      </button>
     </div>
   )
 }

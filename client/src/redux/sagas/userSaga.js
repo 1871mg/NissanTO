@@ -5,13 +5,17 @@ import {
   SAGA_GET_LOGIN,
   SAGA_GET_LOGOUT,
   SAGA_CREATE_OWNER_CAR,
-
 } from '../actionTypes/asyncAT/asyncUserAT'
 import {
   checkSessionAC,
   setErrorPassConfirmAC,
   getLogoutAC,
+  setUserCarsAC,
 } from '../actionCreators/userAC'
+import { setIsCreateNewCarTrue,
+  setIsCreateNewCarFalse, hideTextMain} from '../../redux/actionCreators/serviceInfoAC'
+ 
+import { alertSuccess, alertWarning, alertError } from '../../utils/alerts'
 
 const fetchGetUserSession = async () => {
   const response = await fetch('http://localhost:5000/isauth', {
@@ -44,8 +48,10 @@ const fetchGetRegistration = async (action) => {
 function* getRegistrationWorcker(action) {
   const { user } = yield call(fetchGetRegistration, action)
   if (user) {
-    yield put(checkSessionAC(user))
+    yield put(checkSessionAC(user));
+    alertSuccess('успешная регистрация');
   } else {
+    alertError();
     yield put(setErrorPassConfirmAC(false))
     // setErrorMessage(dataFromServer.message);
   }
@@ -70,6 +76,7 @@ function* getLoginWorcker(action) {
   if (user) {
     yield put(checkSessionAC(user))
   } else {
+    alertError();
     yield put(setErrorPassConfirmAC(false))
     // setErrorMessage(dataFromServer.message);
   }
@@ -82,7 +89,6 @@ const fetchGetLogout = async (action) => {
   })
 
   const dataFromServer = await response.json()
-  console.log('logout', dataFromServer)
   return dataFromServer
 }
 
@@ -90,6 +96,7 @@ function* getLogoutWorcker() {
   const { isUserLogout } = yield call(fetchGetLogout)
   if (isUserLogout) {
     yield put(getLogoutAC(isUserLogout))
+    yield put(hideTextMain())
   }
   //  else {
   //   yield put(setErrorPassConfirmAC(false))
@@ -113,7 +120,15 @@ const fetchCreateOwnerCar = async (action) => {
 }
 
 function* createOwnerCarWorcker(action) {
-  const ownerCar = yield call(fetchCreateOwnerCar, action)
+  const { ownerCar, errorMessage } = yield call(fetchCreateOwnerCar, action)
+  if (ownerCar) {
+    yield put(setUserCarsAC({ownerCar}))
+    yield put(setIsCreateNewCarTrue(true))
+    alertSuccess('машина добавлена')
+  } else {
+    alertError(errorMessage)
+    yield put(setIsCreateNewCarFalse(false))
+  }
 }
 
 export function* userWatcher() {

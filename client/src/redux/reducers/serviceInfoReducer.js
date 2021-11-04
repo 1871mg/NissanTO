@@ -9,6 +9,9 @@ import {
   SHOW_TEXT_MAIN,
   ADD_ADDITIONAL_SERVICE,
   ADD_ADDITIONAL_COMPONENT,
+  SET_OWNER_CAR_IN_ORDER,
+  IS_CREATE_NEW_CAR_TRUE,
+  IS_CREATE_NEW_CAR_FALSE,
 } from '../actionTypes/serviceInfoAT'
 
 const yearsCeed = [
@@ -27,15 +30,20 @@ const yearsCeed = [
 ]
 
 const initialState = {
-  mainSelectValue: { carModelId: null, milegeId: null, imgCar: null },
+  mainSelectValue: {
+    carModelId: null,
+    milegeId: null,
+    imgCar: null,
+    carModel: null,
+  },
   hash: { years: yearsCeed },
   newOrder: {
     carId: null,
+    model: null,
     fullServiceId: null,
     timeStart: null,
     serviceId: [],
     addServiceTotalPrice: 0,
-    serviceIdStatus: false,
     componentId: [],
     addComponentTotalPrice: 0,
     orderAdditionsTotalPrice: 0,
@@ -46,6 +54,7 @@ const initialState = {
     stateNumber: null,
     yearIssue: null,
     milegeId: null,
+    isCreate: false,
   },
 }
 
@@ -59,6 +68,7 @@ export const serviceInfoReducer = (state = initialState, action) => {
       }
     case SET_MODEL_SELECT:
       const newsetModelState = { ...state }
+      newsetModelState.mainSelectValue = { ...state.mainSelectValue }
       newsetModelState.mainSelectValue.carModelId = action.payload
       newsetModelState.mainSelectValue.imgCar = newsetModelState.allModels.find(
         (carModel) => carModel.id === action.payload
@@ -67,14 +77,9 @@ export const serviceInfoReducer = (state = initialState, action) => {
       newsetModelState.newCar.modelId = action.payload
       return { ...newsetModelState }
 
-    // case SET_MODEl_SELECT_CAR:
-    //   const newsetModelSelectCar = { ...state }
-    //   newsetModelSelectCar.newCar = { ...state.newCar }
-    //   newsetModelSelectCar.newCar.modelId = action.payload
-    //   return { ...newsetModelSelectCar }
-
     case SET_MILEGE_SELECT:
       const newsetMilegeState = { ...state }
+      newsetMilegeState.mainSelectValue = { ...state.mainSelectValue }
       newsetMilegeState.mainSelectValue.milegeId = action.payload
       newsetMilegeState.newCar = { ...state.newCar }
       newsetMilegeState.newCar.milegeId = action.payload
@@ -96,7 +101,9 @@ export const serviceInfoReducer = (state = initialState, action) => {
       const newServiceTypeState = { ...state }
       newServiceTypeState.fullService = action.payload.fullService[0]
       newServiceTypeState.components = action.payload.components
-      newServiceTypeState.services = action.payload.services
+      newServiceTypeState.services = action.payload.services.filter(
+        (service) => service.price !== 0
+      )
       newServiceTypeState.servicesAllPrice = {}
       newServiceTypeState.servicesAllPrice.sumServicesPrice = 0
       newServiceTypeState.fullService.Services.forEach(
@@ -105,6 +112,8 @@ export const serviceInfoReducer = (state = initialState, action) => {
             servicePrice.price)
       )
       newServiceTypeState.servicesAllPrice.sumComponentsPrice = 0
+      newServiceTypeState.servicesAllPrice.serviceTypeWorckerPrice =
+        newServiceTypeState.fullService.duration * 2200
       newServiceTypeState.fullService.Components.forEach(
         (componentPrice) =>
           (newServiceTypeState.servicesAllPrice.sumComponentsPrice +=
@@ -112,7 +121,7 @@ export const serviceInfoReducer = (state = initialState, action) => {
       )
       newServiceTypeState.servicesAllPrice.totalServiceTypePrice = 0
       newServiceTypeState.servicesAllPrice.totalServiceTypePrice =
-        newServiceTypeState.servicesAllPrice.sumServicesPrice +
+        newServiceTypeState.servicesAllPrice.serviceTypeWorckerPrice +
         newServiceTypeState.servicesAllPrice.sumComponentsPrice
       newServiceTypeState.mainRecommendation = true
       newServiceTypeState.newOrder.fullServiceId =
@@ -126,7 +135,11 @@ export const serviceInfoReducer = (state = initialState, action) => {
       newServiceTypeState.newOrder.totalPrice =
         newServiceTypeState.servicesAllPrice.totalServiceTypePrice +
         newServiceTypeState.newOrder.orderAdditionsTotalPrice
-
+      newServiceTypeState.mainSelectValue = { ...state.mainSelectValue }
+      newServiceTypeState.mainSelectValue.carModel =
+        newServiceTypeState.allModels.find(
+          (model) => model.id === newServiceTypeState.fullService.CarModelId
+        ).title
       return { ...newServiceTypeState }
 
     case HIDE_TEXT_MAIN:
@@ -199,9 +212,26 @@ export const serviceInfoReducer = (state = initialState, action) => {
       newAddAdditionalComponent.newOrder.totalPrice =
         newAddAdditionalComponent.servicesAllPrice.totalServiceTypePrice +
         newAddAdditionalComponent.newOrder.orderAdditionsTotalPrice
-
       return { ...newAddAdditionalComponent }
 
+    case SET_OWNER_CAR_IN_ORDER:
+      const newSetOwnerCarInOrderState = { ...state }
+      newSetOwnerCarInOrderState.newOrder = { ...state.newOrder }
+      newSetOwnerCarInOrderState.newOrder.carId = action.payload.carId
+      newSetOwnerCarInOrderState.newOrder.model = action.payload.label
+      return { ...newSetOwnerCarInOrderState }
+
+    case IS_CREATE_NEW_CAR_TRUE:
+      return {
+        ...state,
+        newCar: { ...state.newCar, isCreate: action.payload },
+      }
+
+    case IS_CREATE_NEW_CAR_FALSE:
+      return {
+        ...state,
+        newCar: { ...state.newCar, isCreate: action.payload },
+      }
     default:
       return state
   }

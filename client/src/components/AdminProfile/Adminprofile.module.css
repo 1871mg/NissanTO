@@ -8,4 +8,15 @@
 
 .ordersHeader {
   text-align: center;
+  font-size: 1.6rem;
+}
+
+
+.container {
+  width: 90%;
+  margin: 20px auto;
+}
+
+.orderItem {
+  border: 1px solid whitesmoke;
 }

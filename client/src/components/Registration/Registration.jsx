@@ -42,7 +42,7 @@ const Registration = () => {
   }
 
   if (user) {
-    history.push('/profile')
+    history.push('/')
   }
 
   return (
@@ -62,6 +62,7 @@ const Registration = () => {
               className="form-control"
               id="inputFirstName"
               placeholder=" имя"
+              required
             />
             <input
               name="parentname"
@@ -69,6 +70,7 @@ const Registration = () => {
               className="form-control"
               id="inputParentName"
               placeholder=" отчество"
+              
             />
             <input
               name="lastname"
@@ -76,6 +78,7 @@ const Registration = () => {
               className="form-control"
               id="inputLastnameName"
               placeholder=" фамилия"
+              required
             />
             <input
               name="email"
@@ -83,6 +86,7 @@ const Registration = () => {
               className="form-control"
               id="inputEmail"
               placeholder=" почта"
+              required
             />
             <input
               name="phone"
@@ -90,6 +94,7 @@ const Registration = () => {
               className="form-control"
               id="inputPhone"
               placeholder=" телефон"
+              required
             />
             <input
               name="password"
@@ -99,6 +104,7 @@ const Registration = () => {
               className="form-control"
               id="inputPassword"
               placeholder=" пароль"
+              required
             />
             <input
               name="passwordConfirm"
@@ -108,6 +114,7 @@ const Registration = () => {
               className="form-control"
               id="inputPassword"
               placeholder=" проверка пароля"
+              required
             />
           </div>
           <Button name="ЗАРЕГИСТРИРОВАТЬСЯ" />

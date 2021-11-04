@@ -5,52 +5,72 @@ import { useDispatch, useSelector } from 'react-redux'
 import SelectModelButton from '../UI/SelectModelButton/SelectModelButton'
 import SelectMileageButton from '../UI/SelectMileageButton/SelectMileageButton'
 import SelectYearIssueButton from '../UI/SelectYearIssueButton/SelectYearIssueButton'
-import { setStateNumberAC } from '../../redux/actionCreators/serviceInfoAC'
+import {
+  setStateNumberAC,
+  setIsCreateNewCarFalse,
+  hideTextMain,
+} from '../../redux/actionCreators/serviceInfoAC'
 import { sagaCreateOwnerCarAC } from '../../redux/actionCreators/asyncAC/asyncUserAC'
+import { useHistory, Redirect } from 'react-router-dom'
+import { alertError, alertSuccess } from '../../utils/alerts'
 
 function AddCar() {
   const dispatch = useDispatch()
-  const [stateNumber, setStateNumber] = useState()
-  const inputChange = (event) => {
-    const selectModelOption = event.target.value
-    setStateNumber(selectModelOption)
-    dispatch(setStateNumberAC(selectModelOption))
-  }
-
+  const [stateNumber, setStateNumber] = useState('')
+  const { mainSelectValue } = useSelector((state) => state.serviceInfoReducer)
+  const history = useHistory()
   const newCar = useSelector((state) => state.serviceInfoReducer.newCar)
-  const {id} = useSelector((state) => state.userReducer.user)
+  const { id } = useSelector((state) => state.userReducer.user)
+
 
   const body = {
-    ownerId : id,
-    modelId : newCar.modelId, 
-    stateNumber : newCar.stateNumber, 
-    yearIssue: newCar.yearIssue,  
-    milegeId : newCar.milegeId,
+    ownerId: id,
+    modelId: newCar.modelId,
+    stateNumber,
+    yearIssue: newCar.yearIssue,
+    milegeId: newCar.milegeId,
   }
-  console.log(body);
 
   const saveAuto = () => {
-    if (newCar) {
+    console.log('save auto')
+    if (!mainSelectValue.carModelId) {
+      alertError('Не указана модель автомобиля')
+    } else if (!newCar.yearIssue) {
+      alertError('Не указан год выпуска')
+    } else if (!mainSelectValue.milegeId) {
+      alertError('Не указан пробег')
+    } else if (!stateNumber) {
+      alertError('Не указан гос.номер')
+    } else {
+      dispatch(hideTextMain())
       dispatch(sagaCreateOwnerCarAC(body))
+      setTimeout(() => {
+        history.goBack()
+      }, 2000)
     }
   }
+
+
   return (
-    <ul className={styles.addcar}>
-      <SelectModelButton />
-      <SelectYearIssueButton />
-      <input
-        value={stateNumber}
-        onChange={inputChange}
-        name="stateNumber"
-        type="integer"
-        className="form-control"
-        id="yearIssue"
-        placeholder="номер в формате а123ве123"
-        required
-      />
-      <SelectMileageButton />
-      <Button clickFunc={saveAuto} name="ДОБАВИТЬ АВТОМОБИЛЬ" />
-    </ul>
+
+        <ul className={styles.addcar}>
+          <li>добавление автомобиля</li>
+          <SelectModelButton />
+          <SelectYearIssueButton />
+          <SelectMileageButton />
+          <div className={styles.addcarinput}>
+            <input
+              value={stateNumber}
+              onChange={(e) => setStateNumber(e.target.value)}
+              name="stateNumber"
+              type="name"
+              id="stateNumber"
+              placeholder="&nbsp;&nbsp;номер, например а123ве45"
+            />
+          </div>
+          <Button clickFunc={()=> saveAuto()} name="ДОБАВИТЬ АВТОМОБИЛЬ" />
+        </ul>
+
   )
 }
 

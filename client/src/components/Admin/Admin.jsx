@@ -7,9 +7,8 @@ import Button from '../UI/Button/Button'
 
 const Admin = () => {
   const dispatch = useDispatch()
-  const history = useHistory()
   const admin  = useSelector((state) => state.adminReducer.admin)
-
+  console.log(admin);
   const sendLogForm = async (event) => {
     event.preventDefault()
     const dataInput = new FormData(event.currentTarget)
@@ -20,16 +19,16 @@ const Admin = () => {
     dispatch(sagaGetLoginAdminAC(body))
 
   }
-  
-  if(admin) {
-    history.push('/admin/profile');
-  }
+
 
   return (
     <>
     {
-      !admin &&
-      
+      admin ?
+
+      <Redirect to='/admin/profile' />
+      :
+
       <div className={styles.login}>
       <main className="form">
         <form
@@ -42,7 +41,6 @@ const Admin = () => {
             <input
               name="phone"
               type="phone"
-              className="form-control"
               id="inputPhone"
               placeholder="телефон"
             />
@@ -50,7 +48,6 @@ const Admin = () => {
               name="password"
               type="password"
               minLength="6"
-              className="form-control"
               id="inputPassword"
               placeholder="пароль"
             />
