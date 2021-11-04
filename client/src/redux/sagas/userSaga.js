@@ -48,8 +48,10 @@ const fetchGetRegistration = async (action) => {
 function* getRegistrationWorcker(action) {
   const { user } = yield call(fetchGetRegistration, action)
   if (user) {
-    yield put(checkSessionAC(user))
+    yield put(checkSessionAC(user));
+    alertSuccess('успешная регистрация');
   } else {
+    alertError();
     yield put(setErrorPassConfirmAC(false))
     // setErrorMessage(dataFromServer.message);
   }
@@ -74,6 +76,7 @@ function* getLoginWorcker(action) {
   if (user) {
     yield put(checkSessionAC(user))
   } else {
+    alertError();
     yield put(setErrorPassConfirmAC(false))
     // setErrorMessage(dataFromServer.message);
   }
@@ -117,12 +120,13 @@ const fetchCreateOwnerCar = async (action) => {
 }
 
 function* createOwnerCarWorcker(action) {
-  const ownerCar = yield call(fetchCreateOwnerCar, action)
+  const { ownerCar, errorMessage } = yield call(fetchCreateOwnerCar, action)
   if (ownerCar) {
-    yield put(setUserCarsAC(ownerCar))
+    yield put(setUserCarsAC({ownerCar}))
     yield put(setIsCreateNewCarTrue(true))
     alertSuccess('машина добавлена')
   } else {
+    alertError(errorMessage)
     yield put(setIsCreateNewCarFalse(false))
   }
 }
