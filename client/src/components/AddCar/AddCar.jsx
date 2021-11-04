@@ -12,7 +12,7 @@ import {
 } from '../../redux/actionCreators/serviceInfoAC'
 import { sagaCreateOwnerCarAC } from '../../redux/actionCreators/asyncAC/asyncUserAC'
 import { useHistory, Redirect } from 'react-router-dom'
-
+import { alertError, alertSuccess } from '../../utils/alerts'
 
 function AddCar() {
   const dispatch = useDispatch()
@@ -34,13 +34,13 @@ function AddCar() {
   const saveAuto = () => {
     console.log('save auto');
     if (!mainSelectValue.carModelId) {
-      alert('Не указана модель автомобиля')
+      alertError('Не указана модель автомобиля')
     } else if (!newCar.yearIssue) {
-      alert('Не указан год выпуска')
+      alertError('Не указан год выпуска')
     } else if (!mainSelectValue.milegeId) {
-      alert('Не указан пробег')
+      alertError('Не указан пробег')
     } else if (!stateNumber) {
-      alert('Не указан гос.номер')
+      alertError('Не указан гос.номер')
     } else {
         dispatch(sagaCreateOwnerCarAC(body))
         setTimeout(() => {
@@ -48,7 +48,6 @@ function AddCar() {
         }, 2000)
       }
     }
-
 
   return (
 
