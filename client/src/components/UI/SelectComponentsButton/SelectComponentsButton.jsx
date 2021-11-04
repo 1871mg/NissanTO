@@ -19,8 +19,14 @@ function SelectComponentsButton() {
       setSelectValue('')
     }
   }
-
+	// const styles = {
+	// 	container: base => ({
+	// 		...base,
+	// 		width: '200px'
+	// 	})
+	// };
   return (
+
     <div className={styles.selectcomponentsbutton}>
       <Select
         value={selectValue}
