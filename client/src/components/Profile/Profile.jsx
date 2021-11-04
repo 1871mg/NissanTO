@@ -10,22 +10,27 @@ function Profile() {
   const dispatch = useDispatch()
   dispatch(hideTextMain())
   const { ownerCars } = useSelector((state) => state.userReducer.user)
-  const history = useHistory();
+  const history = useHistory()
   return (
     <div className={styles.profile}>
       <>
-        {ownerCars ?
-        ownerCars.length ? (
-          ownerCars.map((ownerCar) => (
-            <li onClick={() => history.push(`car_orders/${ownerCar.id}`)} key={ownerCar.id}>
-              {ownerCar.CarModel.title}{' '}
-	            {ownerCar.yearIssue}{' '}
-	            {ownerCar.stateNumber}{' '}
-	            {ownerCar.Milege.distanse}{' '}км
-            </li>
-          ))) : (
+        {ownerCars ? (
+          ownerCars.length ? (
+            ownerCars.map((ownerCar) => (
+              <li
+                onClick={() => history.push(`/car_orders/${ownerCar.id}`)}
+                key={ownerCar.id}
+              >
+                {ownerCar.CarModel.title} {ownerCar.yearIssue}{' '}
+                {ownerCar.stateNumber} {ownerCar.Milege.distanse} км
+              </li>
+            ))
+          ) : (
+            <li>Вы не добавили автомобиль</li>
+          )
+        ) : (
           <li>Вы не добавили автомобиль</li>
-        ) : (<li>Вы не добавили автомобиль</li>)}
+        )}
       </>
 
       <li>
@@ -36,7 +41,7 @@ function Profile() {
       <Link className={styles.profilebutton} to="/car">
         ДОБАВИТЬ АВТО
       </Link>
-      <Link className={styles.profilebutton} to="/calendar">
+      <Link className={styles.profilebutton} to="/">
         ЗАПИСАТЬСЯ НА ТО
       </Link>
     </div>

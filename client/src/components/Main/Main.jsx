@@ -14,6 +14,8 @@ import auto from './img/default.png'
 
 const Main = () => {
   const dispatch = useDispatch()
+  const history = useHistory()
+  const { user } = useSelector((state) => state.userReducer)
   const carModelId = useSelector(
     (state) => state.serviceInfoReducer.mainSelectValue.carModelId
   )
@@ -24,24 +26,31 @@ const Main = () => {
     (state) => state.serviceInfoReducer.mainSelectValue.imgCar
   )
 
-  // const {ownerCars} = useSelector(state => state.useReducer.user)
-
-  
   if (carModelId && milegeId) {
     dispatch(sagaGetServiceTypeAC({ carModelId, milegeId }))
   }
-  const history = useHistory()
   const { loginEntrance } = useSelector((state) => state.userReducer.user)
-  const {registerEntrance} = useSelector((state) => state.userReducer.user)
+  const { registerEntrance } = useSelector((state) => state.userReducer.user)
   const { ownerCars } = useSelector((state) => state.userReducer.user)
   const hidetextMain = () => {
-    dispatch(hideTextMain())
-    history.push('/servicelist')
+    if (!carModelId) {
+      alert('Вы не выбрали автомобиль')
+    } else if (!milegeId) {
+      alert('Вы не выбрали пробег')
+    } else {
+      dispatch(hideTextMain())
+      if (!user) {
+        history.push('/login')
+      }
+      if (user) {
+        history.push('/servicelist')
+      }
+    }
   }
 
   return (
     <>
-      {(loginEntrance || registerEntrance )? (
+      {loginEntrance || registerEntrance ? (
         ownerCars ? (
           !ownerCars.length ? (
             <Redirect to="/car" />
