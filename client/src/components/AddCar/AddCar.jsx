@@ -48,6 +48,7 @@ function AddCar() {
         history.goBack()
       }, 2000)
     }
+  }
 
 
   return (

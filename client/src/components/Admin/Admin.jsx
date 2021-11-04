@@ -8,7 +8,7 @@ import Button from '../UI/Button/Button'
 const Admin = () => {
   const dispatch = useDispatch()
   const admin  = useSelector((state) => state.adminReducer.admin)
-
+  console.log(admin);
   const sendLogForm = async (event) => {
     event.preventDefault()
     const dataInput = new FormData(event.currentTarget)
@@ -41,7 +41,6 @@ const Admin = () => {
             <input
               name="phone"
               type="phone"
-              className="form-control"
               id="inputPhone"
               placeholder="телефон"
             />
@@ -49,7 +48,6 @@ const Admin = () => {
               name="password"
               type="password"
               minLength="6"
-              className="form-control"
               id="inputPassword"
               placeholder="пароль"
             />
