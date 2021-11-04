@@ -11,7 +11,11 @@ export const ordersReducer = (state = initialState, action) => {
         everyOrders: action.payload.scheduleData
       }
     case ADD_ORDER:
-      return { ...state, orders: [ ...state.orders, action.payload ] }
+      return { 
+        ...state, 
+        orders: [ ...state.orders, action.payload ],
+        everyOrders: [ ...state.everyOrders, action.payload ]
+      }
     case GET_FULL_INFO_ORDER: 
       return { ...state, fullInfoOrder: action.payload }
     case CHANGE_STATUS_ORDER:
