@@ -4,7 +4,10 @@
     left: 0;
     width: 100vw;
     height: 80px;
-    background: rgba(255,255,255,0.3);
+    background: rgba(255, 255, 255, 0.3);
+    /* background: rgb(103, 101, 101); */
+
+    z-index: 100000000000;
 }
 
 a {

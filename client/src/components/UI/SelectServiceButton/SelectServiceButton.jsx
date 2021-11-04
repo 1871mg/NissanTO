@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import Select from 'react-select';
 import styles from "./SelectServiceButton.module.css";
-import Button from "../Button/Button";
 import {addAdditionalServiceAC} from '../../../redux/actionCreators/serviceInfoAC'
 
 function SelectServiceButton() {

@@ -5,31 +5,18 @@ import { useHistory } from 'react-router'
 import Button from '../UI/Button/Button'
 import SelectComponentsButton from '../UI/SelectComponentsButton/SelectComponentsButton'
 import SelectServiceButton from '../UI/SelectServiceButton/SelectServiceButton'
-import { hideTextMain } from '../../redux/actionCreators/serviceInfoAC'
 
 function ServiceList() {
   const history = useHistory()
-  const dispatch = useDispatch()
-  dispatch(hideTextMain())
-  const serviceType = useSelector(
-    (state) => state.serviceInfoReducer.fullService
-  )
-  const servicesList = useSelector(
-    (state) => state.serviceInfoReducer.fullService
-  )
-  const servicesTotalPrice = useSelector(
-    (state) => state.serviceInfoReducer.servicesAllPrice
-  )
-  const addServices = useSelector(
-    (state) => state.serviceInfoReducer.newOrder.serviceId
-  )
-  const addComponents = useSelector(
-    (state) => state.serviceInfoReducer.newOrder.componentId
-  )
-  const orderAdditionsPrices = useSelector(
-    (state) => state.serviceInfoReducer.newOrder
-  )
-  const { user } = useSelector((state) => state.userReducer)
+  const { serviceInfoReducer } = useSelector((state) => state)
+  const serviceType = serviceInfoReducer.fullService
+  const servicesList = serviceInfoReducer.fullService
+  const servicesTotalPrice = serviceInfoReducer.servicesAllPrice
+  const addServices = serviceInfoReducer.newOrder.serviceId
+  const addComponents = serviceInfoReducer.newOrder.componentId
+  const orderAdditionsPrices = serviceInfoReducer.newOrder
+  const ownerCar = serviceInfoReducer.newOrder.model
+  const { user } = useSelector(state => state.userReducer)
 
   const clickButton = () => {
     if (user) {
@@ -44,10 +31,17 @@ function ServiceList() {
       <ul className={styles.servicelist}>
         <div className={styles.whitetext}>
           <>
+            {user ? (
+              <div className={styles.whitetext}>{`Авто: ${ownerCar}`}</div>
+            ) : (
+              <div className={styles.whitetext}>{`Авто: ${serviceInfoReducer.mainSelectValue.carModel
+              }`}</div>
+            )}
+          </>
+
+          <>
             {servicesList.Services.map((service) => (
-              <div key={service.id}>
-                {service.title}: {service.price} ₽
-              </div>
+              <div key={service.id}>{service.title}</div>
             ))}{' '}
           </>
           <>
@@ -57,6 +51,9 @@ function ServiceList() {
               </div>
             ))}{' '}
           </>
+          <div>
+            Работа мастера: {servicesTotalPrice.serviceTypeWorckerPrice}
+          </div>
           <div>
             Cтоимость {serviceType.title}:{' '}
             {servicesTotalPrice.totalServiceTypePrice} ₽
@@ -100,10 +97,8 @@ function ServiceList() {
             <div>&nbsp;</div>
             <div>Итого: {orderAdditionsPrices.totalPrice} ₽</div>
           </div>
-          <div>&nbsp;</div>
-          <div>Итого: {orderAdditionsPrices.totalPrice} ₽</div>
         </div>
-       
+
         <SelectServiceButton />
         <SelectComponentsButton />
       </ul>

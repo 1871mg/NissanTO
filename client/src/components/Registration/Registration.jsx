@@ -42,7 +42,7 @@ const Registration = () => {
   }
 
   if (user) {
-    history.push('/profile')
+    history.push('/')
   }
 
   return (

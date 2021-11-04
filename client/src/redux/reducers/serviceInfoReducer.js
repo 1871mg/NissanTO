@@ -28,7 +28,12 @@ const yearsCeed = [
 ]
 
 const initialState = {
-  mainSelectValue: { carModelId: null, milegeId: null, imgCar: null },
+  mainSelectValue: {
+    carModelId: null,
+    milegeId: null,
+    imgCar: null,
+    carModel: null,
+  },
   hash: { years: yearsCeed },
   newOrder: {
     carId: null,
@@ -37,7 +42,6 @@ const initialState = {
     timeStart: null,
     serviceId: [],
     addServiceTotalPrice: 0,
-    serviceIdStatus: false,
     componentId: [],
     addComponentTotalPrice: 0,
     orderAdditionsTotalPrice: 0,
@@ -94,7 +98,9 @@ export const serviceInfoReducer = (state = initialState, action) => {
       const newServiceTypeState = { ...state }
       newServiceTypeState.fullService = action.payload.fullService[0]
       newServiceTypeState.components = action.payload.components
-      newServiceTypeState.services = action.payload.services
+      newServiceTypeState.services = action.payload.services.filter(
+        (service) => service.price !== 0
+      )
       newServiceTypeState.servicesAllPrice = {}
       newServiceTypeState.servicesAllPrice.sumServicesPrice = 0
       newServiceTypeState.fullService.Services.forEach(
@@ -103,6 +109,8 @@ export const serviceInfoReducer = (state = initialState, action) => {
             servicePrice.price)
       )
       newServiceTypeState.servicesAllPrice.sumComponentsPrice = 0
+      newServiceTypeState.servicesAllPrice.serviceTypeWorckerPrice =
+        newServiceTypeState.fullService.duration * 2200
       newServiceTypeState.fullService.Components.forEach(
         (componentPrice) =>
           (newServiceTypeState.servicesAllPrice.sumComponentsPrice +=
@@ -110,7 +118,7 @@ export const serviceInfoReducer = (state = initialState, action) => {
       )
       newServiceTypeState.servicesAllPrice.totalServiceTypePrice = 0
       newServiceTypeState.servicesAllPrice.totalServiceTypePrice =
-        newServiceTypeState.servicesAllPrice.sumServicesPrice +
+        newServiceTypeState.servicesAllPrice.serviceTypeWorckerPrice +
         newServiceTypeState.servicesAllPrice.sumComponentsPrice
       newServiceTypeState.mainRecommendation = true
       newServiceTypeState.newOrder.fullServiceId =
@@ -124,7 +132,11 @@ export const serviceInfoReducer = (state = initialState, action) => {
       newServiceTypeState.newOrder.totalPrice =
         newServiceTypeState.servicesAllPrice.totalServiceTypePrice +
         newServiceTypeState.newOrder.orderAdditionsTotalPrice
-
+      newServiceTypeState.mainSelectValue = { ...state.mainSelectValue }
+      newServiceTypeState.mainSelectValue.carModel =
+        newServiceTypeState.allModels.find(
+          (model) => model.id === newServiceTypeState.fullService.CarModelId
+        ).title
       return { ...newServiceTypeState }
 
     case HIDE_TEXT_MAIN:

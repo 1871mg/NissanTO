@@ -7,14 +7,17 @@ import SelectMileageButton from '../UI/SelectMileageButton/SelectMileageButton'
 import SelectYearIssueButton from '../UI/SelectYearIssueButton/SelectYearIssueButton'
 import { setStateNumberAC } from '../../redux/actionCreators/serviceInfoAC'
 import { sagaCreateOwnerCarAC } from '../../redux/actionCreators/asyncAC/asyncUserAC'
+import {useHistory} from 'react-router-dom'
 
 function AddCar() {
   const dispatch = useDispatch()
+  const history = useHistory()
   const [stateNumber, setStateNumber] = useState()
+
   const inputChange = (event) => {
     const selectModelOption = event.target.value
     setStateNumber(selectModelOption)
-    dispatch(setStateNumberAC(selectModelOption))
+    dispatch(setStateNumberAC(stateNumber))
   }
 
   const newCar = useSelector((state) => state.serviceInfoReducer.newCar)
@@ -27,7 +30,6 @@ function AddCar() {
     yearIssue: newCar.yearIssue,
     milegeId : newCar.milegeId,
   }
-  console.log(body);
 
   const saveAuto = () => {
     if (newCar) {
