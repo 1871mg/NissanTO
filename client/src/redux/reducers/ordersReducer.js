@@ -5,7 +5,11 @@ const initialState = {}
 export const ordersReducer = (state = initialState, action) => {
   switch(action.type) {
     case GET_ORDERS:
-      return { ...state, orders: action.payload.scheduleData }
+      return { 
+        ...state, 
+        orders: action.payload.activeScheduleData,
+        everyOrders: action.payload.scheduleData
+      }
     case ADD_ORDER:
       return { ...state, orders: [ ...state.orders, action.payload ] }
     case GET_FULL_INFO_ORDER: 
@@ -29,7 +33,17 @@ export const ordersReducer = (state = initialState, action) => {
           } else {
             return order;
           }
-        })]
+        })],
+        everyOrders: [...state.everyOrders.map((order) => {
+          if(Number(order.id) === Number(action.payload)){
+            return { 
+              ...order,
+              isComplite: !order.isComplite
+            }
+          } else {
+            return order;
+          }
+        })],
     }
     case DELETE_ORDER:
       return {

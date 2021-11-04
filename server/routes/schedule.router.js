@@ -5,9 +5,11 @@ const getEndDate = require('../utils/getEndDate');
 const setCurrentTimeZoneTimePlus = require('../utils/setCurrentTimeZoneTimePlus');
 const setCurrentTimeZoneTimeMinus = require('../utils/setCurrentTimeZoneTimeMinus');
 const sendEmail = require('../utils/sendEmail');
+const getRandomWorker = require('../utils/getRandomWorker');
 
 const {
-  FullService, Order, Box, Worker, Car, Owner, CarModel,
+  FullService, Order, Box, Worker,
+  Car, Owner, CarModel, OrderService, OrderComponent,
 } = require('../db/models');
 
 const router = express.Router();
@@ -18,10 +20,11 @@ router.get('/', async (req, res) => {
       include: [FullService, Box, Worker],
     });
 
-    const activeOrders = orders.filter((order) => !order.isComplite);
+    // const activeOrders = orders.filter((order) => !order.isComplite);
     const scheduleUnSorted = [];
-    for (let i = 0; i < activeOrders.length; i += 1) {
-      const order = activeOrders[i];
+
+    for (let i = 0; i < orders.length; i += 1) {
+      const order = orders[i];
       const startDate = new Date(order.timeStart.getTime()
         - (Math.abs(order.timeStart.getTimezoneOffset()) * 60 * 1000));
       const endDate = getEndDate(startDate, order.FullService.duration);
@@ -62,7 +65,9 @@ router.get('/', async (req, res) => {
 
     const scheduleData = scheduleUnSorted.sort((a, b) => new Date(a.startDate).getTime()
     - new Date(b.startDate).getTime());
-    res.json({ scheduleData, orders });
+
+    const activeScheduleData = scheduleData.filter((order) => !order.isComplite);
+    res.json({ scheduleData, activeScheduleData });
   } catch (error) {
     console.log(error.message);
     res.status(500).end();
@@ -72,9 +77,9 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     const {
-      carId, serviceIds, fullServiceId, startDate,
+      carId, serviceIds, componentIds, fullServiceId, startDate,
     } = req.body;
-
+    console.log(req.body);
     const startDateNewOrder = setCurrentTimeZoneTimePlus(new Date(startDate));
     const fullService = await FullService.findOne({ where: { id: fullServiceId } });
     const endDateNewOrder = getEndDate(startDateNewOrder, fullService.duration);
@@ -99,35 +104,56 @@ router.post('/', async (req, res) => {
     }
 
     if (!isTimeOccupied) {
+      const workers = await Worker.findAll();
+      const randomWorker = getRandomWorker(workers);
+
       const newOrder = await Order.create({
         CarId: carId,
-        WorkerId: 1,
+        WorkerId: randomWorker.id,
         BoxId: 1,
         FullServiceId: fullServiceId,
         timeStart: startDateNewOrder,
-        // MilegeId: 2,
         isComplite: false,
       });
+
       const newOrderFullService = await FullService.findOne({
         where: {
           id: fullServiceId,
         },
       });
-      const newWorker = await Worker.findOne({
-        where: {
-          id: newOrder.WorkerId,
-        },
-      });
+
       const orderToRender = {
         location: 'Бокс 1',
         id: newOrder.id,
         title: newOrderFullService.title,
         startDate: setCurrentTimeZoneTimeMinus(startDateNewOrder),
         endDate: setCurrentTimeZoneTimeMinus(endDateNewOrder),
-        worker: getShortName(newWorker.firstname,
-          newWorker.lastname,
-          newWorker.parentname),
+        worker: getShortName(randomWorker.firstname,
+          randomWorker.lastname,
+          randomWorker.parentname),
       };
+
+      // add additional services
+      for (let i = 0; i < serviceIds.length; i += 1) {
+        const newOrderService = await OrderService.findOrCreate({
+          where: {
+            OrderId: newOrder.id,
+            ServiceId: serviceIds[i].value,
+          },
+        });
+      }
+
+      // add additional components
+
+      for (let i = 0; i < componentIds.length; i += 1) {
+        const newOrderComponent = await OrderComponent.findOrCreate({
+          where: {
+            OrderId: newOrder.id,
+            ComponentId: componentIds[i].value,
+          },
+        });
+      }
+
       const emailMsg = `Ваша запись успешно создана. Начало ТО - ${orderToRender.startDate}, окончание - ${orderToRender.endDate}`;
       sendEmail(req.session.user.email, 'Ниссан ТО', emailMsg);
 
