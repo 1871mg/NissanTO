@@ -22,25 +22,27 @@ const AddEntryForm = ({closeModel}) => {
     event.preventDefault();
     const {time, date } = event.target;
     const startDate = new Date(`${date.value} ${time.value}`)
-    console.log(serviceIds,
-      componentIds,
-      fullServiceId,
-      startDate,);
-    //const endDate = new Date(startDate.getTime() + (2 * 60 * 60 * 1000)) // 2 - количество часов - обработка на сервере
 
+    if(!newOrder.carId || !serviceIds || !componentIds || !fullServiceId || !startDate) {
+      alertError();
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000)
+      return;
+    }
     const response = await fetch('http://localhost:5000/schedule', {
       method: 'POST',
-    credentials: 'include',
-    headers: {
-      'content-type': 'application/json'
-    },
-    body: JSON.stringify({
-      carId: newOrder.carId,
-      serviceIds,
-      componentIds,
-      fullServiceId,
-      startDate,
-    })
+      credentials: 'include',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        carId: newOrder.carId,
+        serviceIds,
+        componentIds,
+        fullServiceId,
+        startDate,
+      })
 
   })
 
