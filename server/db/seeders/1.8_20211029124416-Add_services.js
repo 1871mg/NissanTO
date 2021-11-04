@@ -82,140 +82,50 @@ const services = [
 	{title: 'Фильтр системы вентиляции воздуха в салоне автомобиля', price: '0',}, // 5 6 7 8 9 10 11 12 13 14 15 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 36 39 40 41 42 43 44
 	{title: 'Циклонный фильтр', price: '0',}, //37 38
 
-
-
 	// Nissan Almera Classic (B10)
-
-
 	// Nissan Note (E11) 1,4
-
-
 	// Nissan Note (E11) 1,6
-
-
 	// Nissan Tiida (C11) 1,6
-
-
 	// Nissan Tiida (C11) 1,8
-
-
 	// Nissan Tiida (C13)
-
-
 	// Nissan Juke (F15) 1,6
-
-
 	// Nissan Juke (F15) 1,6 турбо
-
-
 	// Nissan Sentra (B17)
-
-
 	// Nissan Qashqai (J10) 1,6
-
-
 	// Nissan Qashqai (J10) 1,8
-
-
 	// Nissan Qashqai (J11) 1,2 турбо
-
-
 	// Nissan Qashqai (J11) 1,6 турбодизель
-
-
 	// Nissan Qashqai (J11) 2,0
-
-
 	// Nissan Teana (J32) 2,5 рядный
-
-
 	// Nissan Teana (J32) 2,5 VQ
-
-
 	// Nissan Teana (J32) 3,5
-
-
 	// Nissan Teana (L33) 2,5
-
-
 	// Nissan Teana (L33) 3,5
-
-
 	// Nissan Terrano (D10) 1,6
-
-
 	// Nissan Terrano (D10) 2,0
-
-
 	// Nissan Terrano (D10) 1,6 2016
-
-
 	// Nissan Terrano (D10) 2,0 2016
-
-
 	// Nissan X-Trail (T31) 2,0
-
-
 	// Nissan X-Trail (T31) 2,0 турбодизель
-
-
 	// Nissan X-Trail (T31) 2,5
-
-
 	// Nissan X-Trail (T32) 1,6 турбодизель
-
-
 	// Nissan X-Trail (T32) 2,0
-
-
 	// Nissan X-Trail (T32) 2,5
-
-
 	// Nissan Murano (Z51)
-
-
 	// Nissan Murano (Z52) 2,5 гибрид
-
-
 	// Nissan Murano (Z52) 3,5
-
-
 	// Nissan Navara (D40) 2,5 турбодизель
-
-
 	// Nissan Navara (D40) 2,5 турбодизель DPF
-
-
 	// Nissan Navara (D40) 3,5 турбодизель
-
-
 	// Nissan Pickup (D22) 2,5 турбодизель
-
-
 	// Nissan Pickup (D22) 2,5 турбодизель 4WD
-
-
 	// Nissan Pathfinder (R51) 2,5 турбодизель
-
-
 	// Nissan Pathfinder (R51) 2,5 турбодизель DPF
-
-
 	// Nissan Pathfinder (R51) 3,0 турбодизель
-
-
 	// Nissan Pathfinder (R51) 4,0
-
-
 	// Nissan Pathfinder (R52) 2,5 гибрид
-
-
 	// Nissan Pathfinder (R52) 3,5
-
-
 	// Nissan Patrol (Y62)
-
-
 	// Nissan Cabstar (F24)
 
 	//дополнительные услуги
