@@ -1,8 +1,8 @@
 #custom
 # dotenv environment variables file
-# .env
-# .env.test
-# .env.production
+.env
+.env.test
+.env.production
 
 /db/config
 package-lock.json
