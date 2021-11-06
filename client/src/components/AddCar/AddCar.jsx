@@ -5,14 +5,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import SelectModelButton from '../UI/SelectModelButton/SelectModelButton'
 import SelectMileageButton from '../UI/SelectMileageButton/SelectMileageButton'
 import SelectYearIssueButton from '../UI/SelectYearIssueButton/SelectYearIssueButton'
-import {
-  setStateNumberAC,
-  setIsCreateNewCarFalse,
-  hideTextMain,
-} from '../../redux/actionCreators/serviceInfoAC'
+import {  hideTextMain } from '../../redux/actionCreators/serviceInfoAC'
 import { sagaCreateOwnerCarAC } from '../../redux/actionCreators/asyncAC/asyncUserAC'
-import { useHistory, Redirect } from 'react-router-dom'
-import { alertError, alertSuccess } from '../../utils/alerts'
+import { useHistory  } from 'react-router-dom'
+import { alertError } from '../../utils/alerts'
 
 function AddCar() {
   const dispatch = useDispatch()
