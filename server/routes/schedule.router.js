@@ -81,7 +81,7 @@ router.post('/', async (req, res) => {
     const {
       carId, serviceIds, componentIds, fullServiceId, startDate,
     } = req.body;
-    console.log(req.body);
+
     const startDateNewOrder = setCurrentTimeZoneTimePlus(new Date(startDate));
     const fullService = await FullService.findOne({ where: { id: fullServiceId } });
     const endDateNewOrder = getEndDate(startDateNewOrder, fullService.duration);
@@ -165,7 +165,7 @@ router.post('/', async (req, res) => {
         });
       }
 
-      const emailMsg = `Ваша запись успешно создана. Начало ТО - ${orderToRender.startDate}, окончание - ${orderToRender.endDate}`;
+      const emailMsg = `Ваша запись успешно создана. Начало ТО - ${orderToRender.startDate}, окончание - ${orderToRender.endDate}. Ждём вас по адресу: Санкт-Петербург, ул. Исполкомская, д. 15А, телефон +7 (812) 565-04-87.`;
       sendEmail(req.session.user.email, 'Ниссан ТО', emailMsg);
 
       res.json({

@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 
 const PrivateRoute = ({ children, isAuthenticated, ...rest }) => {
   const user = useSelector(state => state.userReducer.user);
-  console.log(user);
   return (
     <Route {...rest}>
       {

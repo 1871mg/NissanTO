@@ -39,18 +39,24 @@ function ServiceList() {
             )}
           </>
 
-          <>
+          <div className={styles.servicesList}>
+            <div className={styles.servicesWrapper}>
+            <p className={styles.listHeader}>Услуги ТО:</p>
             {servicesList.Services.map((service) => (
               <div key={service.id}>{service.title}</div>
             ))}{' '}
-          </>
-          <>
+          </div>
+          </div>
+          <div className={styles.servicesList}>
+            <div className={styles.servicesWrapper}>
+            <p className={styles.listHeader}>Запчасти ТО:</p>
             {servicesList.Components.map((component) => (
               <div key={component.id}>
                 {component.title} : {component.price} ₽
               </div>
             ))}{' '}
-          </>
+            </div>
+          </div>
           <div>
             Работа мастера: {servicesTotalPrice.serviceTypeWorckerPrice}
           </div>

@@ -20,6 +20,7 @@ function SelectServiceButton() {
 
   return (
     <div className={styles.selectservicebutton}>
+      <div style={{width: '300px'}}>
       <Select
         value={selectValue}
         onChange={setSelectValue}
@@ -36,6 +37,7 @@ function SelectServiceButton() {
           <div className="select-placeholder-text">дополнительные услуги</div>
         }
       />
+      </div>
       <button onClick={addService} className={styles.selectservicebuttonplus}>
         +
       </button>

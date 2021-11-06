@@ -14,7 +14,6 @@ const Login = () => {
   const isError = useSelector((state) => state.userReducer.isError)
   const [errorMessage, seterrorMessage] = useState('')
   const { loginEntrance } = useSelector((state) => state.userReducer.user)
-  console.log('loginEntrance', loginEntrance)
 
   const sendLogForm = async (event) => {
     event.preventDefault()
