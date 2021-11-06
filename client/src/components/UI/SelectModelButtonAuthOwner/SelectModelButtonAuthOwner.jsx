@@ -11,7 +11,6 @@ function SelectModelButtonAuthOwner() {
 
   const setSelectedModelOption = (event) => {
     const selectModelOption = event.value
-    console.log(event);
     setSelectedOption(event.label)
     dispatch(setModelSelect(selectModelOption))
     dispatch(setOwnerCarInOrderAC(event))

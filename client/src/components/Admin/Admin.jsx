@@ -8,7 +8,6 @@ import Button from '../UI/Button/Button'
 const Admin = () => {
   const dispatch = useDispatch()
   const admin  = useSelector((state) => state.adminReducer.admin)
-  console.log(admin);
   const sendLogForm = async (event) => {
     event.preventDefault()
     const dataInput = new FormData(event.currentTarget)

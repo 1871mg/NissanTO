@@ -22,7 +22,6 @@ const CarOrderCard = () => {
   }, [])
 
   const orderInfo = useSelector(state => state.ordersReducer.fullInfoOrder)
-  console.log(orderInfo);
   return (
     <>
     

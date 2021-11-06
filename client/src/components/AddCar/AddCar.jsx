@@ -32,7 +32,6 @@ function AddCar() {
   }
 
   const saveAuto = () => {
-    console.log('save auto')
     if (!mainSelectValue.carModelId) {
       alertError('Не указана модель автомобиля')
     } else if (!newCar.yearIssue) {
