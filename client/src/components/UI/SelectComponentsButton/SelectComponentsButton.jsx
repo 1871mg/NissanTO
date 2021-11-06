@@ -28,6 +28,7 @@ function SelectComponentsButton() {
   return (
 
     <div className={styles.selectcomponentsbutton}>
+      <div style={{width: '300px'}}>
       <Select
         value={selectValue}
         onChange={setSelectValue}
@@ -44,6 +45,7 @@ function SelectComponentsButton() {
           <div className="select-placeholder-text">дополнительные запчасти</div>
         }
       />
+      </div>
       <button
         onClick={addComponent}
         className={styles.selectcomponentsbuttonplus}

@@ -18,3 +18,22 @@
 .whitetext {
     color: white;
 }
+
+.servicesList {
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 7px;
+  height: 160px;
+  margin: 5px 0;
+}
+
+.servicesWrapper {
+  height: 100%;
+   margin: 0em;
+   overflow-y: auto;
+}
+
+.listHeader {
+  font-weight: bold;
+}
+

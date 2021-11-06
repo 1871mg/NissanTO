@@ -118,7 +118,7 @@ const AppointmentContent = withStyles(styles, { name: 'AppointmentContent' })(({
         {data.title}
       </div>
       <div className={classes.text}>
-        {data.worker}
+        {`Механик ${data.worker}`}
       </div>
       <div className={classes.textContainer}>
         <div className={classes.time}>
@@ -158,7 +158,7 @@ const CalendarLayout = () => {
 <Paper>
     <Scheduler
       data={orders}
-      height={1177}
+      height={800}
       locale='ru-Ru'
     >
       <ViewState

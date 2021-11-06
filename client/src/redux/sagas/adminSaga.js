@@ -17,7 +17,6 @@ const fetchGetLoginAdmin = async (payload) => {
   })
   
   const dataFromServer = await response.json()
-  console.log(dataFromServer);
   return dataFromServer
 }
 
@@ -31,7 +30,6 @@ function* getLoginAdminWorker(action) {
 }
 
 const fetchGetAdminSession = async () => {
-  console.log('is auth server');
   const response = await fetch('http://localhost:5000/isauth', {
     method: 'GET',
     credentials: 'include',

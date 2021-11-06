@@ -12,7 +12,6 @@ const Worker = () => {
 
   const sendLogForm = async (event) => {
     event.preventDefault()
-    console.log(event);
     const dataInput = new FormData(event.currentTarget)
     const body = {
       phone: dataInput.get('phone'),
