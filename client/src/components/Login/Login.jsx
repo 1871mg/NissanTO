@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Link, useHistory, Redirect } from 'react-router-dom'
+import React from 'react'
+import { Link, Redirect } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { setErrorPassConfirmAC } from '../../redux/actionCreators/userAC'
 import { sagaGetLoginAC } from '../../redux/actionCreators/asyncAC/asyncUserAC'
@@ -8,11 +8,8 @@ import styles from './Login.module.css'
 import Button from '../UI/Button/Button'
 
 const Login = () => {
-  const history = useHistory()
   const dispatch = useDispatch()
   dispatch(hideTextMain())
-  const isError = useSelector((state) => state.userReducer.isError)
-  const [errorMessage, seterrorMessage] = useState('')
   const { loginEntrance } = useSelector((state) => state.userReducer.user)
 
   const sendLogForm = async (event) => {
@@ -42,7 +39,6 @@ const Login = () => {
               action="/signin"
               method="POST"
             >
-              {isError && <div className="error">{errorMessage}</div>}
               <div className={styles.logininput}>
                 <input
                   name="phone"

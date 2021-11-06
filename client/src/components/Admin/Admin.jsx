@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Link, useHistory, Redirect } from 'react-router-dom'
+import React from 'react'
+import { Redirect } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { sagaGetLoginAdminAC } from '../../redux/actionCreators/asyncAC/asyncAdminAC'
 import styles from './Admin.module.css'
