@@ -6,4 +6,3 @@ SPA-приложение на React JS с серверной частью на E
 Ориентировано на пользователей смартфонов, но работает и на десктопах и планшетах.
 
 <img width="400" alt="Nissan TO" src="https://user-images.githubusercontent.com/69127368/140942382-812abbc1-75cc-4ce4-9ec5-2a98c25fcb82.png">
-
